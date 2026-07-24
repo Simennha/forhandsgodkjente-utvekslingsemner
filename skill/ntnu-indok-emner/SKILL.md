@@ -52,23 +52,39 @@ gjennomstreking) markeres som `rejected:true`.
 ## Slik kjører du
 Krever Python 3 + `beautifulsoup4` (`pip install beautifulsoup4`).
 
+**Full oppdatering (alle 6 kontinenter + bygg siden på nytt):**
+```bash
+python refresh_data.py
+```
+Dette kjører discover+extract for alle kontinentene i `CONTINENTS`-listen i
+skriptet, skriver `../../data/data_<kontinent>.json` og
+`../../data/universities_<kontinent>.json`, slår dem sammen til
+`../../data/data_all.json`, og kaller til slutt `build_app.py` som bygger
+`../../index.html` på nytt (prosjektroten). Dette er også det skriptet
+`.github/workflows/refresh-data.yml` kjører automatisk hver mandag (og kan
+trigges manuelt via "Run workflow" på Actions-fanen på GitHub).
+
+**Manuelt, ett kontinent om gangen:**
 ```bash
 # 1) Finn universitetssidene for et kontinent (bygger katalogen)
-python ntnu_indok.py discover --root 101092381 --out universities_europe.json
+python ntnu_indok.py discover --root 101092381 --out ../../data/universities_europe.json
 
 # 2) Hent og parse alle tabellene -> strukturert JSON
-python ntnu_indok.py extract --catalog universities_europe.json --out data_europe.json
+python ntnu_indok.py extract --catalog ../../data/universities_europe.json --out ../../data/data_europe.json
+# NB: extract() tagger ikke 'continent' på radene selv — det gjør refresh_data.py.
+# Ved manuell kjøring må du legge det til selv før du slår filene sammen til data_all.json.
 
-# 3) Bygg den søkbare HTML-appen (data bakes inn i én fil)
-python build_app.py           # leser data_europe.json i samme mappe
+# 3) Bygg den søkbare HTML-appen (data bakes inn i index.html i prosjektroten)
+python build_app.py           # leser ../../data/data_all.json
 ```
 
 Rå HTML caches i `raw/<pageId>.html` slik at gjenkjøring går raskt og skånsomt
-mot wikien. Slett `raw/` for å tvinge ny henting.
+mot wikien. Slett `raw/` for å tvinge ny henting av alt (GitHub Action-jobben
+starter alltid uten cache, så den henter alt på nytt hver gang den kjører).
 
-## Utvide til andre kontinenter
-Kjør `discover` med en annen `--root` (se ID-ene over), slå sammen katalogene,
-og kjør `extract` på nytt. Prioritert rekkefølge så langt: Europa (ferdig).
+## Kontinent-rot-IDer
+Europa 101092381 · Asia 107250332 · Amerika 107250743 · Afrika 101093756 ·
+Australia/NZ 107250722 · Canada 146607325 — alle er dekket av `refresh_data.py`.
 
 ## Datamodell (hver rad i data_*.json)
 `ntnu_codes[]` (normaliserte koder for oppslag), `fagkode_host`, `fagnavn_host`,
