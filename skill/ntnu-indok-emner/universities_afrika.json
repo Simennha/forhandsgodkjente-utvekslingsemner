@@ -1,0 +1,23 @@
+{
+  "root_page_id": "101093756",
+  "countries": [
+    {
+      "country": "Afrika",
+      "page_id": "101093756",
+      "universities": [
+        {
+          "name": "Uganda (Makerere Universiry)",
+          "page_id": "107250360"
+        },
+        {
+          "name": "University of Ghana",
+          "page_id": "295968719"
+        },
+        {
+          "name": "Sør-Afrika - University of Cape Town",
+          "page_id": "101093758"
+        }
+      ]
+    }
+  ]
+}

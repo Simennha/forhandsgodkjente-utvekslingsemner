@@ -1,0 +1,118 @@
+{
+  "root_page_id": "107250332",
+  "countries": [
+    {
+      "country": "blank side",
+      "page_id": "110003082",
+      "universities": []
+    },
+    {
+      "country": "India",
+      "page_id": "364937817",
+      "universities": [
+        {
+          "name": "Indian Institute of Technology Bombay",
+          "page_id": "110002741"
+        },
+        {
+          "name": "Indian Institute of Technology Delhi",
+          "page_id": "457671285"
+        },
+        {
+          "name": "Indian Institute of Technology Madras",
+          "page_id": "416121841"
+        }
+      ]
+    },
+    {
+      "country": "Kina",
+      "page_id": "110002735",
+      "universities": [
+        {
+          "name": "National Taiwan University",
+          "page_id": "482082901"
+        },
+        {
+          "name": "National Taiwan University of Science and Technology -",
+          "page_id": "141394697"
+        },
+        {
+          "name": "Shanghai Jiao Tong University",
+          "page_id": "135464431"
+        },
+        {
+          "name": "The Hong Kong Politechnic University",
+          "page_id": "119441809"
+        },
+        {
+          "name": "The Hong Kong University of Science and Technology (HKUST)",
+          "page_id": "435847753"
+        },
+        {
+          "name": "The University of Hong Kong University (HKU)",
+          "page_id": "110002739"
+        },
+        {
+          "name": "The Xidian University",
+          "page_id": "110003217"
+        },
+        {
+          "name": "Tsinghua University",
+          "page_id": "110002737"
+        },
+        {
+          "name": "University of Nottingham - Ningbo, China",
+          "page_id": "420676408"
+        }
+      ]
+    },
+    {
+      "country": "Singapore",
+      "page_id": "107250337",
+      "universities": [
+        {
+          "name": "Nanyang Technological University",
+          "page_id": "110003087"
+        },
+        {
+          "name": "National University of Singapore",
+          "page_id": "110003085"
+        }
+      ]
+    },
+    {
+      "country": "Sør Korea",
+      "page_id": "107250358",
+      "universities": [
+        {
+          "name": "Chung - Ang university",
+          "page_id": "239501663"
+        },
+        {
+          "name": "Dongguk University",
+          "page_id": "255754833"
+        },
+        {
+          "name": "Konkuk University",
+          "page_id": "117507885"
+        },
+        {
+          "name": "Korea Advanced Institute of Science and Technology (KAIST)",
+          "page_id": "110003213"
+        },
+        {
+          "name": "Pusan National University",
+          "page_id": "282493983"
+        },
+        {
+          "name": "Seoul National university",
+          "page_id": "110003211"
+        },
+        {
+          "name": "Sungkyunkwan University",
+          "page_id": "473137313"
+        }
+      ]
+    }
+  ]
+}

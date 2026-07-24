@@ -1,0 +1,31 @@
+{
+  "root_page_id": "146607325",
+  "countries": [
+    {
+      "country": "Canada",
+      "page_id": "146607325",
+      "universities": [
+        {
+          "name": "Concordia University - John Molson School of Business,",
+          "page_id": "230523986"
+        },
+        {
+          "name": "Canada (University of British Columbia)",
+          "page_id": "107250745"
+        },
+        {
+          "name": "McGill Univesity - Montreal",
+          "page_id": "146607328"
+        },
+        {
+          "name": "Memorial University of New Foundland",
+          "page_id": "239501364"
+        },
+        {
+          "name": "University of Waterloo, Canada",
+          "page_id": "470581357"
+        }
+      ]
+    }
+  ]
+}

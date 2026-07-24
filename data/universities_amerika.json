@@ -1,0 +1,113 @@
+{
+  "root_page_id": "107250743",
+  "countries": [
+    {
+      "country": "USA",
+      "page_id": "107250748",
+      "universities": [
+        {
+          "name": "Berkeley",
+          "page_id": "107250754"
+        },
+        {
+          "name": "College of Charlston",
+          "page_id": "133663901"
+        },
+        {
+          "name": "Columbia University in the City of New York",
+          "page_id": "107250765"
+        },
+        {
+          "name": "Harvard",
+          "page_id": "107250752"
+        },
+        {
+          "name": "Hawaii Pacific University",
+          "page_id": "279383887"
+        },
+        {
+          "name": "Michigan Technological University",
+          "page_id": "118720366"
+        },
+        {
+          "name": "MIT Massachusetts Institute of Technology",
+          "page_id": "107250761"
+        },
+        {
+          "name": "Stanford University summer session/Stanford Coursera kurs",
+          "page_id": "145129998"
+        },
+        {
+          "name": "UCLA University of California, Los Angeles",
+          "page_id": "107250757"
+        },
+        {
+          "name": "University of California, Irvine",
+          "page_id": "107250750"
+        },
+        {
+          "name": "University of California, Santa Barbara",
+          "page_id": "107250759"
+        },
+        {
+          "name": "University of California San Diego (UCSD)",
+          "page_id": "107250767"
+        },
+        {
+          "name": "University of Colorado Boulder",
+          "page_id": "107250763"
+        },
+        {
+          "name": "University of Hawaii - at Manoa",
+          "page_id": "240748186"
+        },
+        {
+          "name": "University of Wisconsin - Madison",
+          "page_id": "238094062"
+        },
+        {
+          "name": "Yale University",
+          "page_id": "428345335"
+        }
+      ]
+    },
+    {
+      "country": "Sør - Amerika",
+      "page_id": "115641668",
+      "universities": [
+        {
+          "name": "Argentina Instituto Tecnológico de Buenos Aires",
+          "page_id": "339184576"
+        },
+        {
+          "name": "Brasil - Universidade Federal de Santa Catarina",
+          "page_id": "457671000"
+        },
+        {
+          "name": "Brasil - Universidade Federal do Rio de Janeiro",
+          "page_id": "416122107"
+        },
+        {
+          "name": "Argentina (Universidad de Buenos Aires)",
+          "page_id": "107250769"
+        },
+        {
+          "name": "Mexico - Tecnologico de Monterrey",
+          "page_id": "471990332"
+        },
+        {
+          "name": "Ponitificia Universidad Católica de Chile",
+          "page_id": "115641670"
+        },
+        {
+          "name": "Pontificia Universidad Catolica del Peru",
+          "page_id": "127995826"
+        },
+        {
+          "name": "Universidad Tecnica Federico Santa Maria, Chile",
+          "page_id": "119442171"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "root_page_id": "107250722",
+  "countries": [
+    {
+      "country": "Australia/NZ",
+      "page_id": "107250722",
+      "universities": [
+        {
+          "name": "Griffith University",
+          "page_id": "120917464"
+        },
+        {
+          "name": "Queensland University of Technology",
+          "page_id": "107250732"
+        },
+        {
+          "name": "RMIT University",
+          "page_id": "119442828"
+        },
+        {
+          "name": "The University of Queensland",
+          "page_id": "107250737"
+        },
+        {
+          "name": "University of Auckland (New Zealand)",
+          "page_id": "107250724"
+        },
+        {
+          "name": "University of Newcastle",
+          "page_id": "120161095"
+        },
+        {
+          "name": "University of New South Wales",
+          "page_id": "107250728"
+        },
+        {
+          "name": "University of Otago, New Zealand",
+          "page_id": "115641545"
+        },
+        {
+          "name": "University of Wollongong",
+          "page_id": "107250739"
+        },
+        {
+          "name": "University of the Sunshine Coast (Queensland)",
+          "page_id": "282495605"
+        },
+        {
+          "name": "University of Western Australia",
+          "page_id": "491980268"
+        }
+      ]
+    }
+  ]
+}
