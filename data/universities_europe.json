@@ -1,102 +1,369 @@
 {
-  "continent": "Europa",
   "root_page_id": "101092381",
   "countries": [
-    {"country": "Danmark", "page_id": "101092383", "universities": [
-      {"name": "Copenhagen Business School", "page_id": "110002798"},
-      {"name": "Danmark Tekniske Universitet (DTU)", "page_id": "110002800"},
-      {"name": "København Universitet", "page_id": "110002795"}
-    ]},
-    {"country": "England", "page_id": "107250347", "universities": [
-      {"name": "King's College", "page_id": "110003267"},
-      {"name": "London School of Economics (LSE)", "page_id": "135463997"},
-      {"name": "Queen Mary London", "page_id": "110003264"},
-      {"name": "University of Manchester", "page_id": "139232004"},
-      {"name": "University College London", "page_id": "135464433"},
-      {"name": "University of Leeds", "page_id": "135464426"}
-    ]},
-    {"country": "Frankrike", "page_id": "216629541", "universities": [
-      {"name": "Grenoble Institute of Technology (INP)", "page_id": "216629543"},
-      {"name": "IAE Aix-Marseille", "page_id": "477954718"},
-      {"name": "Université de Lille", "page_id": "423690303"}
-    ]},
-    {"country": "Irland", "page_id": "477955094", "universities": [
-      {"name": "Maynooth University", "page_id": "477955097"}
-    ]},
-    {"country": "Italia", "page_id": "101093029", "universities": [
-      {"name": "Libero Universita di Bolzano", "page_id": "110824939"},
-      {"name": "Politecnico di Torino", "page_id": "110003070"},
-      {"name": "Politecnico di Milano", "page_id": "110825452"},
-      {"name": "Sapienza Università di Roma", "page_id": "111609137"},
-      {"name": "University of Bologna", "page_id": "110003077"},
-      {"name": "Tor Vergata - University of Rome", "page_id": "220529347"},
-      {"name": "Universita Degli Studi di Padova", "page_id": "110825090"},
-      {"name": "Università degli studi di Genova (UniGe)", "page_id": "335938362"},
-      {"name": "Universita degli studi Firenze", "page_id": "143884860"},
-      {"name": "Universita di Pisa", "page_id": "411862006"},
-      {"name": "Universita di Siena", "page_id": "216629529"},
-      {"name": "Universita di Trento", "page_id": "457671161"},
-      {"name": "University of Bergamo", "page_id": "414515966"},
-      {"name": "University of Venice", "page_id": "151461109"}
-    ]},
-    {"country": "Nederland/Belgia", "page_id": "107250353", "universities": [
-      {"name": "Erasmus Universiteit Rotterdam", "page_id": "110002812"},
-      {"name": "TU Delft", "page_id": "110002807"},
-      {"name": "TU Eindhoven", "page_id": "110822919"},
-      {"name": "Twente", "page_id": "110002810"},
-      {"name": "University of Ghent", "page_id": "222593265"}
-    ]},
-    {"country": "Portugal", "page_id": "182192318", "universities": [
-      {"name": "Instituto Superior Técnico (Lisboa)", "page_id": "184614987"},
-      {"name": "Politecnico de Lisboa", "page_id": "182192322"},
-      {"name": "Universidade Nova de Lisboa", "page_id": "282494119"}
-    ]},
-    {"country": "Skottland", "page_id": "101941432", "universities": [
-      {"name": "Edinburgh", "page_id": "110002765"},
-      {"name": "Heriot-Watt University", "page_id": "110002768"},
-      {"name": "University of Glasgow", "page_id": "110002761"},
-      {"name": "University of Strathclyde, Glasgow", "page_id": "110002763"}
-    ]},
-    {"country": "Spania", "page_id": "110002722", "universities": [
-      {"name": "EHU - Bilbao", "page_id": "110823265"},
-      {"name": "IE University - Madrid (Instituto de Empresa)", "page_id": "238093863"},
-      {"name": "Universidad Carlos III de Madrid", "page_id": "184619665"},
-      {"name": "Universidad de Alicante", "page_id": "110002726"},
-      {"name": "Universidad de Cádiz", "page_id": "110002724"},
-      {"name": "Universidad de Cantabria", "page_id": "110002728"},
-      {"name": "Universidad de Sevilla", "page_id": "143885483"},
-      {"name": "Universidad Politécnica de Cartagena", "page_id": "119440277"},
-      {"name": "Universidad Politécnica de Madrid", "page_id": "110002730"},
-      {"name": "Universitat Politècnica de Catalunya - Barcelona", "page_id": "119440886"},
-      {"name": "Universitat Politècnica de València", "page_id": "110002732"}
-    ]},
-    {"country": "Sveits", "page_id": "101092395", "universities": [
-      {"name": "École Polytechnique Fédérale de Lausanne (EPFL)", "page_id": "110002713"},
-      {"name": "ETH Zürich", "page_id": "110002719"},
-      {"name": "Lucerne University of Applied Sciences and Arts", "page_id": "120163522"},
-      {"name": "Rotterdam (Sveits)", "page_id": "110002715"},
-      {"name": "St. Gallen", "page_id": "110002710"},
-      {"name": "Université de Lausanne", "page_id": "110002717"}
-    ]},
-    {"country": "Sverige", "page_id": "118065332", "universities": [
-      {"name": "KTH", "page_id": "118065336"},
-      {"name": "Lund Universitet", "page_id": "119440028"}
-    ]},
-    {"country": "Tyskland", "page_id": "101093769", "universities": [
-      {"name": "Karlsruhe Institute of Technology (KIT)", "page_id": "110002748"},
-      {"name": "RWTH - Aachen", "page_id": "110002751"},
-      {"name": "Technische Universität Berlin", "page_id": "110002753"},
-      {"name": "Technische Universität München", "page_id": "110002745"},
-      {"name": "Universität Freiburg", "page_id": "306613346"},
-      {"name": "Universität Mannheim", "page_id": "110002755"}
-    ]},
-    {"country": "Østerrike", "page_id": "129369696", "universities": [
-      {"name": "MCI Internationale Hochschule - Innsbruck", "page_id": "423690265"},
-      {"name": "TU Graz", "page_id": "129369699"},
-      {"name": "Universität Innsbruck", "page_id": "452559468"}
-    ]},
-    {"country": "Tsjekkia", "page_id": "127994020", "universities": [
-      {"name": "Czech Technical University (CTU)", "page_id": "127994023"}
-    ]}
+    {
+      "country": "Danmark",
+      "page_id": "101092383",
+      "universities": [
+        {
+          "name": "Copenhagen Business School",
+          "page_id": "110002798"
+        },
+        {
+          "name": "Danmark Tekniske Universitet",
+          "page_id": "110002800"
+        },
+        {
+          "name": "København Universitet",
+          "page_id": "110002795"
+        }
+      ]
+    },
+    {
+      "country": "England",
+      "page_id": "107250347",
+      "universities": [
+        {
+          "name": "King's College",
+          "page_id": "110003267"
+        },
+        {
+          "name": "London Metropolitan University",
+          "page_id": "496599433"
+        },
+        {
+          "name": "London School of Economics (LSE)",
+          "page_id": "135463997"
+        },
+        {
+          "name": "Queen Mary London",
+          "page_id": "110003264"
+        },
+        {
+          "name": "Universisty of Manchester",
+          "page_id": "139232004"
+        },
+        {
+          "name": "University College London",
+          "page_id": "135464433"
+        },
+        {
+          "name": "University of Leeds",
+          "page_id": "135464426"
+        }
+      ]
+    },
+    {
+      "country": "Frankrike",
+      "page_id": "216629541",
+      "universities": [
+        {
+          "name": "Grenoble Institute of Technology (INP)",
+          "page_id": "216629543"
+        },
+        {
+          "name": "IAE Aix-Marseille",
+          "page_id": "477954718"
+        },
+        {
+          "name": "Université de Lille",
+          "page_id": "423690303"
+        }
+      ]
+    },
+    {
+      "country": "Irland",
+      "page_id": "477955094",
+      "universities": [
+        {
+          "name": "Dublin (UCD)",
+          "page_id": "496599437"
+        },
+        {
+          "name": "Maynooth University",
+          "page_id": "477955097"
+        }
+      ]
+    },
+    {
+      "country": "Italia",
+      "page_id": "101093029",
+      "universities": [
+        {
+          "name": "Libero Universita di Bolzano",
+          "page_id": "110824939"
+        },
+        {
+          "name": "Politec de Torino",
+          "page_id": "110003070"
+        },
+        {
+          "name": "Politecnico de Milano",
+          "page_id": "110825452"
+        },
+        {
+          "name": "Sapienza Università di Roma",
+          "page_id": "111609137"
+        },
+        {
+          "name": "The University of Bologna",
+          "page_id": "110003077"
+        },
+        {
+          "name": "Tor Vergata - University of Rome",
+          "page_id": "220529347"
+        },
+        {
+          "name": "Universita Degli Studi de Padova",
+          "page_id": "110825090"
+        },
+        {
+          "name": "Università degli studi di Genova (UniGe)",
+          "page_id": "335938362"
+        },
+        {
+          "name": "Universita degli studi Firenze",
+          "page_id": "143884860"
+        },
+        {
+          "name": "Universita de Pisa",
+          "page_id": "411862006"
+        },
+        {
+          "name": "Universita Di Siena",
+          "page_id": "216629529"
+        },
+        {
+          "name": "Universita di Trento",
+          "page_id": "457671161"
+        },
+        {
+          "name": "University of Bergamo",
+          "page_id": "414515966"
+        },
+        {
+          "name": "University of Venice",
+          "page_id": "151461109"
+        }
+      ]
+    },
+    {
+      "country": "Nederland/Belgia",
+      "page_id": "107250353",
+      "universities": [
+        {
+          "name": "Erasmus Universiteit Rotterdam",
+          "page_id": "110002812"
+        },
+        {
+          "name": "TU Delft",
+          "page_id": "110002807"
+        },
+        {
+          "name": "TU Einhoven",
+          "page_id": "110822919"
+        },
+        {
+          "name": "Twente",
+          "page_id": "110002810"
+        },
+        {
+          "name": "University of Ghent",
+          "page_id": "222593265"
+        }
+      ]
+    },
+    {
+      "country": "Portugal",
+      "page_id": "182192318",
+      "universities": [
+        {
+          "name": "Instituto Superior Técnico (Lisboa)",
+          "page_id": "184614987"
+        },
+        {
+          "name": "Politecnico de Lisboa",
+          "page_id": "182192322"
+        },
+        {
+          "name": "Universidade Nova de Lisboa",
+          "page_id": "282494119"
+        }
+      ]
+    },
+    {
+      "country": "Skottland",
+      "page_id": "101941432",
+      "universities": [
+        {
+          "name": "Edinburgh",
+          "page_id": "110002765"
+        },
+        {
+          "name": "Heriot-Watt University",
+          "page_id": "110002768"
+        },
+        {
+          "name": "University of Glasgow (Indøk)",
+          "page_id": "110002761"
+        },
+        {
+          "name": "University of Strathclyde, Glasgow",
+          "page_id": "110002763"
+        }
+      ]
+    },
+    {
+      "country": "Spania",
+      "page_id": "110002722",
+      "universities": [
+        {
+          "name": "EHU -BILBAO",
+          "page_id": "110823265"
+        },
+        {
+          "name": "IE University -Madrid - (Instituto de Empresa )",
+          "page_id": "238093863"
+        },
+        {
+          "name": "Universidad Carlos III de Madrid",
+          "page_id": "184619665"
+        },
+        {
+          "name": "Universidad de Alicante",
+          "page_id": "110002726"
+        },
+        {
+          "name": "Universidad de Cádiz",
+          "page_id": "110002724"
+        },
+        {
+          "name": "Universidad de Cantabria Inicio",
+          "page_id": "110002728"
+        },
+        {
+          "name": "Universidad de Sevilla",
+          "page_id": "143885483"
+        },
+        {
+          "name": "Universidad Politécnica de Cartagena",
+          "page_id": "119440277"
+        },
+        {
+          "name": "Universidad Politécnica de Madrid",
+          "page_id": "110002730"
+        },
+        {
+          "name": "Universitat Politècnica de Catalunya - Barcelona",
+          "page_id": "119440886"
+        },
+        {
+          "name": "Universitat Politècnica de València",
+          "page_id": "110002732"
+        }
+      ]
+    },
+    {
+      "country": "Sveits",
+      "page_id": "101092395",
+      "universities": [
+        {
+          "name": "École Polytechnique Fédérale de Lausanne (EPFL)",
+          "page_id": "110002713"
+        },
+        {
+          "name": "Eidgenössische Technische Hochschule Zürich (ETH )",
+          "page_id": "110002719"
+        },
+        {
+          "name": "Lucerne University of Applied Sciences and Arts",
+          "page_id": "120163522"
+        },
+        {
+          "name": "Rotterdam",
+          "page_id": "110002715"
+        },
+        {
+          "name": "St. Gallen",
+          "page_id": "110002710"
+        },
+        {
+          "name": "Université de Lausanne",
+          "page_id": "110002717"
+        }
+      ]
+    },
+    {
+      "country": "Sverige",
+      "page_id": "118065332",
+      "universities": [
+        {
+          "name": "KTH",
+          "page_id": "118065336"
+        },
+        {
+          "name": "Lund Universitet",
+          "page_id": "119440028"
+        }
+      ]
+    },
+    {
+      "country": "Tyskland",
+      "page_id": "101093769",
+      "universities": [
+        {
+          "name": "Karlsruhe Institute of Technology (KIT)",
+          "page_id": "110002748"
+        },
+        {
+          "name": "RWTH - Aachen",
+          "page_id": "110002751"
+        },
+        {
+          "name": "Technische Universität Berlin",
+          "page_id": "110002753"
+        },
+        {
+          "name": "Technische Universität München",
+          "page_id": "110002745"
+        },
+        {
+          "name": "Universität Freiburg (Albert-Ludwigs-Universität Freiburg)",
+          "page_id": "306613346"
+        },
+        {
+          "name": "Universität Mannheim",
+          "page_id": "110002755"
+        }
+      ]
+    },
+    {
+      "country": "Østerrike",
+      "page_id": "129369696",
+      "universities": [
+        {
+          "name": "MCI Internationale Hochschule Gmbh - Innsbruck",
+          "page_id": "423690265"
+        },
+        {
+          "name": "TU Graz",
+          "page_id": "129369699"
+        },
+        {
+          "name": "Universität Innsbruck",
+          "page_id": "452559468"
+        }
+      ]
+    },
+    {
+      "country": "Tsjekkia /Czech Republic",
+      "page_id": "127994020",
+      "universities": [
+        {
+          "name": "Czech Technical University (CTU)",
+          "page_id": "127994023"
+        }
+      ]
+    }
   ]
 }

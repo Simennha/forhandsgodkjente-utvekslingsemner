@@ -2,11 +2,6 @@
   "root_page_id": "107250332",
   "countries": [
     {
-      "country": "blank side",
-      "page_id": "110003082",
-      "universities": []
-    },
-    {
       "country": "India",
       "page_id": "364937817",
       "universities": [
@@ -33,7 +28,7 @@
           "page_id": "482082901"
         },
         {
-          "name": "National Taiwan University of Science and Technology -",
+          "name": "National Taiwan University of Science and Technology",
           "page_id": "141394697"
         },
         {
@@ -111,6 +106,16 @@
         {
           "name": "Sungkyunkwan University",
           "page_id": "473137313"
+        }
+      ]
+    },
+    {
+      "country": "Asia",
+      "page_id": "107250332",
+      "universities": [
+        {
+          "name": "blank side",
+          "page_id": "110003082"
         }
       ]
     }
