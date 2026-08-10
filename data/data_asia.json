@@ -1530,6 +1530,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "DSAI4204",
+  "fagnavn_host": "Data Mining and Data Warehousing",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TDT4300",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-08-04",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong Politechnic University",
+  "country": "Kina",
+  "page_id": "119441809",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119441809",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TDT4120"
   ],
   "fagkode_host": "COMT3011",
@@ -2065,6 +2086,25 @@
   "behandlingsdato": "2025-01-29",
   "behandlet_av": "Anne Neumann",
   "kommentar": "Kommentar fra faglærer: Note that you may want to read up on some material from their preceding Microeconomic Theory I course (mainly on preferences and utility) to have a better learning experience.",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [],
+  "fagkode_host": "ENVR2030",
+  "fagnavn_host": "Material and Energy Balance for Environmental Management",
+  "studiepoeng": "3 credits / 6 sp",
+  "ntnu_emnekode": "Valgbart emne 3. år Indøk",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-07-31",
+  "behandlet_av": "Halsten Jarle Aastebøl",
+  "kommentar": "",
   "rejected": false,
   "university": "The Hong Kong University of Science and Technology (HKUST)",
   "country": "Kina",
@@ -6693,6 +6733,27 @@
   "godkjent": "JA",
   "behandlingsdato": "2026 Jan",
   "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Pusan National University",
+  "country": "Sør Korea",
+  "page_id": "282493983",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=282493983",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4160"
+  ],
+  "fagkode_host": "CB1501022",
+  "fagnavn_host": "Computer Architecture",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4160",
+  "ntnu_emnenavn": "Datamaskiner",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "",
+  "behandlet_av": "Magnus Jahre",
   "kommentar": "",
   "rejected": false,
   "university": "Pusan National University",

@@ -6040,8 +6040,8 @@
   "ntnu_emnenavn": "",
   "emnetype": "",
   "godkjent": "JA",
-  "behandlingsdato": "2021 -jan",
-  "behandlet_av": "Pinar Øzturk",
+  "behandlingsdato": "2021 -jan 2025-02-19",
+  "behandlet_av": "Pinar Øzturk Zhirong Yang",
   "kommentar": "",
   "rejected": false,
   "university": "Politecnico de Milano",
@@ -10591,6 +10591,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "MACHINE LEARNING - IN0000166",
+  "fagnavn_host": "",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TDT4172",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Juli 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "106833 Microeconomics https://corsi.unige.it/en/off.f/2023/ins/68239",
@@ -11423,6 +11444,27 @@
   "behandlingsdato": "2025 Mars",
   "behandlet_av": "Anne Neumann",
   "kommentar": "På Italiensk",
+  "rejected": false,
+  "university": "Universita de Pisa",
+  "country": "Italia",
+  "page_id": "411862006",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=411862006",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4240"
+  ],
+  "fagkode_host": "467PP",
+  "fagnavn_host": "Advanced Statistics",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMA4240",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-11-11",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
   "rejected": false,
   "university": "Universita de Pisa",
   "country": "Italia",
@@ -28428,6 +28470,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "DSAI4204",
+  "fagnavn_host": "Data Mining and Data Warehousing",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TDT4300",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-08-04",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong Politechnic University",
+  "country": "Kina",
+  "page_id": "119441809",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119441809",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TDT4120"
   ],
   "fagkode_host": "COMT3011",
@@ -28963,6 +29026,25 @@
   "behandlingsdato": "2025-01-29",
   "behandlet_av": "Anne Neumann",
   "kommentar": "Kommentar fra faglærer: Note that you may want to read up on some material from their preceding Microeconomic Theory I course (mainly on preferences and utility) to have a better learning experience.",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [],
+  "fagkode_host": "ENVR2030",
+  "fagnavn_host": "Material and Energy Balance for Environmental Management",
+  "studiepoeng": "3 credits / 6 sp",
+  "ntnu_emnekode": "Valgbart emne 3. år Indøk",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-07-31",
+  "behandlet_av": "Halsten Jarle Aastebøl",
+  "kommentar": "",
   "rejected": false,
   "university": "The Hong Kong University of Science and Technology (HKUST)",
   "country": "Kina",
@@ -33601,6 +33683,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4160"
+  ],
+  "fagkode_host": "CB1501022",
+  "fagnavn_host": "Computer Architecture",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4160",
+  "ntnu_emnenavn": "Datamaskiner",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "",
+  "behandlet_av": "Magnus Jahre",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Pusan National University",
+  "country": "Sør Korea",
+  "page_id": "282493983",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=282493983",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4265"
   ],
   "fagkode_host": "251.424",
@@ -34272,7 +34375,7 @@
   ],
   "fagkode_host": "BUSADM469.2 + BUSADM470",
   "fagnavn_host": "Project Leadership and Building High-Performing Teams + Project Management",
-  "studiepoeng": "2 cr/5 sp + ?",
+  "studiepoeng": "2 cr/5 sp 2cr/5sp",
   "ntnu_emnekode": "TIØ4162",
   "ntnu_emnenavn": "Organisasjon og teknologi 2",
   "emnetype": "",
@@ -36458,7 +36561,7 @@
   "godkjent": "JA",
   "behandlingsdato": "sep 2023",
   "behandlet_av": "Magnus Stålhane",
-  "kommentar": "Dekker det aller meste av Optimeringsmetoder med unntak av dynamisk programmering. Faget kan godkjennes som erstatning for TIØ4130, men vil presisere at dersom du går videre med industriell optimering (TIØ4150), må du sette deg inn i dette tema på egen hånd.",
+  "kommentar": "Dekker det aller meste av Optimeringsmetoder med unntak av dynamisk programmering. Faget kan godkjennes som erstatning for TIØ4130, men vil presisere at dersom du går videre med industriell optimering (TIØ4150), må du sette deg inn i dette tema på egen hånd. For godkjenning av både TIØ4126 og TIØ4130 med dette emnet kreves relevant fyllfag på 4 credits/ 7,5 studiepoeng.",
   "rejected": false,
   "university": "Harvard",
   "country": "USA",
@@ -36970,27 +37073,6 @@
  },
  {
   "ntnu_codes": [
-   "TIØ4126"
-  ],
-  "fagkode_host": "15.093[J]",
-  "fagnavn_host": "15.093[J] Optimization Methods Emnekode endret til 15.C57 (reg. august 2025)",
-  "studiepoeng": "7,5",
-  "ntnu_emnekode": "TIØ4126",
-  "ntnu_emnenavn": "Optimering og beslutningsstøtte f...",
-  "emnetype": "",
-  "godkjent": "JA",
-  "behandlingsdato": "2017-03-16",
-  "behandlet_av": "Kjetil Fagerholt",
-  "kommentar": "MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization",
-  "rejected": false,
-  "university": "MIT Massachusetts Institute of Technology",
-  "country": "USA",
-  "page_id": "107250761",
-  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
-  "continent": "Amerika"
- },
- {
-  "ntnu_codes": [
    "TIØ4165"
   ],
   "fagkode_host": "15.810 + 15.833",
@@ -37482,7 +37564,28 @@
   "godkjent": "JA",
   "behandlingsdato": "2021-01-25",
   "behandlet_av": "Henrik Andersson",
-  "kommentar": "15.083 Integer Progr. & combinatorial Optmz -bra kurs men mer avansert. MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization",
+  "kommentar": "MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization15.083 Integer Progr. & combinatorial Optmz -bra kurs men mer avansert. For godkjenning av både TIØ4126 og TIØ4130 med dette emnet kreves relevant fyllfag på 4 credits/ 7,5 studiepoeng.",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "15.093[J]",
+  "fagnavn_host": "15.093[J] Optimization Methods Emnekode endret til 15.C57 (reg. august 2025)",
+  "studiepoeng": "7,5",
+  "ntnu_emnekode": "TIØ4126",
+  "ntnu_emnenavn": "Optimering og beslutningsstøtte f...",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2017-03-16",
+  "behandlet_av": "Kjetil Fagerholt",
+  "kommentar": "MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization For godkjenning av både TIØ4126 og TIØ4130 med dette emnet kreves relevant fyllfag på 4 credits/ 7,5 studiepoeng.",
   "rejected": false,
   "university": "MIT Massachusetts Institute of Technology",
   "country": "USA",
@@ -46140,6 +46243,27 @@
   "continent": "Australia/NZ"
  },
  {
+  "ntnu_codes": [
+   "TIØ4102"
+  ],
+  "fagkode_host": "MGTS3601",
+  "fagnavn_host": "Organisational Design and Change Management",
+  "studiepoeng": "7,5",
+  "ntnu_emnekode": "TIØ4102",
+  "ntnu_emnenavn": "Organisasjon og teknologi 1",
+  "emnetype": "",
+  "godkjent": "Ja",
+  "behandlingsdato": "2026-02-02",
+  "behandlet_av": "Hanne Finnestrand",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The University of Queensland",
+  "country": "Australia/NZ",
+  "page_id": "107250737",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250737",
+  "continent": "Australia/NZ"
+ },
+ {
   "ntnu_codes": [],
   "fagkode_host": "MGTS7610",
   "fagnavn_host": "Management Communication https://course-profiles.uq.edu.au/course-profiles/MGTS7610-22460-7520#course-overview",
@@ -46213,6 +46337,28 @@
   "godkjent": "JA (med forbehold, sjekk kommentar)",
   "behandlingsdato": "Jan 2026",
   "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The University of Queensland",
+  "country": "Australia/NZ",
+  "page_id": "107250737",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250737",
+  "continent": "Australia/NZ"
+ },
+ {
+  "ntnu_codes": [
+   "TEP4125",
+   "TEP4130"
+  ],
+  "fagkode_host": "MECH3400 + CHEE2040",
+  "fagnavn_host": "Thermodynamics and Heat Transfer + Heat and Mass transfer",
+  "studiepoeng": "7,5+7,5",
+  "ntnu_emnekode": "TEP4125+TEP4130",
+  "ntnu_emnenavn": "Termodynamikk 2 + Varme-og massetransport",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Jan 2026",
+  "behandlet_av": "Halsten Aastebøl",
   "kommentar": "",
   "rejected": false,
   "university": "The University of Queensland",

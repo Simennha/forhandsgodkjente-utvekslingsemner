@@ -336,7 +336,7 @@
   ],
   "fagkode_host": "BUSADM469.2 + BUSADM470",
   "fagnavn_host": "Project Leadership and Building High-Performing Teams + Project Management",
-  "studiepoeng": "2 cr/5 sp + ?",
+  "studiepoeng": "2 cr/5 sp 2cr/5sp",
   "ntnu_emnekode": "TIØ4162",
   "ntnu_emnenavn": "Organisasjon og teknologi 2",
   "emnetype": "",
@@ -2522,7 +2522,7 @@
   "godkjent": "JA",
   "behandlingsdato": "sep 2023",
   "behandlet_av": "Magnus Stålhane",
-  "kommentar": "Dekker det aller meste av Optimeringsmetoder med unntak av dynamisk programmering. Faget kan godkjennes som erstatning for TIØ4130, men vil presisere at dersom du går videre med industriell optimering (TIØ4150), må du sette deg inn i dette tema på egen hånd.",
+  "kommentar": "Dekker det aller meste av Optimeringsmetoder med unntak av dynamisk programmering. Faget kan godkjennes som erstatning for TIØ4130, men vil presisere at dersom du går videre med industriell optimering (TIØ4150), må du sette deg inn i dette tema på egen hånd. For godkjenning av både TIØ4126 og TIØ4130 med dette emnet kreves relevant fyllfag på 4 credits/ 7,5 studiepoeng.",
   "rejected": false,
   "university": "Harvard",
   "country": "USA",
@@ -3034,27 +3034,6 @@
  },
  {
   "ntnu_codes": [
-   "TIØ4126"
-  ],
-  "fagkode_host": "15.093[J]",
-  "fagnavn_host": "15.093[J] Optimization Methods Emnekode endret til 15.C57 (reg. august 2025)",
-  "studiepoeng": "7,5",
-  "ntnu_emnekode": "TIØ4126",
-  "ntnu_emnenavn": "Optimering og beslutningsstøtte f...",
-  "emnetype": "",
-  "godkjent": "JA",
-  "behandlingsdato": "2017-03-16",
-  "behandlet_av": "Kjetil Fagerholt",
-  "kommentar": "MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization",
-  "rejected": false,
-  "university": "MIT Massachusetts Institute of Technology",
-  "country": "USA",
-  "page_id": "107250761",
-  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
-  "continent": "Amerika"
- },
- {
-  "ntnu_codes": [
    "TIØ4165"
   ],
   "fagkode_host": "15.810 + 15.833",
@@ -3546,7 +3525,28 @@
   "godkjent": "JA",
   "behandlingsdato": "2021-01-25",
   "behandlet_av": "Henrik Andersson",
-  "kommentar": "15.083 Integer Progr. & combinatorial Optmz -bra kurs men mer avansert. MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization",
+  "kommentar": "MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization15.083 Integer Progr. & combinatorial Optmz -bra kurs men mer avansert. For godkjenning av både TIØ4126 og TIØ4130 med dette emnet kreves relevant fyllfag på 4 credits/ 7,5 studiepoeng.",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "15.093[J]",
+  "fagnavn_host": "15.093[J] Optimization Methods Emnekode endret til 15.C57 (reg. august 2025)",
+  "studiepoeng": "7,5",
+  "ntnu_emnekode": "TIØ4126",
+  "ntnu_emnenavn": "Optimering og beslutningsstøtte f...",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2017-03-16",
+  "behandlet_av": "Kjetil Fagerholt",
+  "kommentar": "MIT 15.C57 / 15.C571 / 6.C57 / IDS.C57 - Optimization For godkjenning av både TIØ4126 og TIØ4130 med dette emnet kreves relevant fyllfag på 4 credits/ 7,5 studiepoeng.",
   "rejected": false,
   "university": "MIT Massachusetts Institute of Technology",
   "country": "USA",

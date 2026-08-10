@@ -2816,6 +2816,27 @@
   "continent": "Australia/NZ"
  },
  {
+  "ntnu_codes": [
+   "TIØ4102"
+  ],
+  "fagkode_host": "MGTS3601",
+  "fagnavn_host": "Organisational Design and Change Management",
+  "studiepoeng": "7,5",
+  "ntnu_emnekode": "TIØ4102",
+  "ntnu_emnenavn": "Organisasjon og teknologi 1",
+  "emnetype": "",
+  "godkjent": "Ja",
+  "behandlingsdato": "2026-02-02",
+  "behandlet_av": "Hanne Finnestrand",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The University of Queensland",
+  "country": "Australia/NZ",
+  "page_id": "107250737",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250737",
+  "continent": "Australia/NZ"
+ },
+ {
   "ntnu_codes": [],
   "fagkode_host": "MGTS7610",
   "fagnavn_host": "Management Communication https://course-profiles.uq.edu.au/course-profiles/MGTS7610-22460-7520#course-overview",
@@ -2889,6 +2910,28 @@
   "godkjent": "JA (med forbehold, sjekk kommentar)",
   "behandlingsdato": "Jan 2026",
   "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The University of Queensland",
+  "country": "Australia/NZ",
+  "page_id": "107250737",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250737",
+  "continent": "Australia/NZ"
+ },
+ {
+  "ntnu_codes": [
+   "TEP4125",
+   "TEP4130"
+  ],
+  "fagkode_host": "MECH3400 + CHEE2040",
+  "fagnavn_host": "Thermodynamics and Heat Transfer + Heat and Mass transfer",
+  "studiepoeng": "7,5+7,5",
+  "ntnu_emnekode": "TEP4125+TEP4130",
+  "ntnu_emnenavn": "Termodynamikk 2 + Varme-og massetransport",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Jan 2026",
+  "behandlet_av": "Halsten Aastebøl",
   "kommentar": "",
   "rejected": false,
   "university": "The University of Queensland",

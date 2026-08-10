@@ -6040,8 +6040,8 @@
   "ntnu_emnenavn": "",
   "emnetype": "",
   "godkjent": "JA",
-  "behandlingsdato": "2021 -jan",
-  "behandlet_av": "Pinar Øzturk",
+  "behandlingsdato": "2021 -jan 2025-02-19",
+  "behandlet_av": "Pinar Øzturk Zhirong Yang",
   "kommentar": "",
   "rejected": false,
   "university": "Politecnico de Milano",
@@ -10591,6 +10591,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "MACHINE LEARNING - IN0000166",
+  "fagnavn_host": "",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TDT4172",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Juli 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "106833 Microeconomics https://corsi.unige.it/en/off.f/2023/ins/68239",
@@ -11423,6 +11444,27 @@
   "behandlingsdato": "2025 Mars",
   "behandlet_av": "Anne Neumann",
   "kommentar": "På Italiensk",
+  "rejected": false,
+  "university": "Universita de Pisa",
+  "country": "Italia",
+  "page_id": "411862006",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=411862006",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4240"
+  ],
+  "fagkode_host": "467PP",
+  "fagnavn_host": "Advanced Statistics",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMA4240",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-11-11",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
   "rejected": false,
   "university": "Universita de Pisa",
   "country": "Italia",
