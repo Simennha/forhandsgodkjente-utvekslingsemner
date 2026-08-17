@@ -4016,6 +4016,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4102"
+  ],
+  "fagkode_host": "76277",
+  "fagnavn_host": "Object-Oriented and Functional Programming",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TDT4102 Prosedyre- og objektorientert programmering",
+  "ntnu_emnenavn": "",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "2025",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Libero Universita di Bolzano",
+  "country": "Italia",
+  "page_id": "110824939",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110824939",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TDT4136"
   ],
   "fagkode_host": "73011",
@@ -7307,6 +7328,27 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4180"
+  ],
+  "fagkode_host": "063214",
+  "fagnavn_host": "Leadership & Innovation Strategy",
+  "studiepoeng": "5",
+  "ntnu_emnekode": "TIØ4180",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Alf Steinar Sætre",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Politecnico de Milano",
+  "country": "Italia",
+  "page_id": "110825452",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825452",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "1051807",
@@ -9574,6 +9616,27 @@
   "behandlingsdato": "2017-09-10",
   "behandlet_av": "Halstein Åstebøl",
   "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4195"
+  ],
+  "fagkode_host": "EPQ3102282 ESG Analysis and Sustainable Finance",
+  "fagnavn_host": "",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TIØ4195 Miljøledelse og bedriftsstrategi",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-09-09",
+  "behandlet_av": "Christofer Skaar",
+  "kommentar": "Kommentar fra faglærer: Jeg tenker at dette fint kan godkjennes som erstatningsemne for TIØ4195, selv om vinklingen er litt mer mot finans enn ledelse.",
   "rejected": false,
   "university": "Universita Degli Studi de Padova",
   "country": "Italia",
@@ -37765,6 +37828,69 @@
  },
  {
   "ntnu_codes": [
+   "TDT4137"
+  ],
+  "fagkode_host": "9.49",
+  "fagnavn_host": "Neural Circuits for Cognition",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4137",
+  "ntnu_emnenavn": "Kognitive arkitekturer",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4240"
+  ],
+  "fagkode_host": "6.3700",
+  "fagnavn_host": "Introduction to Probability",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMA4240",
+  "ntnu_emnenavn": "Statistikk",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4310"
+  ],
+  "fagkode_host": "6.4610",
+  "fagnavn_host": "Neural Language Processing",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4310",
+  "ntnu_emnenavn": "Intelligent tekstanalyse og språkforståelse",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
    "TMA4240",
    "TMA4245"
   ],
@@ -49335,6 +49461,27 @@
   "godkjent": "Ja",
   "behandlingsdato": "",
   "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "University of Western Australia",
+  "country": "Australia/NZ",
+  "page_id": "491980268",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=491980268",
+  "continent": "Australia/NZ"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4118"
+  ],
+  "fagkode_host": "ECON1101",
+  "fagnavn_host": "Microeconomics: Prices and Markets",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4118 Industriell økonomisk analyse",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "Ja",
+  "behandlingsdato": "",
+  "behandlet_av": "Anne Neumann",
   "kommentar": "",
   "rejected": false,
   "university": "University of Western Australia",

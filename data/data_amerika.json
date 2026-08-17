@@ -3726,6 +3726,69 @@
  },
  {
   "ntnu_codes": [
+   "TDT4137"
+  ],
+  "fagkode_host": "9.49",
+  "fagnavn_host": "Neural Circuits for Cognition",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4137",
+  "ntnu_emnenavn": "Kognitive arkitekturer",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4240"
+  ],
+  "fagkode_host": "6.3700",
+  "fagnavn_host": "Introduction to Probability",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMA4240",
+  "ntnu_emnenavn": "Statistikk",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4310"
+  ],
+  "fagkode_host": "6.4610",
+  "fagnavn_host": "Neural Language Processing",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4310",
+  "ntnu_emnenavn": "Intelligent tekstanalyse og språkforståelse",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
    "TMA4240",
    "TMA4245"
   ],
