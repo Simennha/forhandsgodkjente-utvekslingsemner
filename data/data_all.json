@@ -21762,6 +21762,27 @@
   "ntnu_codes": [
    "TIØ4145"
   ],
+  "fagkode_host": "363-0561-00 + 363-0560-00",
+  "fagnavn_host": "Advanced Finance + Introduction to Finance*",
+  "studiepoeng": "3+3",
+  "ntnu_emnekode": "TIØ4145",
+  "ntnu_emnenavn": "Finansstyring for foretak",
+  "emnetype": "TIØ",
+  "godkjent": "JA*",
+  "behandlingsdato": "2026-08-25",
+  "behandlet_av": "Felipe van de Sande Araujo",
+  "kommentar": "*Begge emner må tas for å kunne godkjenne TIØ4145. Kommentar fra faglærer: The combination of these two courses offers av very good replacement for TIØ4145. Minor comment: From the syllabus of each course, it is not clear if you gain a deep knowledge of CAPM and APT. CAPM is a key concept, and if the courses don’t go into it in detail, students should make up for it through self-study.",
+  "rejected": false,
+  "university": "Eidgenössische Technische Hochschule Zürich (ETH )",
+  "country": "Sveits",
+  "page_id": "110002719",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110002719",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4145"
+  ],
   "fagkode_host": "363-0723-00L",
   "fagnavn_host": "Corporate Finance",
   "studiepoeng": "3",
@@ -27235,6 +27256,111 @@
   "continent": "Asia"
  },
  {
+  "ntnu_codes": [
+   "TET4135"
+  ],
+  "fagkode_host": "ID5070",
+  "fagnavn_host": "Energy Economics",
+  "studiepoeng": "6 sp",
+  "ntnu_emnekode": "TET4135",
+  "ntnu_emnenavn": "Energiplanlegging",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Des 2024",
+  "behandlet_av": "Halsten Aastebøl",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Indian Institute of Technology Madras",
+  "country": "India",
+  "page_id": "416121841",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416121841",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4145"
+  ],
+  "fagkode_host": "MS6621",
+  "fagnavn_host": "Corporate Finance",
+  "studiepoeng": "8 sp",
+  "ntnu_emnekode": "TIØ4145",
+  "ntnu_emnenavn": "Finansstyring for foretak",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Des 2024",
+  "behandlet_av": "Maria Lavrutich",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Indian Institute of Technology Madras",
+  "country": "India",
+  "page_id": "416121841",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416121841",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4265"
+  ],
+  "fagkode_host": "MS6010",
+  "fagnavn_host": "Strategic Management",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4265",
+  "ntnu_emnenavn": "Strategisk Ledelse",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Jan 2025",
+  "behandlet_av": "Elsebeth Holmen",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Indian Institute of Technology Madras",
+  "country": "India",
+  "page_id": "416121841",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416121841",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TET4105"
+  ],
+  "fagkode_host": "EE3003",
+  "fagnavn_host": "Power Systems",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TET4105",
+  "ntnu_emnenavn": "Elektriske kraftsystemer",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Mai 2024",
+  "behandlet_av": "Halsten Aastebøl",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Indian Institute of Technology Madras",
+  "country": "India",
+  "page_id": "416121841",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416121841",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TTK4105"
+  ],
+  "fagkode_host": "EE3004",
+  "fagnavn_host": "Control Engineering",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TTK4105",
+  "ntnu_emnenavn": "Reguleringsteknikk",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Mai 2024",
+  "behandlet_av": "Halsten Aastebøl",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Indian Institute of Technology Madras",
+  "country": "India",
+  "page_id": "416121841",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416121841",
+  "continent": "Asia"
+ },
+ {
   "ntnu_codes": [],
   "fagkode_host": "MBA5075",
   "fagnavn_host": "Global Market Management https://course.ntu.edu.tw/en/courses/114-2/36816",
@@ -27992,6 +28118,27 @@
   "behandlingsdato": "2026-02-23",
   "behandlet_av": "Zhirong Yang",
   "kommentar": "Graduate course på 3 credits",
+  "rejected": false,
+  "university": "National Taiwan University of Science and Technology",
+  "country": "Kina",
+  "page_id": "141394697",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=141394697",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4265"
+  ],
+  "fagkode_host": "TM6533701",
+  "fagnavn_host": "",
+  "studiepoeng": "12",
+  "ntnu_emnekode": "TIØ4265 Strategic Management",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Nhien Nguyen",
+  "kommentar": "",
   "rejected": false,
   "university": "National Taiwan University of Science and Technology",
   "country": "Kina",
@@ -37190,8 +37337,8 @@
   "godkjent": "JA",
   "behandlingsdato": "2017-03-16",
   "behandlet_av": "Ruud Egging",
-  "kommentar": "covers the basics better, but has even less of the advanced topics.",
-  "rejected": false,
+  "kommentar": "covers the basics better, but has even less of the advanced topics. (Undervises ikke lenger ved MIT)",
+  "rejected": true,
   "university": "MIT Massachusetts Institute of Technology",
   "country": "USA",
   "page_id": "107250761",
@@ -41779,7 +41926,7 @@
   "ntnu_codes": [
    "TIØ4126"
   ],
-  "fagkode_host": "ICS010",
+  "fagkode_host": "ICS010/ ICN322",
   "fagnavn_host": "",
   "studiepoeng": "",
   "ntnu_emnekode": "TIØ4126 Optimering og beslutningsstøtte...",

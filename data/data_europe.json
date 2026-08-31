@@ -21762,6 +21762,27 @@
   "ntnu_codes": [
    "TIØ4145"
   ],
+  "fagkode_host": "363-0561-00 + 363-0560-00",
+  "fagnavn_host": "Advanced Finance + Introduction to Finance*",
+  "studiepoeng": "3+3",
+  "ntnu_emnekode": "TIØ4145",
+  "ntnu_emnenavn": "Finansstyring for foretak",
+  "emnetype": "TIØ",
+  "godkjent": "JA*",
+  "behandlingsdato": "2026-08-25",
+  "behandlet_av": "Felipe van de Sande Araujo",
+  "kommentar": "*Begge emner må tas for å kunne godkjenne TIØ4145. Kommentar fra faglærer: The combination of these two courses offers av very good replacement for TIØ4145. Minor comment: From the syllabus of each course, it is not clear if you gain a deep knowledge of CAPM and APT. CAPM is a key concept, and if the courses don’t go into it in detail, students should make up for it through self-study.",
+  "rejected": false,
+  "university": "Eidgenössische Technische Hochschule Zürich (ETH )",
+  "country": "Sveits",
+  "page_id": "110002719",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110002719",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4145"
+  ],
   "fagkode_host": "363-0723-00L",
   "fagnavn_host": "Corporate Finance",
   "studiepoeng": "3",

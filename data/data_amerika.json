@@ -3088,8 +3088,8 @@
   "godkjent": "JA",
   "behandlingsdato": "2017-03-16",
   "behandlet_av": "Ruud Egging",
-  "kommentar": "covers the basics better, but has even less of the advanced topics.",
-  "rejected": false,
+  "kommentar": "covers the basics better, but has even less of the advanced topics. (Undervises ikke lenger ved MIT)",
+  "rejected": true,
   "university": "MIT Massachusetts Institute of Technology",
   "country": "USA",
   "page_id": "107250761",
@@ -7677,7 +7677,7 @@
   "ntnu_codes": [
    "TIØ4126"
   ],
-  "fagkode_host": "ICS010",
+  "fagkode_host": "ICS010/ ICN322",
   "fagnavn_host": "",
   "studiepoeng": "",
   "ntnu_emnekode": "TIØ4126 Optimering og beslutningsstøtte...",
