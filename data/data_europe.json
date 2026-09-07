@@ -9269,6 +9269,27 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4145"
+  ],
+  "fagkode_host": "EPQ3102419 Risk and Portfolio Management",
+  "fagnavn_host": "",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TIØ4145 Finansstyring for foretak",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-02-04",
+  "behandlet_av": "Maria Lavrutich",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TET4185"
   ],
   "fagkode_host": "1NO2044788 Electricity market economics http://en.didattica.unipd.it/off/2017/LM/IN/IN1979/000ZZ/INO2044788/N0",
@@ -11109,6 +11130,27 @@
   "behandlingsdato": "endret i 2022",
   "behandlet_av": "EInar Belsom",
   "kommentar": "samme emne som Micr 1",
+  "rejected": false,
+  "university": "Universita degli studi Firenze",
+  "country": "Italia",
+  "page_id": "143884860",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143884860",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4118"
+  ],
+  "fagkode_host": "B001283",
+  "fagnavn_host": "Microeconomics Course Catalogue - UNIFI",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TIØ4118 Industriell økonomisk analyse",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-09-03",
+  "behandlet_av": "Anne Neumann",
+  "kommentar": "",
   "rejected": false,
   "university": "Universita degli studi Firenze",
   "country": "Italia",
