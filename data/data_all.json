@@ -19465,7 +19465,7 @@
   "ntnu_codes": [
    "TIØ4118"
   ],
-  "fagkode_host": "11759",
+  "fagkode_host": "11738 + 11759",
   "fagnavn_host": "Microeconomics I + Microeconomics II https://www.upv.es/pls/oalu/sic_asi.Busca_Asi?P_VISTA=&p_codi=11738&p_caca=2022&P_IDIOMA=i&p_tit=158 + https://www.upv.es/pls/oalu/sic_asi.Busca_Asi?P_VISTA=&p_codi=11759&p_caca=2022&P_IDIOMA=i&p_tit=158",
   "studiepoeng": "6 + 6",
   "ntnu_emnekode": "TIØ4118",
@@ -28702,7 +28702,7 @@
    "TDT4136"
   ],
   "fagkode_host": "COMP4431",
-  "fagnavn_host": "Artificial Intelligence",
+  "fagnavn_host": "Artificial Intelligence SUMMARY INFORMATION",
   "studiepoeng": "6",
   "ntnu_emnekode": "TDT4136",
   "ntnu_emnenavn": "",
@@ -28723,7 +28723,7 @@
    "TDT4237"
   ],
   "fagkode_host": "COMP3334",
-  "fagnavn_host": "Computer Systems Security",
+  "fagnavn_host": "Computer Systems Security - C5. DEFINITIVE COURSE DOCUMENT AND COURSE FILE",
   "studiepoeng": "6",
   "ntnu_emnekode": "TDT4237",
   "ntnu_emnenavn": "",
@@ -28765,7 +28765,7 @@
    "TDT4300"
   ],
   "fagkode_host": "DSAI4204",
-  "fagnavn_host": "Data Mining and Data Warehousing",
+  "fagnavn_host": "Data Mining and Data Warehousing dsai4204.pdf",
   "studiepoeng": "6",
   "ntnu_emnekode": "TDT4300",
   "ntnu_emnenavn": "",
@@ -28828,7 +28828,7 @@
    "TIØ4118"
   ],
   "fagkode_host": "AF3620",
-  "fagnavn_host": "Intermediate Microeconomics",
+  "fagnavn_host": "Intermediate Microeconomics - C5. DEFINITIVE COURSE DOCUMENT AND COURSE FILE",
   "studiepoeng": "6",
   "ntnu_emnekode": "TIØ4118",
   "ntnu_emnenavn": "",
@@ -28930,10 +28930,31 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "AMA3820",
+  "fagnavn_host": "Operations Research Methods",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4126",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-02-20",
+  "behandlet_av": "Kjetil Fagerholt",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong Politechnic University",
+  "country": "Kina",
+  "page_id": "119441809",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119441809",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TMA4240"
   ],
-  "fagkode_host": "AMA364",
-  "fagnavn_host": "Statistical Inference",
+  "fagkode_host": "AMA3640",
+  "fagnavn_host": "Statistical Inference Microsoft Word - AMA3640_JUN2026",
   "studiepoeng": "6",
   "ntnu_emnekode": "TMA4240",
   "ntnu_emnenavn": "",
