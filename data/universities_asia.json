@@ -20,9 +20,23 @@
       ]
     },
     {
+      "country": "Japan",
+      "page_id": "505840409",
+      "universities": [
+        {
+          "name": "Kwansei Gakuin University",
+          "page_id": "505840411"
+        }
+      ]
+    },
+    {
       "country": "Kina",
       "page_id": "110002735",
       "universities": [
+        {
+          "name": "Chang Gung University",
+          "page_id": "510066829"
+        },
         {
           "name": "National Taiwan University",
           "page_id": "482082901"
@@ -106,16 +120,6 @@
         {
           "name": "Sungkyunkwan University",
           "page_id": "473137313"
-        }
-      ]
-    },
-    {
-      "country": "Asia",
-      "page_id": "107250332",
-      "universities": [
-        {
-          "name": "blank side",
-          "page_id": "110003082"
         }
       ]
     }

@@ -27443,6 +27443,69 @@
   "continent": "Asia"
  },
  {
+  "ntnu_codes": [
+   "TIØ4165"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "Marketing Strategy",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4165",
+  "ntnu_emnenavn": "Markedsføringsledelse for teknologibedrifter",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Arild Aspelund",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Kwansei Gakuin University",
+  "country": "Japan",
+  "page_id": "505840411",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=505840411",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4118"
+  ],
+  "fagkode_host": "230 + 300",
+  "fagnavn_host": "Introduction to Economics + Topics in Economics A",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4118",
+  "ntnu_emnenavn": "Industriell økonomisk analyse",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Anne Neumann",
+  "kommentar": "Both courses need to be passed successfully",
+  "rejected": false,
+  "university": "Kwansei Gakuin University",
+  "country": "Japan",
+  "page_id": "505840411",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=505840411",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "Information Management for Decision Making",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4126",
+  "ntnu_emnenavn": "Optimering og beslutningsstøtte for teknisk-økonomisk planlegging",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Kjetil Fagerholt",
+  "behandlet_av": "Aug 2026",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Kwansei Gakuin University",
+  "country": "Japan",
+  "page_id": "505840411",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=505840411",
+  "continent": "Asia"
+ },
+ {
   "ntnu_codes": [],
   "fagkode_host": "MBA5075",
   "fagnavn_host": "Global Market Management https://course.ntu.edu.tw/en/courses/114-2/36816",
@@ -32517,6 +32580,48 @@
   "godkjent": "JA",
   "behandlingsdato": "April 2026",
   "behandlet_av": "Fabia Sbargossa",
+  "kommentar": "",
+  "rejected": false,
+  "university": "National University of Singapore",
+  "country": "Singapore",
+  "page_id": "110003085",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003085",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4120"
+  ],
+  "fagkode_host": "CS2040",
+  "fagnavn_host": "Data Structures and Aglorithms",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4120",
+  "ntnu_emnenavn": "Algoritmer og datastrukturer",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "april 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "National University of Singapore",
+  "country": "Singapore",
+  "page_id": "110003085",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003085",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4237"
+  ],
+  "fagkode_host": "CS2107",
+  "fagnavn_host": "Introduction to Information Security",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4237",
+  "ntnu_emnenavn": "Programvaresikkerhet og personvern",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "April 2026",
+  "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
   "university": "National University of Singapore",
