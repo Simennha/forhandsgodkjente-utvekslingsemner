@@ -2182,15 +2182,15 @@
    "TDT4136"
   ],
   "fagkode_host": "COMP3211",
-  "fagnavn_host": "Fundamentals of Artificial Intelligence",
+  "fagnavn_host": "Learning, Reasoning, and Decision Making in AI (Tidligere navn: Fundamentals of Artificial Intelligence)",
   "studiepoeng": "3 credits / 6 sp",
   "ntnu_emnekode": "TDT4136",
   "ntnu_emnenavn": "Introduksjon til kunstig intelligens",
   "emnetype": "",
   "godkjent": "JA",
-  "behandlingsdato": "2024-06-27",
+  "behandlingsdato": "2024-06-27 Godkjent på nytt 2026-09-03",
   "behandlet_av": "Zhirong Yang",
-  "kommentar": "",
+  "kommentar": "Kommentar fra Zhirong Yang: Note that 3 HKUST credits correpond to 6 ECTS according to the GNAG database, while TDT4136 has 7.5 ECTS. A filler course is needed to cover the credit gap.",
   "rejected": false,
   "university": "The Hong Kong University of Science and Technology (HKUST)",
   "country": "Kina",
@@ -2221,6 +2221,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "COMP4211",
+  "fagnavn_host": "Machine Learning",
+  "studiepoeng": "3 credits / 6 sp",
+  "ntnu_emnekode": "TDT4171",
+  "ntnu_emnenavn": "Metoder i kunstig intelligens",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-01-16",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TDT4300"
   ],
   "fagkode_host": "COMP4331",
@@ -2231,6 +2252,27 @@
   "emnetype": "",
   "godkjent": "JA",
   "behandlingsdato": "2024-06-27",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "COMP4332",
+  "fagnavn_host": "Big Data Mining and Management",
+  "studiepoeng": "3 credits / 6 sp",
+  "ntnu_emnekode": "TDT4300",
+  "ntnu_emnenavn": "Datavarehus og datagruvedrift",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-01-16",
   "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
@@ -2440,6 +2482,27 @@
   "godkjent": "JA",
   "behandlingsdato": "Jan 2025",
   "behandlet_av": "Carlos Alberto Dorao",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4140"
+  ],
+  "fagkode_host": "COMP3111",
+  "fagnavn_host": "Software Engineering",
+  "studiepoeng": "4 credits",
+  "ntnu_emnekode": "TDT4140",
+  "ntnu_emnenavn": "Programvareutvikling",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Torgeir Dingsøyr",
   "kommentar": "",
   "rejected": false,
   "university": "The Hong Kong University of Science and Technology (HKUST)",

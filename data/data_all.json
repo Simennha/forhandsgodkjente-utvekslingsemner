@@ -1457,6 +1457,48 @@
  },
  {
   "ntnu_codes": [
+   "TEP4130"
+  ],
+  "fagkode_host": "62629",
+  "fagnavn_host": "Heat and Mass Transfer",
+  "studiepoeng": "5",
+  "ntnu_emnekode": "TEP4130",
+  "ntnu_emnenavn": "Varme- og massetransport",
+  "emnetype": "EPT",
+  "godkjent": "JA",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Carlos Alberto Dorao",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Danmark Tekniske Universitet",
+  "country": "Danmark",
+  "page_id": "110002800",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110002800",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TEP4295"
+  ],
+  "fagkode_host": "12101",
+  "fagnavn_host": "Quantitive Methods to assess sustainability",
+  "studiepoeng": "5",
+  "ntnu_emnekode": "TEP4295",
+  "ntnu_emnenavn": "Bærekraftig ingeniørfag",
+  "emnetype": "EPT",
+  "godkjent": "JA",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Johan Berg Pettersen",
+  "kommentar": "Du må helst også ha et annet \"bærekraftfag.\" For å dekke 7.5 stp",
+  "rejected": false,
+  "university": "Danmark Tekniske Universitet",
+  "country": "Danmark",
+  "page_id": "110002800",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110002800",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4117"
   ],
   "fagkode_host": "NMAA04032U",
@@ -4700,6 +4742,48 @@
   "behandlingsdato": "2026-01-26",
   "behandlet_av": "Inga Strumke",
   "kommentar": "Må brukes som enten TDT4171, TDT4172 eller TDT4173. Kan ikke brukes til å dekke alle tre emner.",
+  "rejected": false,
+  "university": "Libero Universita di Bolzano",
+  "country": "Italia",
+  "page_id": "110824939",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110824939",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "42801",
+  "fagnavn_host": "Artificial Intelligence and Machine Learning https://www.unibz.it/en/faculties/engineering/master-smart-technologies-sports-health/study-course-offering/2025/35382",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TDT4172 Intro maskinlæring",
+  "ntnu_emnenavn": "",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-10-02",
+  "behandlet_av": "Inga Strumke",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Libero Universita di Bolzano",
+  "country": "Italia",
+  "page_id": "110824939",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110824939",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "42419",
+  "fagnavn_host": "Artificial Intelligence and Machine Learning https://www.unibz.it/en/faculties/engineering/bachelor-electronic-information-engineering/study-course-offering/2025/31600",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TDT4172 Intro maskinlæring",
+  "ntnu_emnenavn": "",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-10-02",
+  "behandlet_av": "Inga Strumke",
+  "kommentar": "",
   "rejected": false,
   "university": "Libero Universita di Bolzano",
   "country": "Italia",
@@ -10612,6 +10696,48 @@
  },
  {
   "ntnu_codes": [
+   "TET4135"
+  ],
+  "fagkode_host": "INQ0091702 Energy Economics https://unipd.coursecatalogue.cineca.it/corsi/2025/9796/insegnamenti/2026/51510_550165_66474/2025/51510?coorte=2025",
+  "fagnavn_host": "",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TET4135 Energiplanlegging",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-09-29",
+  "behandlet_av": "Halsten Aastebøl",
+  "kommentar": "Erstatter enten TET4135 eller TET4185, ikke begge..",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TET4185"
+  ],
+  "fagkode_host": "INQ0091702 Energy Economics https://unipd.coursecatalogue.cineca.it/corsi/2025/9796/insegnamenti/2026/51510_550165_66474/2025/51510?coorte=2025",
+  "fagnavn_host": "",
+  "studiepoeng": "9",
+  "ntnu_emnekode": "TET4185 Kraftmarkeder",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-09-24",
+  "behandlet_av": "Halsten Aastebøl",
+  "kommentar": "Erstatter enten TET4185 eller TET4135, ikke begge.",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TEP4220"
   ],
   "fagkode_host": "INQ0091518 Strategic environmental management",
@@ -12317,6 +12443,27 @@
   "godkjent": "JA",
   "behandlingsdato": "2026-09-08",
   "behandlet_av": "Hans-Petter Grav",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita di Trento",
+  "country": "Italia",
+  "page_id": "457671161",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=457671161",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TFY4107"
+  ],
+  "fagkode_host": "146061",
+  "fagnavn_host": "Physics",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TFY4107",
+  "ntnu_emnenavn": "Fysikk",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Morten Ivar Kolstø",
   "kommentar": "",
   "rejected": false,
   "university": "Universita di Trento",
@@ -14582,7 +14729,7 @@
   "godkjent": "JA",
   "behandlingsdato": "2025-10-08",
   "behandlet_av": "Hans-Petter Grav",
-  "kommentar": "Trenger bekreftelse fra EMIL på om emnet kan knyttes til Energi og prosessteknikk eller Elektrisk energiteknikk.",
+  "kommentar": "Trenger bekreftelse fra EMIL på om emnet kan knyttes til Energi og prosessteknikk. Emnet kan knyttes til Elektrisk energiteknikk (ref. Halsten Aastebøl).",
   "rejected": false,
   "university": "Instituto Superior Técnico (Lisboa)",
   "country": "Portugal",
@@ -14786,8 +14933,8 @@
   "ntnu_codes": [
    "TPK4164"
   ],
-  "fagkode_host": "",
-  "fagnavn_host": "Shipyard Technology",
+  "fagkode_host": "MENO2021",
+  "fagnavn_host": "Shipyard Technology https://fenix.tecnico.ulisboa.pt/cursos/mean/disciplina-curricular/1127428915200665",
   "studiepoeng": "6",
   "ntnu_emnekode": "TPK4164",
   "ntnu_emnenavn": "",
@@ -26733,6 +26880,27 @@
  },
  {
   "ntnu_codes": [
+   "TMA4240"
+  ],
+  "fagkode_host": "403001 + 403002",
+  "fagnavn_host": "VO 2 Statistical Data Analysis + PS 2 Statistical Data Analysis",
+  "studiepoeng": "3 + 4,5",
+  "ntnu_emnekode": "TMA4240",
+  "ntnu_emnenavn": "Statistikk",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-05-21",
+  "behandlet_av": "Øyvind Bakke",
+  "kommentar": "Kommentar fra Bakke: Vær obs på at det er mange temaer som dekkes av disse kursene, men ikke av TMA4240, og omvendt. Men jeg mener overlappet er på minst 2/3, som kreves.",
+  "rejected": false,
+  "university": "Universität Innsbruck",
+  "country": "Østerrike",
+  "page_id": "452559468",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=452559468",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4265"
   ],
   "fagkode_host": "436020 + 436022",
@@ -29288,15 +29456,15 @@
    "TDT4136"
   ],
   "fagkode_host": "COMP3211",
-  "fagnavn_host": "Fundamentals of Artificial Intelligence",
+  "fagnavn_host": "Learning, Reasoning, and Decision Making in AI (Tidligere navn: Fundamentals of Artificial Intelligence)",
   "studiepoeng": "3 credits / 6 sp",
   "ntnu_emnekode": "TDT4136",
   "ntnu_emnenavn": "Introduksjon til kunstig intelligens",
   "emnetype": "",
   "godkjent": "JA",
-  "behandlingsdato": "2024-06-27",
+  "behandlingsdato": "2024-06-27 Godkjent på nytt 2026-09-03",
   "behandlet_av": "Zhirong Yang",
-  "kommentar": "",
+  "kommentar": "Kommentar fra Zhirong Yang: Note that 3 HKUST credits correpond to 6 ECTS according to the GNAG database, while TDT4136 has 7.5 ECTS. A filler course is needed to cover the credit gap.",
   "rejected": false,
   "university": "The Hong Kong University of Science and Technology (HKUST)",
   "country": "Kina",
@@ -29327,6 +29495,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "COMP4211",
+  "fagnavn_host": "Machine Learning",
+  "studiepoeng": "3 credits / 6 sp",
+  "ntnu_emnekode": "TDT4171",
+  "ntnu_emnenavn": "Metoder i kunstig intelligens",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-01-16",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TDT4300"
   ],
   "fagkode_host": "COMP4331",
@@ -29337,6 +29526,27 @@
   "emnetype": "",
   "godkjent": "JA",
   "behandlingsdato": "2024-06-27",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "COMP4332",
+  "fagnavn_host": "Big Data Mining and Management",
+  "studiepoeng": "3 credits / 6 sp",
+  "ntnu_emnekode": "TDT4300",
+  "ntnu_emnenavn": "Datavarehus og datagruvedrift",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-01-16",
   "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
@@ -29546,6 +29756,27 @@
   "godkjent": "JA",
   "behandlingsdato": "Jan 2025",
   "behandlet_av": "Carlos Alberto Dorao",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong University of Science and Technology (HKUST)",
+  "country": "Kina",
+  "page_id": "435847753",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=435847753",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4140"
+  ],
+  "fagkode_host": "COMP3111",
+  "fagnavn_host": "Software Engineering",
+  "studiepoeng": "4 credits",
+  "ntnu_emnekode": "TDT4140",
+  "ntnu_emnenavn": "Programvareutvikling",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Torgeir Dingsøyr",
   "kommentar": "",
   "rejected": false,
   "university": "The Hong Kong University of Science and Technology (HKUST)",
@@ -43899,6 +44130,27 @@
   "godkjent": "JA",
   "behandlingsdato": "2026-01-23",
   "behandlet_av": "Nicholas Worth",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Sør-Afrika - University of Cape Town",
+  "country": "Afrika",
+  "page_id": "101093758",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=101093758",
+  "continent": "Afrika"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4102"
+  ],
+  "fagkode_host": "INF2003F",
+  "fagnavn_host": "Commercial Programming",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4102",
+  "ntnu_emnenavn": "Prosedyre- og objektorientert programmering",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
   "university": "Sør-Afrika - University of Cape Town",

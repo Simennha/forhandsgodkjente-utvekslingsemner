@@ -1355,5 +1355,26 @@
   "page_id": "101093758",
   "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=101093758",
   "continent": "Afrika"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4102"
+  ],
+  "fagkode_host": "INF2003F",
+  "fagnavn_host": "Commercial Programming",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4102",
+  "ntnu_emnenavn": "Prosedyre- og objektorientert programmering",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Sør-Afrika - University of Cape Town",
+  "country": "Afrika",
+  "page_id": "101093758",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=101093758",
+  "continent": "Afrika"
  }
 ]
