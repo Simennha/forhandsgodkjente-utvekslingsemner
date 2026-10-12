@@ -44,7 +44,7 @@ class AnthropicKeyRevoker:
             client: Any = anthropic.Anthropic(api_key=self._admin_key)
             for key_id in self._ids:
                 client.beta.organization.api_keys.update(key_id, status="inactive")
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 - report every failure, never raise
             return RevocationResult(self.provider, False, type(exc).__name__)
         return RevocationResult(self.provider, True, f"{len(self._ids)} key(s) inactive")
 

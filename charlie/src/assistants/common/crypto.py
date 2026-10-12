@@ -31,7 +31,8 @@ def random_token(nbytes: int = 32) -> str:
 def hash_credential(code: str, salt: bytes, pepper: bytes = b"") -> bytes:
     """scrypt(HMAC(pepper, normalized code)). Short PINs are only safe with the pepper,
     which lives in a different secret than the hash."""
-    normalized = " ".join(code.strip().lower().split())
+    cleaned = "".join(ch if ch.isalnum() else " " for ch in code.lower())
+    normalized = " ".join(cleaned.split())
     keyed = (
         hmac.new(pepper, normalized.encode(), hashlib.sha256).digest()
         if pepper

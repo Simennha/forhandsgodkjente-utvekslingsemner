@@ -84,12 +84,17 @@ def main() -> None:
     pepper = secrets.token_bytes(32)
     twilio_sim = random_token()
     action_key = random_token(32)
+    sim_control = random_token()
 
+    ctx_key = random_token(32)
     files: dict[str, dict[str, str]] = {
         "gateway": {
             "self.token": tokens["gateway"],
-            "accept.approvals": tokens["approvals"],
+            "accept.killswitch": tokens["killswitch"],
             "twilio.auth_token": twilio_sim,
+            "twilio.account_sid": FAKE,
+            "ctx.hmac_key": ctx_key,
+            "approvals.public_key": appr_pub,
             "identity.pepper": pepper.hex(),
             "identity.pin": json.dumps(credential(pin, pepper)),
             "identity.duress": json.dumps(credential(duress, pepper)),
@@ -104,7 +109,10 @@ def main() -> None:
             "accept.extractor": tokens["extractor"],
             "accept.worker": tokens["worker"],
             "accept.approvals": tokens["approvals"],
+            "accept.gateway": tokens["gateway"],
+            "accept.killswitch": tokens["killswitch"],
             "action.hmac_key": action_key,
+            "ctx.hmac_key": ctx_key,
             "approvals.public_key": appr_pub,
             "lease.public_key": lease_pub,
             "db.dsn": dsn("executor_svc"),
@@ -118,12 +126,13 @@ def main() -> None:
         "charlie": {
             "self.token": tokens["charlie"],
             "accept.gateway": tokens["gateway"],
-            "accept.worker": tokens["worker"],
+            "accept.killswitch": tokens["killswitch"],
             "lease.public_key": lease_pub,
         },
         "lola": {
             "self.token": tokens["lola"],
             "accept.gateway": tokens["gateway"],
+            "accept.killswitch": tokens["killswitch"],
             "anthropic.lola_api_key": FAKE,
             "lease.public_key": lease_pub,
             "db.dsn": dsn("lola_agent"),
@@ -148,6 +157,9 @@ def main() -> None:
         },
         "killswitch": {
             "self.token": tokens["killswitch"],
+            "accept.gateway": tokens["gateway"],
+            "accept.worker": tokens["worker"],
+            "accept.sim": sim_control,
             "lease.private_key": lease_priv,
             "pin": json.dumps(credential(pin)),
             "sms_code": json.dumps(credential(ks_sms_code)),
@@ -173,8 +185,7 @@ def main() -> None:
         "approval_box.private_key": box_priv,
         "second_device.private_key": second_priv,
         "twilio.sim_signing_key": twilio_sim,
-        "gateway.token": tokens["gateway"],
-        "killswitch.token": tokens["killswitch"],
+        "killswitch.sim_token": sim_control,
     }
     (OUT / "sim-devices.json").write_text(json.dumps(sim, indent=2), encoding="utf-8")
     os.chmod(OUT / "sim-devices.json", 0o600)

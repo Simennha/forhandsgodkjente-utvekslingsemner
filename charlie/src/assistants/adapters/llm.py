@@ -33,6 +33,7 @@ class LLMRequest:
     user_content: str
     max_tokens: int
     json_schema: dict[str, Any] | None = None
+    channel: str = "internal"
 
 
 @dataclass(frozen=True)

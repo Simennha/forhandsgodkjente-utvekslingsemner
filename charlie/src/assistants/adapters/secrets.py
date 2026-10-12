@@ -45,6 +45,9 @@ class MemorySecretStore:
     def has(self, name: str) -> bool:
         return name in self._values
 
+    def names(self) -> list[str]:
+        return sorted(self._values)
+
 
 class FileSecretStore(MemorySecretStore):
     def __init__(self, path: Path) -> None:

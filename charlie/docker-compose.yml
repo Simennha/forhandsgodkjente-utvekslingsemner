@@ -114,7 +114,7 @@ services:
     <<: *service
     command: ["worker"]
     secrets: [{source: worker, target: service}]
-    networks: [net_core]
+    networks: [net_core, net_ks]
     depends_on: {migrate: {condition: service_completed_successfully}}
 
   killswitch-sim:
