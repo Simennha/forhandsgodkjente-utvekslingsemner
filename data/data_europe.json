@@ -1109,7 +1109,7 @@
   "ntnu_emnenavn": "Markedsføringsledelse",
   "emnetype": "",
   "godkjent": "JA",
-  "behandlingsdato": "",
+  "behandlingsdato": "Sep 2025",
   "behandlet_av": "Arild Aspelund",
   "kommentar": "https://kurser.dtu.dk/course/62177",
   "rejected": false,
@@ -1490,6 +1490,27 @@
   "behandlingsdato": "Sep 2026",
   "behandlet_av": "Johan Berg Pettersen",
   "kommentar": "Du må helst også ha et annet \"bærekraftfag.\" For å dekke 7.5 stp",
+  "rejected": false,
+  "university": "Danmark Tekniske Universitet",
+  "country": "Danmark",
+  "page_id": "110002800",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110002800",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "02451",
+  "fagnavn_host": "Introduction to Machine Learning",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4300",
+  "ntnu_emnenavn": "Datavarehus og datagruvedrift",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "Des 2025",
+  "behandlet_av": "Theodoros Chondrogiannis",
+  "kommentar": "",
   "rejected": false,
   "university": "Danmark Tekniske Universitet",
   "country": "Danmark",
@@ -5903,6 +5924,48 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4140"
+  ],
+  "fagkode_host": "04PPPYC",
+  "fagnavn_host": "Financial Engineering",
+  "studiepoeng": "8",
+  "ntnu_emnekode": "TIØ4140",
+  "ntnu_emnenavn": "Finansielle derivater og realopsjoner",
+  "emnetype": "IØT",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Rita D Pimentel",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Politec de Torino",
+  "country": "Italia",
+  "page_id": "110003070",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003070",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4170"
+  ],
+  "fagkode_host": "04JPYYC",
+  "fagnavn_host": "Entrepreneurship",
+  "studiepoeng": "8",
+  "ntnu_emnekode": "TIØ4170",
+  "ntnu_emnenavn": "Teknologibasert forretningsutvikling",
+  "emnetype": "IØT",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Roger Sørheim",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Politec de Torino",
+  "country": "Italia",
+  "page_id": "110003070",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003070",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "052909",
@@ -10278,7 +10341,7 @@
   "ntnu_codes": [
    "TIØ4145"
   ],
-  "fagkode_host": "Principles of Finance and Corporate Finance",
+  "fagkode_host": "EPP4064626 Principles of Finance and Corporate Finance",
   "fagnavn_host": "",
   "studiepoeng": "6",
   "ntnu_emnekode": "TIØ4145 Finansstyring for foretak",
@@ -10812,6 +10875,90 @@
   "godkjent": "JA",
   "behandlingsdato": "Juli 2026",
   "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "IN0000192 Operations Research 1",
+  "fagnavn_host": "",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TIØ4126 Optimering og beslutningsstøtte for teknisk-økonomisk planlegging",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Kjetil Fagerholt",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4162"
+  ],
+  "fagkode_host": "IN0000005",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4162",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Jonas Alexander Ingvaldsen",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4317"
+  ],
+  "fagkode_host": "SCQ3102235 ECONOMETRICS FOR CREDIT AND MARKET RISK",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4317",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Sjur Westgaard",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4317"
+  ],
+  "fagkode_host": "SCP9082269 ECONOMETRICS FOR CREDIT AND MARKET RISK",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4317",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Sjur Westgaard",
   "kommentar": "",
   "rejected": false,
   "university": "Universita Degli Studi de Padova",
@@ -11663,6 +11810,90 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4180"
+  ],
+  "fagkode_host": "B034530",
+  "fagnavn_host": "Innovation and Strategy in the AI Age",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TIØ4180 Innovasjonsledelse og strategi",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Alf Steinar Sætre",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita degli studi Firenze",
+  "country": "Italia",
+  "page_id": "143884860",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143884860",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4165"
+  ],
+  "fagkode_host": "B000269",
+  "fagnavn_host": "Marketing (Principi e Strument)",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4165 Markedsføringsledelse for teknologibedrifter",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Arild Aspelund",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita degli studi Firenze",
+  "country": "Italia",
+  "page_id": "143884860",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143884860",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4137"
+  ],
+  "fagkode_host": "B019206",
+  "fagnavn_host": "Econometrics of Financial Markets",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4137 Empiriske og kvantitive metoder i finans",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Sjur Westgaard",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita degli studi Firenze",
+  "country": "Italia",
+  "page_id": "143884860",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143884860",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4118"
+  ],
+  "fagkode_host": "B001283",
+  "fagnavn_host": "Microeconomics",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4118 Industriell økonomisk analyse",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Anne Neumann",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita degli studi Firenze",
+  "country": "Italia",
+  "page_id": "143884860",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143884860",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "052PP",
@@ -11778,6 +12009,27 @@
   "emnetype": "",
   "godkjent": "JA",
   "behandlingsdato": "2025 Feb",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita de Pisa",
+  "country": "Italia",
+  "page_id": "411862006",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=411862006",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "676AA",
+  "fagnavn_host": "Data Mining: Fundamentals",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4300",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-11-11",
   "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
@@ -12465,6 +12717,28 @@
   "behandlingsdato": "Aug 2026",
   "behandlet_av": "Morten Ivar Kolstø",
   "kommentar": "",
+  "rejected": false,
+  "university": "Universita di Trento",
+  "country": "Italia",
+  "page_id": "457671161",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=457671161",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4240",
+   "TMA4245"
+  ],
+  "fagkode_host": "120414",
+  "fagnavn_host": "Data Analytics and Statistics",
+  "studiepoeng": "8",
+  "ntnu_emnekode": "TMA4240/4245",
+  "ntnu_emnenavn": "Statistikk",
+  "emnetype": "",
+  "godkjent": "JA*",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Øyvind Bakke",
+  "kommentar": "Dekker 2/3 av faget. En rekke vanlige sannsynlighetsfordelinger dekkes ikke (f.eks. geometrisk, poisson-, eksponentiell, gamma-fordeling) og ikke enkel lineær regresjon.",
   "rejected": false,
   "university": "Universita di Trento",
   "country": "Italia",
@@ -17945,9 +18219,9 @@
   "ntnu_codes": [
    "TIØ4165"
   ],
-  "fagkode_host": "510101003",
+  "fagkode_host": "510103003",
   "fagnavn_host": "Marketing management 3",
-  "studiepoeng": "",
+  "studiepoeng": "6",
   "ntnu_emnekode": "TIØ4165 Markedsføringsledelse",
   "ntnu_emnenavn": "",
   "emnetype": "",
@@ -18275,7 +18549,7 @@
   "ntnu_codes": [
    "TMA4240"
   ],
-  "fagkode_host": "52210200",
+  "fagkode_host": "522102001",
   "fagnavn_host": "Estadistica Aplicada",
   "studiepoeng": "",
   "ntnu_emnekode": "TMA4240 Statistikk",
@@ -18338,7 +18612,7 @@
   "ntnu_codes": [
    "TMR4256"
   ],
-  "fagkode_host": "23220900 232201003",
+  "fagkode_host": "232209006 232201003",
   "fagnavn_host": "Gestiónde Proyectos OG Construcción yReparaciónde Buques",
   "studiepoeng": "4,5 sp 4,5 sp",
   "ntnu_emnekode": "TMR4256–Marin teknikk6: Design avmarinesystemer.",
@@ -18361,7 +18635,7 @@
   ],
   "fagkode_host": "232209012 232201002",
   "fagnavn_host": "INTRODUCTION TO SUBMARINE TECHNOLOGY SEATRADE,SHIPPING AND MARITIME MANAGEMENT",
-  "studiepoeng": "",
+  "studiepoeng": "4,5 sp 6 sp",
   "ntnu_emnekode": "TMR4115 – Prosjekteringsmetoder",
   "ntnu_emnenavn": "",
   "emnetype": "",
@@ -19288,6 +19562,27 @@
   "behandlingsdato": "Sept 205",
   "behandlet_av": "Jørn Vatn",
   "kommentar": "Masteremne",
+  "rejected": false,
+  "university": "Universitat Politècnica de Catalunya - Barcelona",
+  "country": "Spania",
+  "page_id": "119440886",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119440886",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TEP4130"
+  ],
+  "fagkode_host": "240171",
+  "fagnavn_host": "Heat Technology",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TEP4130 Varme- og massetransport",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Carlos Alberto Dorao",
+  "kommentar": "",
   "rejected": false,
   "university": "Universitat Politècnica de Catalunya - Barcelona",
   "country": "Spania",

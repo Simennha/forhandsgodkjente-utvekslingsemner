@@ -543,6 +543,25 @@
   "continent": "Amerika"
  },
  {
+  "ntnu_codes": [],
+  "fagkode_host": "COMPSCI189",
+  "fagnavn_host": "Introduction to Machine Learning",
+  "studiepoeng": "",
+  "ntnu_emnekode": "",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "",
+  "behandlingsdato": "",
+  "behandlet_av": "",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Berkeley",
+  "country": "USA",
+  "page_id": "107250754",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250754",
+  "continent": "Amerika"
+ },
+ {
   "ntnu_codes": [
    "TDT4137"
   ],
@@ -1696,6 +1715,27 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "INDENG/IEOR 153",
+  "fagnavn_host": "Supply Chain Management and Logistics Network Design",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4126",
+  "ntnu_emnenavn": "Optimering og beslutningsstøtte",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Kjetil Fagerholt",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Berkeley",
+  "country": "USA",
+  "page_id": "107250754",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250754",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "ECON317",
@@ -2710,6 +2750,27 @@
   "behandlingsdato": "2023-03-15",
   "behandlet_av": "Pauline Haddow",
   "kommentar": "*4 units/credits = 7,5 sp",
+  "rejected": false,
+  "university": "Harvard",
+  "country": "USA",
+  "page_id": "107250752",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250752",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4285"
+  ],
+  "fagkode_host": "ECON1640",
+  "fagnavn_host": "Industrial Organization: Theory and Applications",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4285",
+  "ntnu_emnenavn": "Modellering og analyse av industrielle verdikjeder",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Anne Neumann",
+  "kommentar": "",
   "rejected": false,
   "university": "Harvard",
   "country": "USA",
@@ -6333,6 +6394,27 @@
   "emnetype": "",
   "godkjent": "JA",
   "behandlingsdato": "Jan 2025",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Argentina Instituto Tecnológico de Buenos Aires",
+  "country": "Sør - Amerika",
+  "page_id": "339184576",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=339184576",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4237"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "",
+  "studiepoeng": "6 credits / 7,5 sp",
+  "ntnu_emnekode": "TDT4237 Programvaresikkerhet og personvern",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2025-09-11",
   "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
