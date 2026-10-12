@@ -29,6 +29,8 @@ make demo-down      # stopp og slett demo-volumer
 ```
 
 Bak TLS-inspiserende proxy (som i utviklingsmiljøet mitt): `EXTRA_CA_FILE=/sti/til/ca.pem make demo`.
+Regenererer du hemmeligheter (`scripts/gen_secrets.py --force`), kjør `make demo-down` først
+(databasevolumene har de gamle rollepassordene).
 
 Demoen spiller eierens telefon, passkey, andre enhet og utenforstående med **simulerte nøkler**
 fra `secrets/sim-devices.json`. Alt mellom (tjenester, nettsegmentering, DB-roller, signaturer,
