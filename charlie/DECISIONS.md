@@ -184,3 +184,23 @@ og oppdateres per fase.
 ## D-027 Underagenter bare for rapporter
 - Den ukentlige prosjektrapporten lager én seksjon per prosjekt i parallell (Haiku), uten
   verktøy og bare med strukturerte data. Ellers brukes ingen underagenter.
+
+## D-028 Rettelser etter red team (se `docs/redteam-report.md`)
+- **Kill switch-tilstand lagres** atomisk på enheten før ny lease sendes. Manglende tilstand
+  godtas bare ved en provisjonert første oppstart; ulesbar tilstand gir STOPPED. Lease-telleren
+  er tidsbasert og øker alltid.
+- **Verkstedmodus lagres**; ukjent modus ved oppstart = mikrofoner kuttet til eieren setter modus.
+  Utføreren starter i Åpent verksted (strengest) og får modus fra gatewayen hvert 20. sekund.
+- **Tvangskode:** svarene er nå identiske med en PIN-økt (avviste handlinger beskrives som
+  ventende/utført, men ingenting skjer). Revisjonsloggen viser fortsatt avvisningene; valgt
+  fordi etterpåkontroll er viktigere enn å skjule det for den som har administratortilgang.
+- **Anomaliregler** teller ikke vanlige «krever PIN»-svar eller forsøk under sperre;
+  kostnadsregelen måles i kroner.
+- **Bare eierens egne ord kan bære verktøyparametre.** Uttrekk fra alle andre kilder blir
+  meldinger uten parametre; resultater fra e-post/kø/samtaler reduseres til rensede oppsummeringer.
+- **Månedstaket** telles etter godkjenningstidspunkt; re-sjekk og godkjenning skjer under lås.
+- **Loggen:** `writer` settes fra databaserollen; siste hash forankres på kill switch-enheten.
+- **Lola har egen Postgres-instans (`db-guest`)**; hun når ikke hoveddatabasen. Worker når
+  `db-guest` via et nett Lola ikke er på.
+- **PIN og tvangskode er 8 sifre.** Pepperen bør flyttes ut av containeren i produksjon.
+- **Webhook-replay** stoppes (samme signatur godtas én gang i 10 min).

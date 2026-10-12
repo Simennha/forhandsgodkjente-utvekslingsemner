@@ -16,6 +16,8 @@ from typing import Any, Literal, Protocol
 from psycopg.types.json import Jsonb
 from psycopg_pool import ConnectionPool
 
+from assistants.common.clock import OSLO
+
 ProposalStatus = Literal["pending", "approved", "executed", "denied", "expired", "frozen", "failed"]
 
 
@@ -35,6 +37,7 @@ class StoredProposal:
     expires_at: datetime | None
     idempotency_key: str
     result: dict[str, Any] | None = None
+    approved_at: datetime | None = None
 
 
 @dataclass(frozen=True)
@@ -61,6 +64,7 @@ class ProposalStore(Protocol):
         from_status: ProposalStatus,
         to_status: ProposalStatus,
         result: dict[str, Any] | None = None,
+        at: datetime | None = None,
     ) -> bool: ...
     def freeze_pending(self) -> int: ...
     def list_status(self, status: ProposalStatus) -> list[StoredProposal]: ...
@@ -105,12 +109,16 @@ class MemoryProposalStore:
         from_status: ProposalStatus,
         to_status: ProposalStatus,
         result: dict[str, Any] | None = None,
+        at: datetime | None = None,
     ) -> bool:
         with self._lock:
             p = self._items.get(pid)
             if p is None or p.status != from_status:
                 return False
-            self._items[pid] = replace(p, status=to_status, result=result or p.result)
+            approved_at = at if to_status == "approved" and at is not None else p.approved_at
+            self._items[pid] = replace(
+                p, status=to_status, result=result or p.result, approved_at=approved_at
+            )
             return True
 
     def freeze_pending(self) -> int:
@@ -126,12 +134,14 @@ class MemoryProposalStore:
         return [p for p in self._items.values() if p.status == status]
 
     def orders_total(self, month: str) -> float:
+        # Counted by APPROVAL time (red team #8): an order proposed on the 31st and approved
+        # on the 1st belongs to the new month.
         return sum(
             p.amount_nok or 0.0
             for p in self._items.values()
             if p.tool == "inventory.order"
             and p.status in ("approved", "executed")
-            and p.created_at.strftime("%Y-%m") == month
+            and (p.approved_at or p.created_at).astimezone(OSLO).strftime("%Y-%m") == month
         )
 
 
@@ -202,12 +212,13 @@ def _row_to_proposal(r: tuple[Any, ...]) -> StoredProposal:
         expires_at=r[11],
         idempotency_key=r[12],
         result=r[13],
+        approved_at=r[14],
     )
 
 
 _COLS = (
     "id, created_at, agent, tool, params, params_hash, level, status, confirm_method, "
-    "challenge, amount_nok, expires_at, idempotency_key, result"
+    "challenge, amount_nok, expires_at, idempotency_key, result, approved_at"
 )
 
 
@@ -219,7 +230,7 @@ class PgProposalStore:
         with self._pool.connection() as conn:
             conn.execute(
                 f"insert into core.proposals ({_COLS}) values "  # noqa: S608 - constant columns
-                "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                 (
                     p.id,
                     p.created_at,
@@ -235,6 +246,7 @@ class PgProposalStore:
                     p.expires_at,
                     p.idempotency_key,
                     Jsonb(p.result) if p.result is not None else None,
+                    p.approved_at,
                 ),
             )
 
@@ -252,12 +264,20 @@ class PgProposalStore:
         from_status: ProposalStatus,
         to_status: ProposalStatus,
         result: dict[str, Any] | None = None,
+        at: datetime | None = None,
     ) -> bool:
+        approved_at = at if to_status == "approved" else None
         with self._pool.connection() as conn:
             cur = conn.execute(
-                "update core.proposals set status = %s, result = coalesce(%s, result) "
-                "where id = %s and status = %s",
-                (to_status, Jsonb(result) if result is not None else None, pid, from_status),
+                "update core.proposals set status = %s, result = coalesce(%s, result), "
+                "approved_at = coalesce(%s, approved_at) where id = %s and status = %s",
+                (
+                    to_status,
+                    Jsonb(result) if result is not None else None,
+                    approved_at,
+                    pid,
+                    from_status,
+                ),
             )
             return cur.rowcount == 1
 
@@ -281,7 +301,8 @@ class PgProposalStore:
             row = conn.execute(
                 "select coalesce(sum(amount_nok), 0) from core.proposals "
                 "where tool = 'inventory.order' and status in ('approved','executed') "
-                "and to_char(created_at at time zone 'Europe/Oslo', 'YYYY-MM') = %s",
+                "and to_char(coalesce(approved_at, created_at) at time zone 'Europe/Oslo', "
+                "'YYYY-MM') = %s",
                 (month,),
             ).fetchone()
         return float(row[0]) if row else 0.0

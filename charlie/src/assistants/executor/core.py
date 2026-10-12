@@ -10,6 +10,7 @@ Everything is written to the audit log.
 from __future__ import annotations
 
 import secrets
+import threading
 import uuid
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -77,7 +78,10 @@ class Executor:
         request_approval: Callable[[ApprovalRequest], None],
         attestations: AttestationVerifier,
         on_denied: Callable[[str, str], None] | None = None,
+        active_since: Callable[[], float] | None = None,
     ) -> None:
+        self._active_since = active_since or (lambda: 0.0)
+        self._approve_lock = threading.Lock()
         self._policy = policy
         self._cfg = cfg
         self._clock = clock
@@ -178,6 +182,7 @@ class Executor:
                 amount,
                 None,
                 secrets.token_hex(16),
+                approved_at=now,
             )
             self._proposals.save(stored)
             return self._execute(stored, params, ctx.channel)
@@ -255,20 +260,24 @@ class Executor:
             self._proposals.transition(pid, "pending", "expired")
             return self._deny(stored.tool, stored.level, "expired", ctx)
         state, _ = self._ks()
-        if state != KSState.ACTIVE:
+        # A pause - even just a lost lease - after the proposal was made freezes it for good
+        # (red team #12): it must be proposed again after the owner has had a look.
+        if state != KSState.ACTIVE or self._active_since() > stored.created_at.timestamp():
             self._proposals.transition(pid, "pending", "frozen")
             return self._deny(stored.tool, stored.level, "killswitch", ctx)
-        # Re-check rules NOW (caps, budget and kill switch may have changed since proposing).
         params = s.TOOL_PARAMS[stored.tool].model_validate(stored.params)
-        decision = self._rules(
-            self._facts("charlie", stored.tool, ctx, stored.amount_nok, recheck=True)
-        )
-        if decision.outcome != "confirm" or decision.confirm_method != stored.confirm_method:
-            self._proposals.transition(pid, "pending", "denied")
-            return self._deny(stored.tool, stored.level, f"recheck:{decision.reason}", ctx)
-        # Compare-and-set: only one approval can ever move pending -> approved.
-        if not self._proposals.transition(pid, "pending", "approved"):
-            return self._deny(stored.tool, stored.level, "replay", ctx)
+        # Re-check and claim under one lock, so two approvals at the same time cannot both
+        # pass the caps (red team #8).
+        with self._approve_lock:
+            decision = self._rules(
+                self._facts("charlie", stored.tool, ctx, stored.amount_nok, recheck=True)
+            )
+            if decision.outcome != "confirm" or decision.confirm_method != stored.confirm_method:
+                self._proposals.transition(pid, "pending", "denied")
+                return self._deny(stored.tool, stored.level, f"recheck:{decision.reason}", ctx)
+            # Compare-and-set: only one approval can ever move pending -> approved.
+            if not self._proposals.transition(pid, "pending", "approved", at=self._clock.now()):
+                return self._deny(stored.tool, stored.level, "replay", ctx)
         return self._execute(stored, params, "approval")
 
     # ------------------------------------------------------------ execute

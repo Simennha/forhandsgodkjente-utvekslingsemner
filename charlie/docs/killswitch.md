@@ -30,6 +30,24 @@ Alle tider og antall ligger i `config.yaml` under `killswitch:`. Tilstanden kan 
 Alarm, brannvarsling og maskinenes nødstopp er egne kretser og påvirkes ikke; det finnes
 ingen effekt i koden som kan nå dem.
 
+### Tilstand overlever omstart
+
+Tilstand, ringehistorikk og lease-teller skrives atomisk til enhetens egen lagring (`FileDeviceState`)
+**før** en ny lease sendes. Ved oppstart:
+
+- lagret tilstand finnes → den gjenopprettes (en STOPPED-enhet starter som STOPPED),
+- ingen lagret tilstand → bare godtatt ved provisjonering (første oppstart); ellers STOPPED,
+- ulesbar tilstand → STOPPED.
+
+Lease-telleren er tidsbasert og øker alltid, så serverne godtar nye leaser etter omstart uten å
+kunne lures av gamle.
+
+### Forankring av revisjonsloggen
+
+Worker sender loggens siste (sekvens, hash) til enheten hvert 5. minutt. Enheten godtar bare
+økende sekvens og lagrer de siste 2000. `check_anchors` sammenligner dem med databasen: en kjede
+som er skrevet om og hashet på nytt (f.eks. av en databasesuperbruker) avsløres.
+
 ### Fail-closed lease
 
 Enheten signerer `{tilstand, lola, sekvens, utstedt, utløper}` med en Ed25519-nøkkel som bare

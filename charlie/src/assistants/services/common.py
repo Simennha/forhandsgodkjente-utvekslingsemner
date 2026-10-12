@@ -17,9 +17,33 @@ from psycopg_pool import ConnectionPool
 from assistants.adapters.secrets import FileSecretStore, MemorySecretStore, SecretStore
 from assistants.common.clock import Clock
 from assistants.common.crypto import ed25519_public_from_str
+from assistants.common.redact import redact_text
 from assistants.killswitch.lease import LeaseVerifier
 
 log = logging.getLogger("assistants")
+
+
+class RedactingFilter(logging.Filter):
+    """Applied to every handler: secrets never reach service logs (red team #18)."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        record.msg = redact_text(str(record.msg))
+        if record.args:
+            args = record.args if isinstance(record.args, tuple) else (record.args,)
+            record.args = tuple(redact_text(str(a)) for a in args)
+        return True
+
+
+def install_log_redaction() -> None:
+    root = logging.getLogger()
+    if not root.handlers:
+        logging.basicConfig(level=logging.INFO)
+    for handler in root.handlers:
+        handler.addFilter(RedactingFilter())
+    for name in ("uvicorn", "uvicorn.error", "uvicorn.access", "assistants"):
+        logging.getLogger(name).addFilter(RedactingFilter())
+
+
 FAKE_MARKER = "FAKE-REPLACE-ME"
 
 URLS = {

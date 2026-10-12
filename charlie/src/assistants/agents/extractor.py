@@ -104,6 +104,8 @@ _INJECTION = re.compile(
 )
 _CONTROL = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f\x7f\u200b-\u200f\u202a-\u202e\u2060-\u2064]")
 NEUTRALISED = "[fjernet: tekst som lignet instruksjoner]"
+# Only the owner's own, authenticated words may carry tool parameters.
+TRUSTED_SOURCES = frozenset({"owner_utterance"})
 
 
 def clean_field(text: str) -> tuple[str, bool]:
@@ -148,11 +150,18 @@ def validate_extraction(raw: str, source: str, policy: Policy) -> Extraction:
             except ValidationError:
                 flags.add("invalid_params")
                 continue
-        intents.append(
-            ExtractedIntent(
-                kind=intent.kind, tool=tool, params=intent.params if tool else {}, summary=summary
+        if source not in TRUSTED_SOURCES:
+            # Outsiders' wishes are messages: no parameters (free text) survive (red team #5).
+            intents.append(ExtractedIntent(kind="message", tool=tool, params={}, summary=summary))
+        else:
+            intents.append(
+                ExtractedIntent(
+                    kind=intent.kind,
+                    tool=tool,
+                    params=intent.params if tool else {},
+                    summary=summary,
+                )
             )
-        )
     summary, bad = clean_field(ext.summary)
     if bad:
         flags.add("injection_suspected")

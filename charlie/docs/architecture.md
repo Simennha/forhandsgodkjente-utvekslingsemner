@@ -31,8 +31,9 @@ flowchart LR
     XT[extractor<br/>ingen verktøy]
   end
 
-  subgraph Guest["net_guest (internt)"]
+  subgraph Guest["net_guest / net_guestdb (internt)"]
     LO[agents-lola<br/>egen nøkkel, eget tak]
+    GDB[(db-guest<br/>egen Postgres)]
   end
 
   WR[workroom<br/>network_mode: none]
@@ -52,13 +53,15 @@ flowchart LR
   EX --> DB
   WK --> DB
   LO -->|net_lola_out| AN
-  LO -->|lola_agent-rolle| DB
+  LO -->|lola_agent-rolle| GDB
+  WK -->|net_guestdb_ops| GDB
   KSS -->|signert lease| GW & EX & CH
   KSS -.->|net_ks_lola| LO
 ```
 
 Lola deler **ingen** nettverk med `executor`, `rules`, `agents-charlie`, `extractor`,
-`approvals` eller `worker` (testet statisk i `tests/test_compose_isolation.py` og live i
+`approvals`, `worker` eller hoveddatabasen `db`. Gjesteområdet ligger i en egen
+Postgres-instans (`db-guest`); worker når den via `net_guestdb_ops`, som Lola ikke er på (testet statisk i `tests/test_compose_isolation.py` og live i
 `make demo`). Kill switch-simulatoren når Lola på et eget nett (`net_ks_lola`), slik at Lola
 aldri havner på samme nett som Charlie-siden.
 
@@ -106,7 +109,8 @@ Postgres (Supabase-kompatibelt; migrasjoner i `supabase/migrations`). Skjemaer:
 - `core` – hendelser, forslag, brukte nøkler, kostnader, verktøykall, heartbeats,
   samtykkelogg, rå transkripsjon (slettes etter 7 dager), uttrekk (beholdes), notater, prosjekter.
 - `audit` – hash-kjedet logg; `audit.append()` er eneste skrivevei; UPDATE/DELETE/TRUNCATE blokkert.
-- `guest` – gjesteinfo, Lolas kø (bare `untrusted`), beskjeder, Lolas eget forbruk.
+- `guest` – gjesteinfo, Lolas kø (bare `untrusted`), beskjeder, Lolas eget forbruk. I drift
+  brukes `guest` i den egne instansen `db-guest`.
 - `lager` – ni tabeller: `lokasjon`, `lagerplass`, `artikkel`, `lagerregel`, `beholdning`,
   `bevegelse`, `batteri`, `leverandor`, `innkjopsforslag`.
 
@@ -118,7 +122,9 @@ Roller: `charlie_agent` (les), `lola_agent` (bare `guest`), `executor_svc`, `gat
 
 Egen enhet med eget batteri, egen strøm og eget mobilnett. Ren tilstandsmaskin
 (`killswitch/core.py`, 100 % dekning + property-tester). Enheten signerer en lease hvert
-5. sekund; uten gyldig ACTIVE-lease stopper Charlie av seg selv. Se `docs/killswitch.md`.
+5. sekund; uten gyldig ACTIVE-lease stopper Charlie av seg selv. Tilstanden lagres på enheten
+og overlever omstart. Enheten oppbevarer også forankrede hasher av revisjonsloggen.
+Se `docs/killswitch.md`.
 
 ## Moduser
 

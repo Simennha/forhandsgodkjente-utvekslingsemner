@@ -91,10 +91,16 @@ def check_heartbeats(hb: Heartbeats, clock: Clock, alert: Callable[[str], None])
     return stale
 
 
+EXPECTED_DENIALS = frozenset({"pin_required", "guest_mode", "open_workshop_background_only"})
+
+
 def _matches(rule: AnomalyRule, entry: AuditEntry) -> bool:
     match rule.kind:
         case "denied_burst":
-            return entry.kind == "action.denied"
+            # Ordinary "you need a PIN / wrong mode" answers are UX, not an attack (red team #4).
+            return (
+                entry.kind == "action.denied" and entry.data.get("reason") not in EXPECTED_DENIALS
+            )
         case "level4_attempt":
             return entry.kind == "action.denied" and (
                 entry.data.get("reason") == "level4_never"
@@ -125,7 +131,13 @@ def detect_anomalies(
     for rule in rules:
         window = timedelta(seconds=rule.window_s)
         hits = [e for e in entries if now - e.ts <= window and _matches(rule, e)]
-        if len(hits) >= rule.threshold:
+        # cost_spike: the threshold is NOK spent within the window, not a number of calls.
+        amount = (
+            sum(float(e.data.get("cost_nok", 0.0)) for e in hits)
+            if rule.kind == "cost_spike"
+            else float(len(hits))
+        )
+        if amount >= rule.threshold:
             trigger(rule.name, rule.action)
             fired.append(rule.name)
     return fired

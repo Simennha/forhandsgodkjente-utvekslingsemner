@@ -18,7 +18,7 @@ from assistants.common.errors import Denied
 from assistants.events import Mode, Trust
 from assistants.executor.core import CallContext
 
-TTL_S = 300
+TTL_S = 120  # one conversational turn; reuse is also capped by the executor
 
 
 def sign_ctx(ctx: CallContext, key: bytes, clock: Clock) -> str:

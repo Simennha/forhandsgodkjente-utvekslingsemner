@@ -13,7 +13,7 @@ Sist oppdatert etter red team-gjennomgangen (se `docs/redteam-report.md`).
 | 3 Verksted | Ferdig: mikrofon-pipeline (simulert), Vanlig/Gjest/Åpent verksted, lager (ni tabeller, 45 artikler, R1–R11 + ESD), innkjøpsforslag per lokasjon, flytt på nivå 2 |
 | 4 Notater og uttrekker | Ferdig: «husk dette», e-post via isolert uttrekker, ukentlig prosjektrapport, korpus (56 setninger), `make eval` med 0 harde brudd også med kompromittert modell |
 | 5 Hus | Ferdig: Home Assistant-adapter, lys/varme/dørlås på nivå 3, alarm uten kodevei, månedstest |
-| Red team | Se `docs/redteam-report.md` |
+| Red team | Ferdig: uavhengig gjennomgang med 18 funn (1 høy) + 10 egne. Alle høye/middels rettet eller delvis rettet med regresjonstester; restrisiko i `docs/redteam-report.md` |
 
 ## Kjøre
 
@@ -71,8 +71,10 @@ regler, logg) er den ekte koden.
 1. [ ] Mini-PC med Linux, Docker, diskkryptering, automatiske sikkerhetsoppdateringer.
 2. [ ] WireGuard: bare din telefon og PC som peers. `gateway` (8080), `approvals` (8443) og
        `killswitch-sim` (8090) er bundet til 127.0.0.1 – eksponer dem bare via WireGuard.
-3. [ ] Fjern `killswitch-sim` fra `docker-compose.yml` når den ekte enheten er i drift.
+3. [ ] Fjern `killswitch-sim` fra `docker-compose.yml` når den ekte enheten er i drift
+       (og `KS_ALLOW_FIRST_BOOT`; den ekte enheten provisjoneres én gang).
 4. [ ] `make install && make test` på maskinen (alt grønt).
+4b. [ ] Flytt `identity.pepper` ut av `gateway.json` (TPM eller egen hemmelighet), se red team #6.
 5. [ ] `make secrets` – les `secrets/dev-credentials.txt`, lær deg PIN, tvangskode og testord
        utenat, og **slett filen**. Slett `secrets/sim-devices.json` i produksjon.
 6. [ ] Fyll inn ekte nøkler for hver rad i tabellen over, én tjeneste av gangen. Start med

@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import os
 import secrets
+import threading
 import time
 from pathlib import Path
 from typing import Any
@@ -30,11 +31,19 @@ from assistants.events import Mode
 from assistants.executor.core import CallContext
 from assistants.gateway.core import Gateway, Line
 from assistants.identity import Credentials, IdentityService
-from assistants.services.common import URLS, ServiceAuth, ServiceClient, lease_view, log, pool
+from assistants.services.common import (
+    URLS,
+    ServiceAuth,
+    ServiceClient,
+    every,
+    lease_view,
+    log,
+    pool,
+)
 from assistants.storage.events_pg import PgEventQueue
 from assistants.storage.transcripts import PgTranscripts
 from assistants.workshop.mic import MicPipeline, SimWakeWord
-from assistants.workshop.modes import WorkshopModeController
+from assistants.workshop.modes import FileModeStore, WorkshopModeController
 
 
 def _verify_owner_session(token: str, store: SecretStore) -> bool:
@@ -48,7 +57,11 @@ def _verify_owner_session(token: str, store: SecretStore) -> bool:
         data = json.loads(body)
     except (ValueError, InvalidSignature, KeyError):
         return False
-    return data.get("sub") == "owner" and float(data.get("exp", 0)) > time.time()
+    return (
+        data.get("typ") == "owner_session"
+        and data.get("sub") == "owner"
+        and float(data.get("exp", 0)) > time.time()
+    )
 
 
 def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
@@ -69,11 +82,15 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
     killswitch = ServiceClient(URLS["killswitch"], me)
     ks = lease_view(store, clock)
 
-    def on_duress() -> None:
+    def deliver_signal() -> None:
         try:
             killswitch.post("/duress", {})
         except Exception:  # noqa: BLE001 - never reveal anything to the caller
-            log.error("duress signal could not be delivered to the kill switch")
+            log.error("kill switch signal delivery failed")
+
+    def on_duress() -> None:
+        # Fire and forget: the caller must not notice any extra delay (red team #3).
+        threading.Thread(target=deliver_signal, daemon=True).start()
 
     def on_mode(mode: Mode) -> None:
         try:
@@ -81,7 +98,15 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
         except Exception:  # noqa: BLE001
             log.error("could not propagate workshop mode to executor")
 
-    workshop = WorkshopModeController(SimMicRelay(), SimCameraAudio(), audit, on_change=on_mode)
+    workshop = WorkshopModeController(
+        SimMicRelay(),
+        SimCameraAudio(),
+        audit,
+        on_change=on_mode,
+        store=FileModeStore(Path(os.environ.get("MODE_STATE_FILE", "/state/mode.json"))),
+    )
+    # The executor keeps its own copy in memory; re-send it regularly (it starts fail-safe).
+    every(20, lambda: on_mode(workshop.mode()), "mode-sync")
     identity = IdentityService(
         cfg.identity, cfg.rate_limits, Credentials.from_store(store), clock, on_duress=on_duress
     )
@@ -128,10 +153,13 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
         audit,
         charlie_handler,
         ks.charlie_may_act,
+        identity.is_test_word,
     )
     app = base_app("gateway")
 
     # ------------------------------------------------------------ signature checks
+    seen_signatures: dict[str, float] = {}
+
     async def signed(request: Request, signature: str | None) -> dict[str, str]:
         if request.headers.get("content-type", "").startswith("application/json"):
             body = await request.json()
@@ -143,6 +171,14 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
         if not signature or not verify_twilio_signature(twilio_key, url, params, signature):
             audit.append("gateway", "webhook.bad_signature", {"path": request.url.path})
             raise HTTPException(status_code=403, detail="bad signature")
+        # Replay protection (red team #16): an identical signed request is accepted once.
+        now_ts = time.time()
+        for old in [k for k, t in seen_signatures.items() if now_ts - t > 600]:
+            seen_signatures.pop(old, None)
+        replay_key = f"{request.url.path}|{signature}"
+        if replay_key in seen_signatures:
+            raise HTTPException(status_code=409, detail="replayed webhook")
+        seen_signatures[replay_key] = now_ts
         return params
 
     # ------------------------------------------------------------ simulator webhooks
@@ -271,9 +307,10 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
 
     # ------------------------------------------------------------ chat + owner
     @app.post("/chat/guest")
-    def guest_chat(body: dict[str, Any]) -> dict[str, str]:
+    def guest_chat(body: dict[str, Any], request: Request) -> dict[str, str]:
         sid = str(body.get("session", "anon"))[:64]
-        return {"reply": gw.guest_chat(str(body.get("text", ""))[:2000], sid)}
+        client = request.client.host if request.client else "unknown"
+        return {"reply": gw.guest_chat(str(body.get("text", ""))[:2000], sid, client)}
 
     def owner(authorization: str | None = Header(default=None)) -> str:
         token = (authorization or "").removeprefix("Bearer ").strip()

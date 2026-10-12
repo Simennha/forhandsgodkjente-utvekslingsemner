@@ -26,7 +26,7 @@ from assistants.common.clock import Clock
 from assistants.common.config import AppConfig
 from assistants.events import Event, EventQueue, Mode, Source, Trust
 from assistants.executor.core import CallContext
-from assistants.identity import LIVENESS_REPLY, IdentityService, Session
+from assistants.identity import LIVENESS_REPLY, LOCKED_REPLY, IdentityService, Session
 from assistants.lola_queue.store import Channel
 from assistants.storage.transcripts import ConsentRecord, TranscriptStore
 
@@ -39,6 +39,7 @@ NO_CONSENT = "Greit, da avslutter vi. Du kan sende SMS i stedet."
 OPEN_WORKSHOP_PHONE = "Verkstedet er i åpen modus, og jeg lytter ikke nå. Send gjerne en SMS."
 UNKNOWN_ON_CHARLIE = "Dette nummeret tar ikke imot henvendelser. For verkstedet, ring resepsjonen."
 CHARLIE_PAUSED = "Charlie er ikke tilgjengelig akkurat nå."
+LOLA_GREETING = "Hei, dette er resepsjonen. Hva kan jeg hjelpe med?"
 
 
 def number_ref(number: str) -> str:
@@ -196,11 +197,11 @@ class Gateway:
         state.session = session
         verified = session.trust in (Trust.OWNER_PIN, Trust.DURESS)
         # Identical audit entry for PIN and duress. The digits never leave this function.
-        self._audit.append(
-            "gateway",
-            "auth.pin_verified" if verified else "auth.pin_failed",
-            {"call": call_id, "number": number_ref(session.number)},
-        )
+        # Attempts during a lockout are not checked and not counted as failures (red team #4).
+        kind = "auth.pin_verified" if verified else "auth.pin_failed"
+        if reply == LOCKED_REPLY:
+            kind = "auth.locked"
+        self._audit.append("gateway", kind, {"call": call_id, "number": number_ref(session.number)})
         return self._say(reply)
 
     def audio(self, call_id: str, audio: bytes) -> str:
@@ -218,6 +219,10 @@ class Gateway:
         ):
             return self._say(OPEN_WORKSHOP_PHONE)
         text = self._stt.transcribe(audio)
+        if self._identity.is_test_word(text):
+            # Never stored, never forwarded to any model (red team #7).
+            self._audit.append("gateway", "liveness", {"ref": call_id})
+            return self._say(LIVENESS_REPLY if state.line == "charlie" else LOLA_GREETING)
         state.lines.append(text)
         if state.line == "lola":
             self._event(
@@ -271,13 +276,13 @@ class Gateway:
             "sms.in",
             {"line": line, "number": number_ref(from_number), "trust": log_trust(session.trust)},
         )
+        if self._identity.is_test_word(body):
+            return LIVENESS_REPLY if line == "charlie" and session.owner else LOLA_GREETING
         if line == "lola":
             self._event(Source.SMS_LOLA, Trust.GUEST, "lola", Mode.GUEST, None, {})
             return self._lola(body, "sms_lola", from_number)
         if not session.owner:
             return UNKNOWN_ON_CHARLIE
-        if self._identity.is_test_word(body):
-            return LIVENESS_REPLY
         # SMS never carries a PIN: at most OWNER_KNOWN (levels 1-2).
         return self._charlie_turn(body, session, Source.SMS_CHARLIE, "sms", number_ref(from_number))
 
@@ -296,11 +301,17 @@ class Gateway:
             return LIVENESS_REPLY
         return self._charlie_turn(text, session, Source.CHAT, "chat", session_id)
 
-    def guest_chat(self, text: str, session_id: str) -> str:
-        if not self._rate.allow(
-            f"gchat:{session_id}", self._cfg.rate_limits.gateway_unknown_per_hour
+    def guest_chat(self, text: str, session_id: str, client: str = "local") -> str:
+        """Public guest chat. Limited per client address and globally, not by the session id
+        the caller chooses (red team #11)."""
+        limits = self._cfg.rate_limits
+        if not (
+            self._rate.allow(f"gchat-ip:{client}", limits.gateway_unknown_per_hour)
+            and self._rate.allow("gchat-all", limits.gateway_unknown_per_hour * 10)
         ):
             return RATE_LIMITED
+        if self._identity.is_test_word(text):
+            return LOLA_GREETING
         self._event(Source.CHAT_GUEST, Trust.GUEST, "lola", Mode.GUEST, session_id, {})
         return self._lola(text, "chat_guest", None)
 
@@ -314,5 +325,7 @@ class Gateway:
         ):
             return self._say(OPEN_WORKSHOP_PHONE)
         text = self._stt.transcribe(audio)
+        if self._identity.is_test_word(text):
+            return self._say(LOLA_GREETING)
         self._event(Source.DOOR, Trust.GUEST, "lola", Mode.GUEST, None, {})
         return self._say(self._lola(text, "door", None))

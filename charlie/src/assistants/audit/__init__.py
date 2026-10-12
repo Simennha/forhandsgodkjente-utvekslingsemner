@@ -151,3 +151,11 @@ def export_batch(
     key = f"audit/{entries[0].seq:012d}-{last:012d}.jsonl"
     store.put(key, ("\n".join(lines) + "\n").encode(), clock.now() + timedelta(days=retain_days))
     return last
+
+
+def check_anchors(log: AuditLog, anchors: list[tuple[int, str]]) -> list[int]:
+    """Anchors are (seq, hash) pairs kept OFF the server (on the kill-switch device).
+    Returns the seqs whose hash no longer matches: proof that history was rewritten even if
+    the rewritten chain verifies on its own (red team #9)."""
+    by_seq = {e.seq: e.hash for e in log.entries(0)}
+    return [seq for seq, head in anchors if by_seq.get(seq) != head]

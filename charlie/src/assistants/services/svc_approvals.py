@@ -7,6 +7,7 @@ confirmation text; the device signs the request; the attestation goes to the exe
 from __future__ import annotations
 
 import base64
+import json
 import secrets
 import time
 from datetime import datetime
@@ -14,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from cryptography.exceptions import InvalidSignature
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.responses import HTMLResponse
 
 from assistants.adapters.secrets import SecretStore
@@ -26,7 +27,12 @@ from assistants.approvals.service import (
 )
 from assistants.common.canonical import canonical_json
 from assistants.common.clock import SystemClock
-from assistants.common.crypto import b64e, ed25519_private_from_str, ed25519_public_from_str
+from assistants.common.crypto import (
+    b64d,
+    b64e,
+    ed25519_private_from_str,
+    ed25519_public_from_str,
+)
 from assistants.common.errors import Denied
 from assistants.services.common import URLS, ServiceAuth, ServiceClient
 
@@ -49,6 +55,17 @@ def build(store: SecretStore) -> FastAPI:
     service = ApprovalService(key, verifiers, clock)
     executor = ServiceClient(URLS["executor"], store.get("self.token"))
     login_nonces: dict[str, float] = {}
+
+    def owner_session_ok(token: str) -> bool:
+        try:
+            body_b64, sig_b64 = token.split(".", 1)
+            body = b64d(body_b64)
+            key.public_key().verify(b64d(sig_b64), body)
+            data = json.loads(body)
+        except (ValueError, InvalidSignature):
+            return False
+        return data.get("typ") == "owner_session" and float(data.get("exp", 0)) > time.time()
+
     app = base_app("approvals")
 
     @app.get("/", response_class=HTMLResponse)
@@ -72,7 +89,9 @@ def build(store: SecretStore) -> FastAPI:
         return {"ok": "yes"}
 
     @app.get("/requests/{proposal_id}")
-    def show(proposal_id: str) -> dict[str, Any]:
+    def show(proposal_id: str, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+        if not owner_session_ok((authorization or "").removeprefix("Bearer ").strip()):
+            raise HTTPException(status_code=401, detail="owner session required")
         req = service.pending(proposal_id)
         if req is None:
             raise HTTPException(status_code=404, detail="ingen ventende godkjenning")
@@ -106,8 +125,13 @@ def build(store: SecretStore) -> FastAPI:
     # Owner login (passkey) -> short owner session for the PWA chat and mode switch.
     @app.post("/owner/login/nonce")
     def login_nonce() -> dict[str, str]:
+        now = time.time()
+        for old in [n for n, exp in login_nonces.items() if exp < now]:
+            login_nonces.pop(old, None)
+        if len(login_nonces) > 100:  # bounded (red team #15)
+            raise HTTPException(status_code=429, detail="too many pending logins")
         nonce = secrets.token_urlsafe(16)
-        login_nonces[nonce] = time.time() + 120
+        login_nonces[nonce] = now + 120
         return {"nonce": nonce}
 
     @app.post("/owner/login")
@@ -121,7 +145,9 @@ def build(store: SecretStore) -> FastAPI:
             )
         except (InvalidSignature, ValueError, KeyError) as exc:
             raise HTTPException(status_code=403, detail="bad signature") from exc
-        claims = canonical_json({"sub": "owner", "exp": time.time() + 900}).encode()
+        claims = canonical_json(
+            {"typ": "owner_session", "sub": "owner", "exp": time.time() + 900}
+        ).encode()
         return {"session": f"{b64e(claims)}.{b64e(key.sign(claims))}"}
 
     return app

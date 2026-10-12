@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import secrets
+from pathlib import Path
 from typing import Any
 
 from fastapi import Depends, FastAPI
@@ -18,6 +20,7 @@ from assistants.common.config import load_config
 from assistants.common.crypto import ed25519_private_from_str, ed25519_public_from_str
 from assistants.killswitch.driver import (
     DeviceSecrets,
+    FileDeviceState,
     KillSwitchDevice,
     ResumeAttempt,
     SimHAL,
@@ -98,7 +101,11 @@ def build(store: SecretStore) -> FastAPI:
         keys=keys,
         audit=_AuditHead(targets["executor"]),
         publish_lease=publish,
+        state_store=FileDeviceState(
+            Path(os.environ.get("KS_STATE_FILE", "/state/killswitch.json"))
+        ),
     )
+    device.boot(allow_first_boot=os.environ.get("KS_ALLOW_FIRST_BOOT") == "1")
     every(5, device.poll, "ks-poll")
     app = base_app("killswitch-sim")
 
@@ -145,6 +152,14 @@ def build(store: SecretStore) -> FastAPI:
     def anomaly(body: dict[str, Any], _c: str = Depends(auth.require("worker"))) -> dict[str, Any]:
         device.anomaly(str(body["rule"])[:60], str(body["action"]))
         return view()
+
+    @app.post("/anchor")
+    def anchor(body: dict[str, Any], _c: str = Depends(auth.require("worker"))) -> dict[str, bool]:
+        return {"stored": device.anchor(int(body["seq"]), str(body["hash"])[:64])}
+
+    @app.get("/anchors")
+    def anchors(_c: str = Depends(auth.require("sim"))) -> dict[str, Any]:
+        return {"anchors": device.anchors[-200:]}
 
     @app.post("/resume/nonce")
     def nonce(_c: str = Depends(auth.require("sim"))) -> dict[str, str]:

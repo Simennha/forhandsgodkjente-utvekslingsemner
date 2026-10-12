@@ -50,6 +50,7 @@ from assistants.killswitch.core import KSState
 from assistants.killswitch.driver import (
     DeviceSecrets,
     KillSwitchDevice,
+    MemoryDeviceState,
     ResumeAttempt,
     SimHAL,
     resume_message,
@@ -71,7 +72,7 @@ from assistants.storage.stores import (
 )
 from assistants.storage.transcripts import MemoryTranscripts
 from assistants.workshop.mic import MicPipeline, SimWakeWord
-from assistants.workshop.modes import WorkshopModeController
+from assistants.workshop.modes import MemoryModeStore, WorkshopModeController
 
 DEMO_PIN = "482913"
 DEMO_DURESS = "731864"
@@ -261,6 +262,8 @@ class SimSystem:
         ]
         self.egress = SimEgress()
         self.ks_notifier = SimNotifier()
+        self.ks_state = MemoryDeviceState()
+        self.lease_key = lease_key
         pin_salt, sms_salt = secrets.token_bytes(16), secrets.token_bytes(16)
         self.killswitch = KillSwitchDevice(
             hal=self.ks_hal,
@@ -284,6 +287,7 @@ class SimSystem:
             keys=self.key_inventory,
             audit=self.audit,
             publish_lease=self._on_lease,
+            state_store=self.ks_state,
         )
 
         # --- approvals
@@ -297,7 +301,11 @@ class SimSystem:
         )
 
         # --- workshop
-        self.workshop = WorkshopModeController(self.relay, self.camera, self.audit)
+        self.mode_store = MemoryModeStore()
+        self.workshop = WorkshopModeController(
+            self.relay, self.camera, self.audit, store=self.mode_store
+        )
+        self.workshop.set_mode(Mode.NORMAL)  # the owner's first action after installation
 
         # --- executor (holds every key; here: the simulated adapters)
         self.charlie_llm = MeteredLLM(
@@ -343,6 +351,7 @@ class SimSystem:
             inventory=self.inventory,
             request_approval=self.approvals.request,
             attestations=AttestationVerifier(appr_key.public_key(), self.clock),
+            active_since=self.ks_executor_view.active_since,
         )
 
         # --- agents
@@ -408,8 +417,9 @@ class SimSystem:
             self.audit,
             charlie=lambda text, ctx: self.charlie.handle_text(text, ctx).reply,
             charlie_available=self.ks_executor_view.charlie_may_act,
+            is_test_word=self.identity.is_test_word,
         )
-        self.killswitch.publish()
+        self.killswitch.boot(allow_first_boot=True)
 
     # ------------------------------------------------------------ wiring helpers
     def check_rules(self, facts: Facts) -> Any:

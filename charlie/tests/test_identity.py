@@ -47,27 +47,28 @@ def test_unknown_number_gets_nothing(sim: SimSystem) -> None:
 
 
 def test_duress_looks_normal_restricts_and_alarms_silently(sim: SimSystem) -> None:
-    said = sim.call(
-        "charlie",
-        owner(sim),
-        ["Hva er klokka?", "Send e-post til ola@example.no om penger: send alt", "Lås opp døra"],
-        pin=DEMO_DURESS,
-    )
-    assert said[2] == PIN_ACCEPTED_REPLY  # identical to a correct PIN
-    assert "Klokka er" in said[3]  # harmless level 1 still answered
-    assert "passkey" not in said[4]
-    assert "tvang" not in " ".join(said).lower()
+    utterances = [
+        "Hva er klokka?",
+        "Send e-post til ola@example.no om penger: send alt",
+        "Lås opp døra",
+        "Slå på lys i verkstedet",
+    ]
+    normal = SimSystem().call("charlie", owner(sim), utterances, pin=DEMO_PIN)
+    said = sim.call("charlie", owner(sim), utterances, pin=DEMO_DURESS)
+    # Red team #3: every reply is word for word what a correct PIN would produce.
+    assert said == normal
+    assert said[2] == PIN_ACCEPTED_REPLY
+    # ...but nothing happened.
     assert sim.proposals.list_status("pending") == []
     assert sim.email.sent == []
     assert sim.ha.calls == []
     # Silent alarm went out on the kill-switch device's own modem to the second number.
     assert any(n == sim.cfg.identity.second_alarm_number for n, _ in sim.ks_hal.sms_sent)
-    # And the duress state is not visible in the server-side audit log.
+    # And the duress state is not visible in the server-side audit log as such.
     for e in sim.audit.entries():
         assert "duress" not in str(e.data).lower()
         assert "duress" not in e.kind
-    kinds = sim.audit.kinds()
-    assert "auth.pin_verified" in kinds
+    assert "auth.pin_verified" in sim.audit.kinds()
 
 
 def test_codes_never_reach_logs_models_or_events(sim: SimSystem) -> None:

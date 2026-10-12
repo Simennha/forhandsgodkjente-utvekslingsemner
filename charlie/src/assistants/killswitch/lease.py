@@ -41,12 +41,21 @@ def _unb64(text: str) -> bytes:
 
 
 class LeaseSigner:
-    def __init__(self, key: Ed25519PrivateKey) -> None:
+    def __init__(self, key: Ed25519PrivateKey, start_seq: int = 0) -> None:
         self._key = key
-        self._seq = 0
+        self._seq = start_seq
+
+    @property
+    def seq(self) -> int:
+        return self._seq
+
+    def resume_from(self, seq: int) -> None:
+        self._seq = max(self._seq, seq)
 
     def sign(self, state: KSState, lola_enabled: bool, now: datetime, ttl_s: int) -> str:
-        self._seq += 1
+        # Time-based and persisted: after a device restart the sequence still only grows,
+        # so servers never mistake new leases for replays (and vice versa).
+        self._seq = max(self._seq + 1, int(now.timestamp() * 1000))
         body = {
             "state": state.value,
             "lola": lola_enabled,
@@ -66,6 +75,7 @@ class LeaseVerifier:
         self._clock = clock
         self._last_seq = 0
         self._lease: Lease | None = None
+        self._active_since = float("inf")  # no lease yet: nothing is "continuously active"
 
     def accept(self, token: str) -> bool:
         try:
@@ -84,9 +94,21 @@ class LeaseVerifier:
             return False
         if lease.seq <= self._last_seq:  # replay of an old (e.g. ACTIVE) lease
             return False
+        prev = self._lease
+        continuous = (
+            prev is not None
+            and prev.state == KSState.ACTIVE
+            and lease.issued_at < prev.expires_at  # no gap between the two leases
+        )
+        if lease.state == KSState.ACTIVE and not continuous:
+            self._active_since = lease.issued_at
         self._last_seq = lease.seq
         self._lease = lease
         return True
+
+    def active_since(self) -> float:
+        """Start of the current unbroken ACTIVE period (inf if not active)."""
+        return self._active_since if self.charlie_may_act() else float("inf")
 
     def state(self) -> KSState:
         lease = self._lease

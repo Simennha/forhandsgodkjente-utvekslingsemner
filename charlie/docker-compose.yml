@@ -4,7 +4,9 @@
 #   net_edge     - published ports (127.0.0.1 only; WireGuard/tunnel in front)
 #   net_core     - internal: gateway, rules, executor, agents-charlie, approvals, worker, db
 #   net_extract  - internal: agents-charlie <-> extractor <-> executor (LLM proxy only)
-#   net_guest    - internal: gateway <-> agents-lola <-> db (lola_agent role only)
+#   net_guest    - internal: gateway <-> agents-lola
+#   net_guestdb  - internal: agents-lola <-> db-guest (separate Postgres, guest area only)
+#   net_guestdb_ops - internal: worker, migrate <-> db-guest (Lola is not on this network)
 #   net_ks       - internal: kill switch -> Charlie-side services (signed leases)
 #   net_ks_lola  - internal: kill switch -> agents-lola ONLY (separate, so Lola never shares a
 #                  network with any Charlie-side service)
@@ -37,9 +39,25 @@ services:
       POSTGRES_DB: assistants
     secrets: [db_admin]
     volumes: [dbdata:/var/lib/postgresql/data]
-    networks: [net_core, net_guest]
+    networks: [net_core]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d assistants"]
+      interval: 5s
+      retries: 20
+
+  db-guest:
+    # Separate Postgres instance for the guest area: Lola's container cannot even reach the
+    # server that holds Charlie's data (red team #10).
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_admin_guest
+      POSTGRES_DB: guest
+    secrets: [db_admin_guest]
+    volumes: [dbguest:/var/lib/postgresql/data]
+    networks: [net_guestdb, net_guestdb_ops]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d guest"]
       interval: 5s
       retries: 20
 
@@ -51,13 +69,14 @@ services:
       <<: *env
       SECRETS_FILE: /run/secrets/migrate
     secrets: [{source: migrate, target: migrate}]
-    networks: [net_core]
-    depends_on: {db: {condition: service_healthy}}
+    networks: [net_core, net_guestdb_ops]
+    depends_on: {db: {condition: service_healthy}, db-guest: {condition: service_healthy}}
     healthcheck: {disable: true}
 
   gateway:
     <<: *service
     command: ["gateway"]
+    volumes: [gwstate:/state]
     secrets: [{source: gateway, target: service}]
     ports: ["127.0.0.1:8080:8000"]
     networks: [net_edge, net_core, net_guest, net_ks]
@@ -86,7 +105,7 @@ services:
     <<: *service
     command: ["agents-lola"]
     secrets: [{source: lola, target: service}]
-    networks: [net_guest, net_lola_out, net_ks_lola]
+    networks: [net_guest, net_guestdb, net_lola_out, net_ks_lola]
     depends_on: {migrate: {condition: service_completed_successfully}}
 
   extractor:
@@ -114,12 +133,16 @@ services:
     <<: *service
     command: ["worker"]
     secrets: [{source: worker, target: service}]
-    networks: [net_core, net_ks]
+    networks: [net_core, net_guestdb_ops, net_ks]
     depends_on: {migrate: {condition: service_completed_successfully}}
 
   killswitch-sim:
     <<: *service
     command: ["killswitch-sim"]
+    environment:
+      <<: *env
+      KS_ALLOW_FIRST_BOOT: "1"   # simulator only: the real device is provisioned once
+    volumes: [ksstate:/state]
     secrets: [{source: killswitch, target: service}]
     ports: ["127.0.0.1:8090:8000"]
     networks: [net_edge, net_ks, net_ks_lola]
@@ -129,18 +152,24 @@ networks:
   net_core: {internal: true}
   net_extract: {internal: true}
   net_guest: {internal: true}
+  net_guestdb: {internal: true}
+  net_guestdb_ops: {internal: true}
   net_ks: {internal: true}
   net_ks_lola: {internal: true}
   net_egress: {}
   net_lola_out: {}
 
 volumes:
+  ksstate: {}
+  gwstate: {}
   dbdata: {}
+  dbguest: {}
   workroom: {}
 
 secrets:
   extra_ca: {file: "${EXTRA_CA_FILE:-./deploy/empty-ca.pem}"}
   db_admin: {file: ./secrets/db_admin.txt}
+  db_admin_guest: {file: ./secrets/db_admin_guest.txt}
   migrate: {file: ./secrets/migrate.json}
   gateway: {file: ./secrets/gateway.json}
   rules: {file: ./secrets/rules.json}

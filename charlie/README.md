@@ -39,11 +39,12 @@ make demo-down      # stopp demoen og slett volumene
 
 ### Demoen
 
-`make demo` bygger ett image, starter `db`, `migrate` og de ti tjenestene (`gateway`, `rules`,
+`make demo` bygger ett image, starter `db`, `db-guest`, `migrate` og de ti tjenestene (`gateway`, `rules`,
 `executor`, `agents-charlie`, `agents-lola`, `extractor`, `workroom`, `approvals`, `worker`,
 `killswitch-sim`) og kjører `scripts/demo.py`:
 
-1. helse og nettsegmentering (Lola når ikke Charlie-siden),
+1. helse og nettsegmentering (Lola når ikke Charlie-siden eller hoveddatabasen),
+   eieren logger inn (simulert passkey) og setter Vanlig modus (oppstart = mikrofoner av),
 2. samtale inn fra eierens nummer, samtykkemelding,
 3. nivå 1-svar (klokke, lager fra Postgres),
 4. PIN via DTMF,
@@ -52,7 +53,8 @@ make demo-down      # stopp demoen og slett volumene
 7. hash-kjedet logg verifisert, sletting blokkert,
 8. Lola svarer gjester og avslører ingenting om Charlie,
 9. kill switch: ett ring fra kjent nummer → PAUSED,
-10. manuell gjenoppstart (PIN + andre enhet + logg + nøkkelbytte) → ACTIVE.
+10. manuell gjenoppstart (PIN + andre enhet + logg + nøkkelbytte) → ACTIVE,
+11. kill switch-containeren startes på nytt i PAUSED og forblir i PAUSED.
 
 Telefon, passkey, andre enhet og leverandører er **simulert**. Se `HANDOFF.md` for hva som må
 kobles til virkeligheten.

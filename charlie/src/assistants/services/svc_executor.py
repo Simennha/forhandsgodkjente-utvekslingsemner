@@ -58,7 +58,7 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915 - one wiring function
     me = store.get("self.token")
     prov = providers(cfg, store)
     ks = lease_view(store, clock)
-    mode = {"value": Mode.NORMAL}
+    mode = {"value": Mode.OPEN_WORKSHOP}  # fail-safe until the gateway reports the real mode
 
     extractor = HttpExtractor(ServiceClient(URLS["extractor"], me))
     approvals = ServiceClient(URLS["approvals"], me)
@@ -120,11 +120,14 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915 - one wiring function
         runner=ToolRunner(ctx, tokens),
         inventory=inventory,
         request_approval=request_approval,
+        active_since=ks.active_since,
         attestations=AttestationVerifier(
             ed25519_public_from_str(store.get("approvals.public_key")), clock
         ),
     )
     ctx_key = b64d(store.get("ctx.hmac_key"))
+    ctx_uses: dict[str, tuple[int, float]] = {}  # token -> (uses, first seen)
+    max_uses_per_turn = 3  # a router decision holds at most 3 proposals
     app = base_app("executor", ready=lambda: True)
     app.state.simulated = prov.simulated
 
@@ -145,10 +148,19 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915 - one wiring function
         if caller == "worker":
             call_ctx = CallContext(Trust.SYSTEM, mode["value"], "system")
         else:
+            token = str(body.get("ctx_token", ""))
             try:
-                call_ctx = verify_ctx(str(body.get("ctx_token", "")), ctx_key, clock)
+                call_ctx = verify_ctx(token, ctx_key, clock)
             except Denied as exc:
                 raise HTTPException(status_code=403, detail=exc.reason) from exc
+            # A signed context covers one turn only (red team #13).
+            now_ts = clock.now().timestamp()
+            for old in [t for t, (_, seen) in ctx_uses.items() if now_ts - seen > 300]:
+                ctx_uses.pop(old, None)
+            uses, seen = ctx_uses.get(token, (0, now_ts))
+            if uses >= max_uses_per_turn:
+                raise HTTPException(status_code=403, detail="ctx_reused")
+            ctx_uses[token] = (uses + 1, seen)
             if mode["value"] == Mode.OPEN_WORKSHOP:
                 call_ctx = dataclasses.replace(call_ctx, mode=Mode.OPEN_WORKSHOP)
         return dataclasses.asdict(executor.submit(body.get("proposal"), call_ctx))

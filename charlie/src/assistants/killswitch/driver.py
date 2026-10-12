@@ -16,8 +16,11 @@ Hardware access goes through ``KillSwitchHAL``; ``SimHAL`` is the simulator.
 from __future__ import annotations
 
 import hmac
+import json
+import os
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Protocol
 
 from cryptography.exceptions import InvalidSignature
@@ -139,6 +142,92 @@ def resume_message(nonce: str, reviewed_audit_head: str) -> bytes:
     return f"resume|{nonce}|{reviewed_audit_head}".encode()
 
 
+# ---------------------------------------------------------------- durable state
+
+
+class DeviceStateStore(Protocol):
+    def load(self) -> dict[str, object] | None:
+        """Saved state, None if never saved. Raises ValueError if corrupt."""
+        ...
+
+    def save(self, data: dict[str, object]) -> None: ...
+
+
+@dataclass
+class MemoryDeviceState:
+    data: dict[str, object] | None = None
+    corrupt: bool = False
+
+    def load(self) -> dict[str, object] | None:
+        if self.corrupt:
+            raise ValueError("corrupt state")
+        return None if self.data is None else dict(self.data)
+
+    def save(self, data: dict[str, object]) -> None:
+        self.data = dict(data)
+        self.corrupt = False
+
+
+class FileDeviceState:
+    """Atomic JSON file (write temp, fsync, rename) on the device's own storage."""
+
+    def __init__(self, path: Path) -> None:
+        self._path = path
+
+    def load(self) -> dict[str, object] | None:
+        if not self._path.exists():
+            return None
+        data = json.loads(self._path.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise ValueError("corrupt state")
+        return data
+
+    def save(self, data: dict[str, object]) -> None:
+        tmp = self._path.with_suffix(".tmp")
+        with tmp.open("w", encoding="utf-8") as fh:
+            json.dump(data, fh)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, self._path)
+
+
+MAX_ANCHORS = 2000
+
+
+def _encode(
+    m: Machine, seq: int, incident: frozenset[str], anchors: list[tuple[int, str]]
+) -> dict[str, object]:
+    return {
+        "state": m.state.value,
+        "lola_enabled": m.lola_enabled,
+        "reason": m.reason,
+        "rings": [[r.number, r.known, r.at] for r in m.rings],
+        "seq": seq,
+        "incident": sorted(incident),
+        "anchors": [[s, h] for s, h in anchors[-MAX_ANCHORS:]],
+    }
+
+
+def _decode(
+    d: dict[str, object],
+) -> tuple[Machine, int, frozenset[str], list[tuple[int, str]]]:
+    rings_raw = d["rings"]
+    incident_raw = d["incident"]
+    anchors_raw = d.get("anchors", [])
+    if not isinstance(anchors_raw, list):
+        raise ValueError("corrupt state")
+    if not isinstance(rings_raw, list) or not isinstance(incident_raw, list):
+        raise ValueError("corrupt state")
+    machine = Machine(
+        state=KSState(str(d["state"])),
+        lola_enabled=bool(d["lola_enabled"]),
+        rings=tuple(Ring(str(n), bool(k), float(a)) for n, k, a in rings_raw),
+        reason=str(d["reason"]),
+    )
+    anchors = [(int(s), str(h)) for s, h in anchors_raw]
+    return machine, int(str(d["seq"])), frozenset(str(x) for x in incident_raw), anchors
+
+
 # ---------------------------------------------------------------- device
 
 
@@ -165,6 +254,46 @@ class KillSwitchDevice:
     _switch_was_engaged: bool = False
     _issued_nonces: set[str] = field(default_factory=set)
     log: list[str] = field(default_factory=list)
+    state_store: DeviceStateStore | None = None
+    anchors: list[tuple[int, str]] = field(default_factory=list)
+
+    def anchor(self, seq: int, head: str) -> bool:
+        """Keep the audit log's head hash off the server. Only ever grows."""
+        if self.anchors and seq <= self.anchors[-1][0]:
+            return False
+        self.anchors.append((seq, head))
+        self.anchors = self.anchors[-MAX_ANCHORS:]
+        self._persist()
+        return True
+
+    # -- boot ----------------------------------------------------------------
+    def boot(self, allow_first_boot: bool = False) -> KSState:
+        """Restore the saved state. Never comes back ACTIVE by itself after a STOP:
+        a missing file is only accepted on a provisioned first boot, and a corrupt file
+        boots into STOPPED."""
+        if self.state_store is None:
+            return self.machine.state
+        try:
+            saved = self.state_store.load()
+            if saved is None:
+                if not allow_first_boot:
+                    raise ValueError("no saved state and not a first boot")
+                self._persist()
+            else:
+                self.machine, seq, self.incident_fingerprints, self.anchors = _decode(saved)
+                self.signer.resume_from(seq)
+        except (ValueError, KeyError, TypeError):
+            self.machine = Machine(state=KSState.STOPPED, reason="boot:state-unreadable")
+            self._persist()
+        self.hal.set_led(self.machine.state)
+        self.publish()
+        return self.machine.state
+
+    def _persist(self) -> None:
+        if self.state_store is not None:
+            self.state_store.save(
+                _encode(self.machine, self.signer.seq, self.incident_fingerprints, self.anchors)
+            )
 
     # -- event intake ------------------------------------------------------
     def feed(self, event: Event) -> tuple[Effect, ...]:
@@ -175,6 +304,7 @@ class KillSwitchDevice:
         )
         for effect in effects:
             self._perform(effect)
+        self._persist()  # durable BEFORE the new lease goes out
         self.hal.set_led(self.machine.state)
         self.publish()
         return effects

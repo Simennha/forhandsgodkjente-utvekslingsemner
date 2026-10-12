@@ -68,7 +68,7 @@ bevisst kompromittert mock-modell (`make eval`, `tests/test_invariants.py`).
 
 | | Trussel | Tiltak | Restrisiko |
 |---|---|---|---|
-| T | Endre logg | Triggere blokkerer UPDATE/DELETE/TRUNCATE; hash beregnes i triggeren; skrivere kan ikke lese loggen; WORM-eksport | DB-superbruker kan slå av triggere → WORM-eksporten avslører det |
+| T | Endre logg | Triggere blokkerer UPDATE/DELETE/TRUNCATE; hash beregnes i triggeren; `writer` fra databaserollen; skrivere kan ikke lese loggen; WORM-eksport; siste hash forankres på kill switch-enheten | DB-superbruker kan slå av triggere og hashe på nytt → forankringen avslører det. WORM-lagring er foreløpig simulert |
 | I | Feil rolle leser data | Egne roller + RLS (`force row level security`); tester per rolle | Supabase-dashbordet har superbrukertilgang; beskytt kontoen med 2FA |
 | D | Disk full | Sletting av rå transkripsjon etter 7 dager | Overvåk disk |
 
@@ -130,7 +130,7 @@ Se scenario 9 og 10 under, og `docs/killswitch.md`.
   via uttrekkeren. Utgangsfilter på svar.
 - **Bevis:** `tests/test_lola.py`, `tests/test_db_roles.py`, `tests/test_compose_isolation.py`,
   live-sjekk i `make demo`.
-- **Restrisiko:** Lola og database deler `net_guest`; beskyttelsen der er rollen.
+- **Restrisiko:** Lola når sin egen database (`db-guest`), som bare inneholder gjesteområdet.
 
 ### 8. Replay av godkjenninger
 - **Tiltak:** Engangs-utfordring per forslag; signatur dekker forslag + parametre-hash +
@@ -149,6 +149,11 @@ Se scenario 9 og 10 under, og `docs/killswitch.md`.
 - **Tiltak:** Konsekvensen er bare tilgjengelighet. Gjenoppstart er manuell med fire
   betingelser; frosne forslag må foreslås på nytt.
 - **Restrisiko:** Bryet med nøkkelbytte etter en falsk alarm (bevisst, se D-009).
+
+## Etter red team
+
+Se `docs/redteam-report.md` for 18 funn fra en uavhengig gjennomgang og 10 egne funn, med
+rettelser, regresjonstester (`tests/test_redteam_regressions.py`) og samlet restrisiko.
 
 ## Hovedinvarianter og hvor de testes
 

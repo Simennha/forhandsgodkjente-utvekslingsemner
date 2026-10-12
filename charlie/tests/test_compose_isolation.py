@@ -45,6 +45,12 @@ def test_lola_shares_no_network_with_charlie_side() -> None:
         assert not shared, f"agents-lola shares {shared} with {name}"
 
 
+def test_lola_cannot_reach_main_database() -> None:
+    services = _compose()["services"]
+    assert not _nets(services["agents-lola"]) & _nets(services["db"])
+    assert _nets(services["agents-lola"]) & _nets(services["db-guest"])
+
+
 def test_lola_receives_no_charlie_secrets() -> None:
     services = _compose()["services"]
     sources = {
@@ -61,7 +67,15 @@ def test_workroom_has_no_network_and_no_secrets() -> None:
 
 def test_internal_networks() -> None:
     nets = _compose()["networks"]
-    for name in ("net_core", "net_extract", "net_guest", "net_ks", "net_ks_lola"):
+    for name in (
+        "net_core",
+        "net_extract",
+        "net_guest",
+        "net_guestdb",
+        "net_guestdb_ops",
+        "net_ks",
+        "net_ks_lola",
+    ):
         assert nets[name].get("internal") is True, name
 
 

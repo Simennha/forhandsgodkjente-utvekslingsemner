@@ -6,7 +6,7 @@ background:#f4f4f4;padding:12px;border-radius:8px}button{font-size:1.1em;padding
 <input id="pid" size="40"><button onclick="load()">Vis</button><pre id="text"></pre>
 <button id="ok" onclick="approve()" disabled>Godkjenn med passkey</button><p id="out"></p>
 <script>
-async function load(){const r=await fetch('/requests/'+pid.value);const d=await r.json();
+async function load(){const r=await fetch('/requests/'+pid.value,{headers:{authorization:'Bearer '+(sessionStorage.getItem('owner_session')||'')}});const d=await r.json();
 text.textContent=d.text||d.detail;ok.disabled=!d.text;window.req=d;}
 async function approve(){const d=window.req;
 const ch=Uint8Array.from(atob(d.webauthn_challenge.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));

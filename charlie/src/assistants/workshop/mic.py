@@ -53,6 +53,7 @@ class MicPipeline:
     audit: AuditLog
     charlie: Callable[[str, CallContext], str]
     charlie_available: Callable[[], bool]
+    is_test_word: Callable[[str], bool] = lambda _t: False
     replies: list[str] = field(default_factory=list)
 
     def process(self, frame: bytes) -> str | None:
@@ -65,6 +66,8 @@ class MicPipeline:
             if text.lower().startswith(word):
                 text = text[len(word) :].strip()
                 break
+        if self.is_test_word(text):
+            return "Charlie er i drift."  # liveness only; never sent to a model
         if not self.charlie_available():
             return None
         mode = self.modes.mode()

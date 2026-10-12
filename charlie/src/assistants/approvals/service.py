@@ -152,6 +152,7 @@ class ApprovalService:
             raise Denied("bad_device_signature")
         self._pending.pop(proposal_id, None)  # single use
         att = {
+            "typ": "approval",  # never confusable with an owner session (red team #15)
             "pid": req.proposal_id,
             "ph": req.params_hash,
             "ch": req.challenge,
@@ -174,6 +175,8 @@ class AttestationVerifier:
             body = b64d(body_b64)
             self._pub.verify(b64d(sig_b64), body)
             data = json.loads(body)
+            if data.get("typ") != "approval":
+                raise ValueError("wrong token type")
             att = Attestation(
                 str(data["pid"]), str(data["ph"]), str(data["ch"]), data["m"], float(data["at"])
             )

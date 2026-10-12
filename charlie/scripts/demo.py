@@ -43,6 +43,7 @@ class Demo:
         self.creds = dict(line.split("=", 1) for line in creds if "=" in line)
         self.http = httpx.Client(timeout=90)
         self.ok = True
+        self.session = ""
 
     def step(self, title: str) -> None:
         print(f"\n== {title}")
@@ -100,7 +101,14 @@ class Demo:
     def isolation(self) -> None:
         self.step("1) Helse og nettsegmentering")
         self.check(self.http.get(self.base + "/health").json()["status"] == "ok", "gateway frisk")
-        for target in ("executor:8000", "agents-charlie:8000", "extractor:8000", "rules:8000"):
+        for target in (
+            "executor:8000",
+            "agents-charlie:8000",
+            "extractor:8000",
+            "rules:8000",
+            "worker:8000",
+            "db:5432",
+        ):
             host, port = target.split(":")
             code = (
                 f"import socket,sys\ntry:\n socket.create_connection(('{host}',{port}),timeout=2)"
@@ -112,6 +120,25 @@ class Demo:
                 cwd=ROOT,
             )
             self.check(res.returncode == 0, f"Lola når ikke {target}")
+
+    def owner_mode(self) -> None:
+        self.step("1b) Eier logger inn med passkey (simulert) og setter Vanlig modus")
+        nonce = self.http.post(f"{self.approvals}/owner/login/nonce").json()["nonce"]
+        key = ed25519_private_from_str(self.sim["phone_passkey.private_key"])
+        sig = base64.b64encode(key.sign(f"login|{nonce}".encode())).decode()
+        session = self.http.post(
+            f"{self.approvals}/owner/login", json={"nonce": nonce, "signature_b64": sig}
+        ).json()["session"]
+        self.session = session
+        r = self.http.post(
+            self.base + "/owner/mode",
+            json={"mode": "normal"},
+            headers={"Authorization": f"Bearer {session}"},
+        )
+        self.check(
+            r.json().get("mode") == "normal", "modus satt av eier (start er alltid mikrofoner av)"
+        )
+        time.sleep(1)
 
     def call(self) -> str:
         self.step("2) Samtale inn fra eierens nummer (simulert telefon)")
@@ -152,7 +179,9 @@ class Demo:
         pid = self.psql(
             "select id from core.proposals where status='pending' order by created_at desc limit 1"
         )
-        req = self.http.get(f"{self.approvals}/requests/{pid}").json()
+        req = self.http.get(
+            f"{self.approvals}/requests/{pid}", headers={"Authorization": f"Bearer {self.session}"}
+        ).json()
         print(f"    telefonen viser:\n      {req['text'].replace(chr(10), chr(10) + '      ')}")
         key = ed25519_private_from_str(self.sim["phone_passkey.private_key"])
         sig = key.sign(
@@ -252,6 +281,36 @@ class Demo:
         }
         self.check(self.ks_post("/resume", attempt)["state"] == "ACTIVE", "ACTIVE igjen")
 
+    def restart(self) -> None:
+        self.step("11) Kill switch-enheten startes på nytt i PAUSED: den blir i PAUSED")
+        self.ks_post("/sim/app", {"action": "PAUSE"})
+        subprocess.run(
+            ["docker", "compose", "restart", "killswitch-sim"],
+            check=True,
+            cwd=ROOT,
+            capture_output=True,
+        )
+        for _ in range(60):
+            try:
+                state = self.ks_post("/sim/state", {})["state"]
+                break
+            except httpx.HTTPError:
+                time.sleep(1)
+        self.check(state == "PAUSED", "fortsatt PAUSED etter omstart")
+        self.ks_post("/sim/owner-replaced-keys", {})
+        nonce = self.ks_post("/resume/nonce", {})["nonce"]
+        head = self.psql("select hash from audit.log order by seq desc limit 1")
+        second = ed25519_private_from_str(self.sim["second_device.private_key"])
+        attempt = {
+            "pin": self.creds["PIN"],
+            "nonce": nonce,
+            "audit_head": head,
+            "signature_b64": base64.b64encode(second.sign(resume_message(nonce, head))).decode(),
+        }
+        self.check(
+            self.ks_post("/resume", attempt)["state"] == "ACTIVE", "manuell gjenoppstart etterpå"
+        )
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -261,11 +320,13 @@ def main() -> int:
     args = parser.parse_args()
     demo = Demo(args.base, args.approvals, args.killswitch)
     demo.isolation()
+    demo.owner_mode()
     demo.call()
     demo.approve()
     demo.audit()
     demo.lola()
     demo.killswitch()
+    demo.restart()
     print("\nDemo OK" if demo.ok else "\nDemo FEILET")
     return 0 if demo.ok else 1
 

@@ -110,3 +110,19 @@ def test_pg_caller_cannot_choose_hash(pg_dsn: str) -> None:
         ok = conn.execute("select ok from audit.verify_chain()").fetchone()
         assert ok is not None
         assert ok[0]
+
+
+@pytest.mark.db
+def test_pg_writer_is_taken_from_the_database_role(pg_dsn: str) -> None:
+    """Red team #9: a service cannot pose as another writer in the log."""
+    with psycopg.connect(pg_dsn, autocommit=True) as conn:
+        conn.execute("set role gateway_svc")
+        row = conn.execute(
+            "select seq from audit.append('executor', 'action.executed', '{}')"
+        ).fetchone()
+        conn.execute("reset role")
+        assert row is not None
+        writer = conn.execute("select writer from audit.log where seq = %s", (row[0],)).fetchone()
+        assert writer == ("gateway_svc",)
+        ok = conn.execute("select ok from audit.verify_chain()").fetchone()
+        assert ok == (True,)

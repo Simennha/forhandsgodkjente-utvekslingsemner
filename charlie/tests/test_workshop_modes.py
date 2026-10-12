@@ -94,3 +94,37 @@ def sim_tools() -> list[str]:
     from assistants.policy import default_policy  # noqa: PLC0415
 
     return list(default_policy().tools)
+
+
+def test_mode_survives_restart_and_unknown_means_mics_cut() -> None:
+    """Red team #2: a crash during open workshop must not turn the microphones back on."""
+    from assistants.adapters.hardware import SimCameraAudio, SimMicRelay  # noqa: PLC0415
+    from assistants.audit import MemoryAuditLog  # noqa: PLC0415
+    from assistants.common.clock import FakeClock  # noqa: PLC0415
+    from assistants.workshop.modes import MemoryModeStore, WorkshopModeController  # noqa: PLC0415
+
+    sim = SimSystem()
+    sim.workshop.set_mode(Mode.OPEN_WORKSHOP)
+    relay = SimMicRelay(connected=True)
+    restarted = WorkshopModeController(relay, SimCameraAudio(), sim.audit, store=sim.mode_store)
+    assert restarted.mode() == Mode.OPEN_WORKSHOP
+    assert not relay.is_connected()
+    fresh_relay = SimMicRelay(connected=True)
+    fresh = WorkshopModeController(
+        fresh_relay, SimCameraAudio(), MemoryAuditLog(FakeClock()), store=MemoryModeStore()
+    )
+    assert fresh.mode() == Mode.OPEN_WORKSHOP
+    assert not fresh_relay.is_connected()
+
+
+def test_file_mode_store(tmp_path: object) -> None:
+    from pathlib import Path  # noqa: PLC0415
+
+    from assistants.workshop.modes import FileModeStore  # noqa: PLC0415
+
+    store = FileModeStore(Path(str(tmp_path)) / "mode.json")
+    assert store.load() is None
+    store.save(Mode.GUEST)
+    assert store.load() == Mode.GUEST
+    (Path(str(tmp_path)) / "mode.json").write_text("garbage")
+    assert store.load() is None

@@ -68,7 +68,7 @@ killswitch:
     - {name: many-denials, kind: denied_burst, threshold: 10, window_s: 300, action: PAUSED}
     - {name: level4-attempts, kind: level4_attempt, threshold: 3, window_s: 600, action: PAUSED}
     - {name: pin-bruteforce, kind: pin_failures, threshold: 6, window_s: 3600, action: PAUSED}
-    - {name: cost-spike, kind: cost_spike, threshold: 50, window_s: 600, action: PAUSED}
+    - {name: cost-spike, kind: cost_spike, threshold: 30, window_s: 600, action: PAUSED}   # NOK in 10 min
 
 workshop:
   wake_words: [charlie]

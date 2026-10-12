@@ -42,7 +42,8 @@ _GUARD = re.compile(
     r"firewall|machine|money|alarm)\.[a-z_]+\b"
     r"|sk-ant|api[- ]?n[øo]kkel|\bpin\b|passord til systemet|\btoken\b|\{|\}"
     r"|har godkjent|godkjent av charlie|p[åa] vegne av charlie|charlie (har|vil|skal) "
-    r"|kalenderen til|e-posten til|lageret|innkjøp",
+    r"|kalenderen til|e-posten til|lageret|innkjøp"
+    r"|godkjen|kode(n)? til|\b\d{4,}\b",
     re.IGNORECASE,
 )
 

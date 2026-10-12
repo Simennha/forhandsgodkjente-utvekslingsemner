@@ -14,6 +14,7 @@ COPY policy ./policy
 COPY prompts ./prompts
 COPY supabase ./supabase
 COPY config.example.yaml ./
+RUN mkdir -p /state && chown app:app /state
 USER app
 EXPOSE 8000
 HEALTHCHECK --interval=15s --timeout=3s --retries=3 \

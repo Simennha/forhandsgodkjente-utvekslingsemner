@@ -190,3 +190,73 @@ def test_nothing_restarts_automatically(sim: SimSystem) -> None:
         sim.advance(600)
         sim.killswitch.poll()
     assert sim.killswitch.machine.state == KSState.STOPPED
+
+
+# ---------------------------------------------------------------- durable state (red team #1)
+
+
+def _rebooted_device(sim: SimSystem, allow_first_boot: bool = False) -> KSState:
+    from assistants.killswitch.driver import KillSwitchDevice  # noqa: PLC0415
+    from assistants.killswitch.lease import LeaseSigner  # noqa: PLC0415
+
+    old = sim.killswitch
+    sim.killswitch = KillSwitchDevice(
+        hal=old.hal,
+        secrets=old.secrets,
+        rules=old.rules,
+        clock=old.clock,
+        signer=LeaseSigner(sim.lease_key),
+        lease_ttl_s=old.lease_ttl_s,
+        owner_numbers=old.owner_numbers,
+        second_alarm_number=old.second_alarm_number,
+        known_numbers=old.known_numbers,
+        revokers=old.revokers,
+        egress=old.egress,
+        notifier=old.notifier,
+        keys=old.keys,
+        audit=old.audit,
+        publish_lease=sim._on_lease,
+        state_store=sim.ks_state,
+    )
+    return sim.killswitch.boot(allow_first_boot=allow_first_boot)
+
+
+@pytest.mark.parametrize("action", ["PAUSE", "STOP"])
+def test_restart_does_not_resume(sim: SimSystem, action: str) -> None:
+    sim.killswitch.app_button(action)
+    expected = KSState.PAUSED if action == "PAUSE" else KSState.STOPPED
+    assert _rebooted_device(sim, allow_first_boot=True) == expected
+    for _ in range(30):
+        sim.advance(5)
+        sim.killswitch.poll()
+    assert sim.ks_executor_view.state() == expected
+    assert not sim.ks_executor_view.charlie_may_act()
+
+
+def test_restart_keeps_lease_sequence_monotonic(sim: SimSystem) -> None:
+    sim.killswitch.publish()
+    _rebooted_device(sim)
+    sim.killswitch.publish()
+    assert sim.ks_executor_view.state() == KSState.ACTIVE  # new leases accepted at once
+
+
+def test_corrupt_state_boots_stopped(sim: SimSystem) -> None:
+    sim.ks_state.corrupt = True
+    assert _rebooted_device(sim, allow_first_boot=True) == KSState.STOPPED
+
+
+def test_missing_state_without_provisioning_boots_stopped(sim: SimSystem) -> None:
+    sim.ks_state.data = None
+    assert _rebooted_device(sim, allow_first_boot=False) == KSState.STOPPED
+
+
+def test_file_state_roundtrip(tmp_path: Any) -> None:
+    from assistants.killswitch.driver import FileDeviceState  # noqa: PLC0415
+
+    store = FileDeviceState(tmp_path / "ks.json")
+    assert store.load() is None
+    store.save({"a": 1})
+    assert store.load() == {"a": 1}
+    (tmp_path / "ks.json").write_text("[1,2]")
+    with pytest.raises(ValueError, match="corrupt"):
+        store.load()

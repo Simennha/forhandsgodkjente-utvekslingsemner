@@ -34,7 +34,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = Path(os.environ.get("SECRETS_DIR", ROOT / "secrets"))
 FAKE = "FAKE-REPLACE-ME"
 
-ROLES = ["charlie_agent", "lola_agent", "executor_svc", "gateway_svc", "worker_svc"]
+ROLES = ["executor_svc", "gateway_svc", "worker_svc"]  # Lola: guest DB only
 SERVICES = [
     "gateway",
     "rules",
@@ -64,9 +64,14 @@ def main() -> None:
     tokens = {s: random_token() for s in [*SERVICES, "migrate"]}
     db_pw = {r: random_token(24) for r in ROLES}
     db_admin = random_token(24)
+    db_admin_guest = random_token(24)
+    guest_pw = {r: random_token(24) for r in ("lola_agent", "worker_svc")}
 
     def dsn(role: str, host: str = "db") -> str:
         return f"postgresql://{role}:{db_pw[role]}@{host}:5432/assistants"
+
+    def guest_dsn(role: str) -> str:
+        return f"postgresql://{role}:{guest_pw[role]}@db-guest:5432/guest"
 
     lease_priv, lease_pub = new_ed25519()
     appr_priv, appr_pub = new_ed25519()
@@ -74,10 +79,11 @@ def main() -> None:
     box_priv, box_pub = new_ed25519()
     second_priv, second_pub = new_ed25519()
 
-    pin = f"{secrets.randbelow(10**6):06d}"
-    duress = f"{secrets.randbelow(10**6):06d}"
+    # 8 digits: with the pepper stolen too, brute force is ~100x harder than 6 (red team #6).
+    pin = f"{secrets.randbelow(10**8):08d}"
+    duress = f"{secrets.randbelow(10**8):08d}"
     while duress == pin:
-        duress = f"{secrets.randbelow(10**6):06d}"
+        duress = f"{secrets.randbelow(10**8):08d}"
     words = ["blåbær", "tunfisk", "kompass", "fyrlykt", "nordlys", "lakris", "skiferstein"]
     test_word = f"{secrets.choice(words)} {secrets.choice(words)}"
     ks_sms_code = f"STOPP-{random_token(6)}"
@@ -135,7 +141,7 @@ def main() -> None:
             "accept.killswitch": tokens["killswitch"],
             "anthropic.lola_api_key": FAKE,
             "lease.public_key": lease_pub,
-            "db.dsn": dsn("lola_agent"),
+            "db.dsn": guest_dsn("lola_agent"),
         },
         "extractor": {
             "self.token": tokens["extractor"],
@@ -153,6 +159,7 @@ def main() -> None:
         "worker": {
             "self.token": tokens["worker"],
             "db.dsn": dsn("worker_svc"),
+            "db.guest_dsn": guest_dsn("worker_svc"),
             "objectstore.access_key": FAKE,
         },
         "killswitch": {
@@ -170,6 +177,8 @@ def main() -> None:
         "migrate": {
             "db.admin_dsn": f"postgresql://postgres:{db_admin}@db:5432/assistants",
             **{f"db.password.{r}": pw for r, pw in db_pw.items()},
+            "db.guest_admin_dsn": f"postgresql://postgres:{db_admin_guest}@db-guest:5432/guest",
+            **{f"db.guest_password.{r}": pw for r, pw in guest_pw.items()},
         },
     }
     for name, content in files.items():
@@ -177,8 +186,9 @@ def main() -> None:
         path.write_text(json.dumps(content, indent=2), encoding="utf-8")
         # Readable by the container user; the directory itself is 700.
         os.chmod(path, 0o644)
-    (OUT / "db_admin.txt").write_text(db_admin, encoding="utf-8")
-    os.chmod(OUT / "db_admin.txt", 0o644)
+    for fname, value in (("db_admin.txt", db_admin), ("db_admin_guest.txt", db_admin_guest)):
+        (OUT / fname).write_text(value, encoding="utf-8")
+        os.chmod(OUT / fname, 0o644)
 
     sim = {
         "phone_passkey.private_key": phone_priv,

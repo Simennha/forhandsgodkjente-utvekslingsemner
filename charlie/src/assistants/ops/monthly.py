@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 from assistants.adapters.objectstore import MemoryObjectStore
-from assistants.audit import GENESIS, _hash, export_batch
+from assistants.audit import GENESIS, _hash, check_anchors, export_batch
 from assistants.common.config import ROOT
 from assistants.killswitch.core import KSState
 from assistants.ops.worker import Heartbeats, check_heartbeats
@@ -76,6 +76,15 @@ def restore_from_export(store: MemoryObjectStore) -> tuple[bool, int]:
                 return False, n
             prev, n = row["hash"], n + 1
     return True, n
+
+
+def drill_anchors(sim: SimSystem, report: DrillReport) -> None:
+    head = sim.audit.entries()[-1]
+    sim.killswitch.anchor(head.seq, head.hash)
+    report.add(
+        "logg: forankret hash på nødstopp-enheten stemmer",
+        check_anchors(sim.audit, sim.killswitch.anchors) == [],
+    )
 
 
 def drill_backup(sim: SimSystem, report: DrillReport) -> None:
