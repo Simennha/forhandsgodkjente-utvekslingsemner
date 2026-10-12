@@ -142,3 +142,14 @@ og oppdateres per fase.
 ## D-022 Samme klasser i prosess og i tjenester
 - `assistants.sim.SimSystem` kobler alt i én prosess med simulatorer (tester, eval).
   Tjenestene i `assistants/services/` kobler de samme klassene med Postgres og HTTP.
+
+## D-023 Lolas kø og bruk
+- **Valg:** Lola skriver forespørsler og beskjeder som rå, utrygg tekst (`trust='untrusted'`
+  håndheves av en CHECK-constraint og RLS) til `guest.lola_requests`. Hun kan ikke lese tilbake,
+  endre eller slette. Worker leser køen, sender teksten gjennom uttrekkeren, og lagrer bare det
+  strukturerte uttrekket for Charlie (`lola_queue.read`, nivå 1). Ingenting i køen kan bli en
+  handling uten at eieren selv ber om det i en egen, autentisert samtale.
+- Lolas kostnader og verktøykall føres i `guest.lola_usage` (hennes egen rolle), slik at taket
+  hennes håndheves uten at hun trenger tilgang til `core`.
+- Lolas svar går gjennom et utgangsfilter som stopper løfter på andres vegne, verktøynavn,
+  nøkler og JSON.

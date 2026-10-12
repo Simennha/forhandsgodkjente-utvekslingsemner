@@ -8,7 +8,7 @@ Status for en ny instans (eller et menneske) som tar over uten annen kontekst.
 |---|---|
 | 0 Fundament | Ferdig: repo, Makefile, Compose (10 tjenester + db + migrate), CI-skript, ruff, mypy, pre-commit, `policy/levels.yaml`, migrasjoner, adaptere med simulatorer, kill switch-kjerne med 100 % dekning |
 | 1 Kjerne | Ferdig: telefon (simulator), identitet/PIN/tvangskode/testord, hendelseskø, regelmotor, Utfører med kortlivede nøkler, kalender, notater, uforanderlig logg, harde tak, kill switch komplett (kjerne, enhet, lease, gjenoppstart). `make demo` kjører scenarioet ende til ende over alle containere |
-| 2 Lola | Ikke startet |
+| 2 Lola | Ferdig: eget nummer, gjesteområde (`guest`-skjema), én-veis kø (data, aldri ordre), eget tak og egen nøkkel, egen DB-rolle uten tilgang til Charlie, eget nett uten rute til Charlie-siden, utgangsfilter |
 | 3 Verksted | Ikke startet |
 | 4 Notater og uttrekker | Ikke startet |
 | 5 Hus | Ikke startet |
