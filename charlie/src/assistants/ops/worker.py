@@ -45,6 +45,24 @@ def process_lola_queue(
     return n
 
 
+def extract_transcripts(
+    transcripts: TranscriptStore,
+    extractor: ExtractorLike,
+    clock: Clock,
+    audit: AuditLog,
+    limit: int = 20,
+) -> int:
+    """Raw call transcripts -> structured extracts (kept). Raw text is deleted after N days."""
+    n = 0
+    for raw in transcripts.raw_without_extract(limit):
+        source = "transcript_owner" if raw.agent == "charlie" else "transcript_other"
+        ext = extractor.extract(source, raw.text, channel="phone", now=clock.now().isoformat())
+        transcripts.add_extract(raw.call_id, raw.agent, ext.model_dump(), clock.now())
+        audit.append("worker", "transcript.extracted", {"call": raw.call_id, "flags": ext.flags})
+        n += 1
+    return n
+
+
 def purge_transcripts(transcripts: TranscriptStore, clock: Clock, audit: AuditLog) -> int:
     n = transcripts.purge_expired(clock.now())
     audit.append("worker", "transcripts.purged", {"count": n})

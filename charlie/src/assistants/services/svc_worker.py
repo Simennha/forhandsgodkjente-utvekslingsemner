@@ -13,7 +13,12 @@ from assistants.audit import PgAuditLog, export_batch
 from assistants.common.clock import OSLO, SystemClock, oslo_month
 from assistants.common.config import load_config
 from assistants.lola_queue.store import PgQueueReader
-from assistants.ops.worker import detect_anomalies, process_lola_queue, purge_transcripts
+from assistants.ops.worker import (
+    detect_anomalies,
+    extract_transcripts,
+    process_lola_queue,
+    purge_transcripts,
+)
 from assistants.services.clients import HttpExtractor
 from assistants.services.common import URLS, ServiceClient, every, log, pool
 from assistants.storage.stores import PgCostLedger
@@ -95,6 +100,7 @@ def build(store: SecretStore) -> FastAPI:
             state["last_report"] = key
 
     every(30, queue_job, "lola-queue")
+    every(60, lambda: extract_transcripts(transcripts, extractor, clock, audit), "extracts")
     every(3600, lambda: purge_transcripts(transcripts, clock, audit), "retention")
     every(300, export_job, "audit-export")
     every(30, anomaly_job, "anomalies")

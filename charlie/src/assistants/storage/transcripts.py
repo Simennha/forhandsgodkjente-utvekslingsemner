@@ -53,6 +53,7 @@ class TranscriptStore(Protocol):
     def extracts(self, agent: str, call_id: str | None, limit: int) -> list[Extract]: ...
     def purge_expired(self, now: datetime) -> int: ...
     def raw_count(self) -> int: ...
+    def raw_without_extract(self, limit: int) -> list[RawTranscript]: ...
 
 
 @dataclass
@@ -87,6 +88,10 @@ class MemoryTranscripts:
 
     def raw_count(self) -> int:
         return len(self.raw)
+
+    def raw_without_extract(self, limit: int) -> list[RawTranscript]:
+        done = {e.call_id for e in self.extracted}
+        return [r for r in self.raw if r.call_id not in done][:limit]
 
 
 class PgTranscripts:
@@ -136,3 +141,14 @@ class PgTranscripts:
         with self._pool.connection() as conn:
             row = conn.execute("select count(*) from core.transcripts_raw").fetchone()
         return int(row[0]) if row else 0
+
+    def raw_without_extract(self, limit: int) -> list[RawTranscript]:
+        with self._pool.connection() as conn:
+            rows = conn.execute(
+                "select r.id, r.call_id, r.agent, r.created_at, r.delete_after, r.text "
+                "from core.transcripts_raw r where not exists (select 1 from "
+                "core.transcript_extracts e where e.call_id = r.call_id) "
+                "order by r.created_at limit %s",
+                (limit,),
+            ).fetchall()
+        return [RawTranscript(*r) for r in rows]

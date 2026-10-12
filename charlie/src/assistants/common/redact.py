@@ -115,3 +115,6 @@ def redact(value: Any) -> Any:
 
 def contains_secret(text: str) -> bool:
     return redact_text(text) != text
+
+
+SECRET_PATTERNS = _PATTERNS

@@ -525,6 +525,13 @@ def _compose(results: list[dict[str, Any]]) -> str:
                 f"{len(res.get('emails', []))} uleste e-poster: "
                 + "; ".join(e["extract"]["summary"][:80] for e in res.get("emails", [])[:3])
             )
+        elif tool == "conversation.read":
+            calls = res.get("calls", [])
+            parts.append(
+                "Forrige samtale: " + calls[0]["extract"].get("summary", "")[:200]
+                if calls
+                else "Fant ingen tidligere samtaler."
+            )
         elif tool == "lola_queue.read":
             parts.append(f"{len(res.get('queue', []))} beskjeder via Lola.")
         else:

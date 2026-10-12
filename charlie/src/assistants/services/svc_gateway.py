@@ -250,7 +250,13 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
     ) -> Response:
         p = await signed(request, x_twilio_signature)
         sid = store.get("twilio.account_sid")
-        audio = httpx.get(p["RecordingUrl"] + ".wav", auth=(sid, twilio_key), timeout=15).content
+        url = p.get("RecordingUrl", "")
+        # Only ever fetch recordings from Twilio's own API host for our own account (no SSRF).
+        if not url.startswith(f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Recordings/"):
+            raise HTTPException(status_code=400, detail="unexpected recording url")
+        audio = httpx.get(
+            url + ".wav", auth=(sid, twilio_key), timeout=15, follow_redirects=False
+        ).content
         said = gw.audio(p["CallSid"], audio)
         return twiml(said, f'<Record maxLength="20" action="/twilio/recorded/{line}"/>')
 

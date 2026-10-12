@@ -37,7 +37,7 @@ def test_ctx_roundtrip_and_tamper() -> None:
 
 def test_service_auth_only_listed_callers() -> None:
     store = MemorySecretStore(
-        {"accept.charlie": "tok-charlie-123456", "accept.worker": "tok-worker-123456"}
+        {"accept.charlie": "tok-FAKE-charlie-123456", "accept.worker": "tok-FAKE-worker-123456"}
     )
     auth = ServiceAuth(store)
     app = FastAPI()
@@ -50,7 +50,8 @@ def test_service_auth_only_listed_callers() -> None:
     assert client.post("/x").status_code == 401
     assert client.post("/x", headers={"Authorization": "Bearer nope"}).status_code == 403
     assert (
-        client.post("/x", headers={"Authorization": "Bearer tok-worker-123456"}).status_code == 403
+        client.post("/x", headers={"Authorization": "Bearer tok-FAKE-worker-123456"}).status_code
+        == 403
     )
-    ok = client.post("/x", headers={"Authorization": "Bearer tok-charlie-123456"})
+    ok = client.post("/x", headers={"Authorization": "Bearer tok-FAKE-charlie-123456"})
     assert ok.json() == {"caller": "charlie"}

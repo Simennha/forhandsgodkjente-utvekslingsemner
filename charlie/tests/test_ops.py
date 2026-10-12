@@ -84,3 +84,18 @@ def test_raw_transcripts_deleted_after_7_days_extracts_kept() -> None:
     assert purge_transcripts(sim.transcripts, sim.clock, sim.audit) == 1
     assert sim.transcripts.raw_count() == 0
     assert len(sim.transcripts.extracts("charlie", None, 10)) == 1
+
+
+def test_call_transcripts_become_extracts_for_les_samtale() -> None:
+    from assistants.ops.worker import extract_transcripts  # noqa: PLC0415
+
+    sim = SimSystem()
+    owner = sim.cfg.identity.owner_numbers[0]
+    sim.call("charlie", owner, ["Husk at Kari kommer torsdag kl 18"])
+    assert extract_transcripts(sim.transcripts, sim.extractor, sim.clock, sim.audit) == 1
+    assert extract_transcripts(sim.transcripts, sim.extractor, sim.clock, sim.audit) == 0
+    said = sim.call("charlie", owner, ["Hva snakket vi om forrige samtale?"])
+    assert "Forrige samtale" in said[-1]
+    assert "Kari" in said[-1]
+    [extract] = sim.transcripts.extracts("charlie", None, 5)
+    assert "Kari" in str(extract.extract)

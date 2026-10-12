@@ -56,8 +56,13 @@ class RateLimiter:
         self._clock = clock
         self._hits: dict[str, deque[datetime]] = {}
 
+    MAX_KEYS = 10_000
+
     def allow(self, key: str, limit: int, window_s: int = 3600) -> bool:
         now = self._clock.now()
+        if len(self._hits) > self.MAX_KEYS:  # bounded memory under number-spoofing floods
+            cutoff = now - timedelta(seconds=window_s)
+            self._hits = {k: q for k, q in self._hits.items() if q and q[-1] > cutoff}
         q = self._hits.setdefault(key, deque())
         while q and now - q[0] > timedelta(seconds=window_s):
             q.popleft()
