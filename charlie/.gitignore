@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+secrets/*
+!secrets/.gitkeep
+.env
+config.yaml
+*.age
+var/
+*.egg-info/

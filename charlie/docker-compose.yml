@@ -1,0 +1,153 @@
+# Charlie & Lola - local deployment on the mini-PC (Linux), reachable only over WireGuard.
+#
+# Network segmentation (VLAN logic as compose networks; see docs/architecture.md):
+#   net_edge     - published ports (127.0.0.1 only; WireGuard/tunnel in front)
+#   net_core     - internal: gateway, rules, executor, agents-charlie, approvals, worker, db
+#   net_extract  - internal: agents-charlie <-> extractor <-> executor (LLM proxy only)
+#   net_guest    - internal: gateway <-> agents-lola <-> db (lola_agent role only)
+#   net_ks       - internal: kill switch -> Charlie-side services (signed leases)
+#   net_ks_lola  - internal: kill switch -> agents-lola ONLY (separate, so Lola never shares a
+#                  network with any Charlie-side service)
+#   net_egress   - internet: executor only (holds every Charlie-side key)
+#   net_lola_out - internet: agents-lola only (Lola's own LLM key, nothing else)
+# workroom has network_mode: none (no network at all).
+# Lola is NOT on net_core / net_extract / net_egress: no route to Charlie's tools, keys or data.
+
+x-service: &service
+  build:
+    context: .
+    secrets: [extra_ca]
+  image: charlie-assistants:local
+  restart: unless-stopped
+  read_only: true
+  tmpfs: [/tmp]
+  security_opt: ["no-new-privileges:true"]
+  cap_drop: [ALL]
+  environment: &env
+    ASSISTANTS_CONFIG: /app/config.example.yaml
+    SECRETS_FILE: /run/secrets/service
+    PORT: "8000"
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_admin
+      POSTGRES_DB: assistants
+    secrets: [db_admin]
+    volumes: [dbdata:/var/lib/postgresql/data]
+    networks: [net_core, net_guest]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d assistants"]
+      interval: 5s
+      retries: 20
+
+  migrate:
+    <<: *service
+    restart: "no"
+    entrypoint: ["python", "-m", "assistants.storage.bootstrap"]
+    environment:
+      <<: *env
+      SECRETS_FILE: /run/secrets/migrate
+    secrets: [{source: migrate, target: migrate}]
+    networks: [net_core]
+    depends_on: {db: {condition: service_healthy}}
+    healthcheck: {disable: true}
+
+  gateway:
+    <<: *service
+    command: ["gateway"]
+    secrets: [{source: gateway, target: service}]
+    ports: ["127.0.0.1:8080:8000"]
+    networks: [net_edge, net_core, net_guest, net_ks]
+    depends_on: {migrate: {condition: service_completed_successfully}}
+
+  rules:
+    <<: *service
+    command: ["rules"]
+    secrets: [{source: rules, target: service}]
+    networks: [net_core]
+
+  executor:
+    <<: *service
+    command: ["executor"]
+    secrets: [{source: executor, target: service}]
+    networks: [net_core, net_extract, net_egress, net_ks]
+    depends_on: {migrate: {condition: service_completed_successfully}}
+
+  agents-charlie:
+    <<: *service
+    command: ["agents-charlie"]
+    secrets: [{source: charlie, target: service}]
+    networks: [net_core, net_extract, net_ks]
+
+  agents-lola:
+    <<: *service
+    command: ["agents-lola"]
+    secrets: [{source: lola, target: service}]
+    networks: [net_guest, net_lola_out, net_ks_lola]
+    depends_on: {migrate: {condition: service_completed_successfully}}
+
+  extractor:
+    <<: *service
+    command: ["extractor"]
+    secrets: [{source: extractor, target: service}]
+    networks: [net_extract]
+
+  workroom:
+    <<: *service
+    command: ["workroom"]
+    network_mode: none
+    secrets: []
+    healthcheck: {disable: true}
+    volumes: [workroom:/work]
+
+  approvals:
+    <<: *service
+    command: ["approvals"]
+    secrets: [{source: approvals, target: service}]
+    ports: ["127.0.0.1:8443:8000"]
+    networks: [net_edge, net_core]
+
+  worker:
+    <<: *service
+    command: ["worker"]
+    secrets: [{source: worker, target: service}]
+    networks: [net_core]
+    depends_on: {migrate: {condition: service_completed_successfully}}
+
+  killswitch-sim:
+    <<: *service
+    command: ["killswitch-sim"]
+    secrets: [{source: killswitch, target: service}]
+    ports: ["127.0.0.1:8090:8000"]
+    networks: [net_edge, net_ks, net_ks_lola]
+
+networks:
+  net_edge: {}
+  net_core: {internal: true}
+  net_extract: {internal: true}
+  net_guest: {internal: true}
+  net_ks: {internal: true}
+  net_ks_lola: {internal: true}
+  net_egress: {}
+  net_lola_out: {}
+
+volumes:
+  dbdata: {}
+  workroom: {}
+
+secrets:
+  extra_ca: {file: "${EXTRA_CA_FILE:-./deploy/empty-ca.pem}"}
+  db_admin: {file: ./secrets/db_admin.txt}
+  migrate: {file: ./secrets/migrate.json}
+  gateway: {file: ./secrets/gateway.json}
+  rules: {file: ./secrets/rules.json}
+  executor: {file: ./secrets/executor.json}
+  charlie: {file: ./secrets/charlie.json}
+  lola: {file: ./secrets/lola.json}
+  extractor: {file: ./secrets/extractor.json}
+  approvals: {file: ./secrets/approvals.json}
+  worker: {file: ./secrets/worker.json}
+  killswitch: {file: ./secrets/killswitch.json}

@@ -1,0 +1,78 @@
+[project]
+name = "assistants"
+version = "0.1.0"
+description = "Charlie (private assistant) and Lola (reception) - security enforced in code, outside the model."
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "fastapi==0.143.0",
+    "uvicorn==0.54.0",
+    "pydantic==2.14.1",
+    "psycopg[binary]==3.3.6",
+    "sqlalchemy==2.1.4",
+    "pyyaml==6.0.3",
+    "httpx==0.28.1",
+    "cryptography==50.0.2",
+    "jsonschema==4.26.0",
+]
+
+[project.optional-dependencies]
+live = ["anthropic==1.13.0", "webauthn==3.0.1"]
+dev = [
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+    "hypothesis==6.169.0",
+    "ruff==0.17.0",
+    "mypy==2.4.0",
+    "types-PyYAML==6.0.12.20260906",
+    "pre-commit==4.6.2",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+assistants = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF", "N", "PL", "C4", "PT", "RET"]
+ignore = [
+    "PLR0913",  # explicit dependency injection makes long signatures normal
+    "PLR2004",  # magic numbers are fine in tests and simple thresholds
+    "RUF001", "RUF002", "RUF003",  # Norwegian text contains non-ASCII letters on purpose
+    "PLR0911", "PLR0912", "PLR0917",
+    "N818",  # Denied, SecretMissing read better than DeniedError
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S105", "S106", "S311", "PLR2004", "S608"]
+"scripts/**" = ["S603", "S607", "T201"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"
+packages = ["assistants"]
+plugins = ["pydantic.mypy"]
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["anthropic.*", "webauthn.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+    "db: needs PostgreSQL (TEST_DATABASE_URL)",
+    "live: talks to a real external service; only run via make eval-live",
+]
+filterwarnings = ["error::pytest.PytestUnraisableExceptionWarning"]

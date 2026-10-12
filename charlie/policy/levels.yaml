@@ -1,0 +1,71 @@
+# Single source of truth for access levels.
+#
+# Level 1 = read, Level 2 = act alone (light, reversible),
+# Level 3 = propose and confirm (passkey; approval box for large things),
+# Level 4 = never. Level 4 actions are listed ONLY so that tests can prove
+# they have no implementation, no tool and no API route anywhere.
+#
+# Enforced in code by assistants.rules.engine and assistants.executor.
+# tests/test_policy.py fails if a registered tool is missing here, or if
+# anything here is missing a level.
+
+version: 1
+
+agents:
+  charlie:
+    description: "Owner's private assistant"
+  lola:
+    description: "Reception for everyone else. Guest area only."
+
+tools:
+  # ---------------- Charlie: level 1 (read) ----------------
+  inventory.read:          {level: 1, agents: [charlie], description: "Se beholdning og lagerplasser"}
+  inventory.suggestions:   {level: 1, agents: [charlie], description: "Se innkjøpsforslag per lokasjon"}
+  sensors.read:            {level: 1, agents: [charlie], description: "Les verkstedsensorer"}
+  status.read:             {level: 1, agents: [charlie], description: "Systemstatus (harmløs)", duress_safe: true}
+  calendar.read:           {level: 1, agents: [charlie], description: "Les kalender"}
+  email.read:              {level: 1, agents: [charlie], description: "Les e-post (kun som uttrekk)"}
+  notes.read:              {level: 1, agents: [charlie], description: "Les notater"}
+  project.status_read:     {level: 1, agents: [charlie], description: "Les prosjektstatus"}
+  conversation.read:       {level: 1, agents: [charlie], description: "les_samtale: les uttrekk fra egne samtaler"}
+  lola_queue.read:         {level: 1, agents: [charlie], description: "Les Lolas forespørselskø (som data)"}
+  time.read:               {level: 1, agents: [charlie], description: "Klokkeslett og dato", duress_safe: true}
+  weather.read:            {level: 1, agents: [charlie], description: "Værmelding (offentlig)", duress_safe: true}
+
+  # ---------------- Charlie: level 2 (act alone, reversible) ----------------
+  calendar.create_own_event: {level: 2, agents: [charlie], description: "Lag egen kalenderhendelse (uten gjester)"}
+  email.create_draft:      {level: 2, agents: [charlie], description: "Lag e-postutkast (sendes ikke)"}
+  notes.remember:          {level: 2, agents: [charlie], description: "«Husk dette»"}
+  project.update_status:   {level: 2, agents: [charlie], description: "Oppdater prosjektstatus"}
+  workshop.lights_set:     {level: 2, agents: [charlie], description: "Verkstedlys av/på/dimming"}
+  workshop.sensor_log:     {level: 2, agents: [charlie], description: "Skriv til sensorlogg"}
+  report.generate:         {level: 2, agents: [charlie], description: "Lag rapport (f.eks. ukentlig prosjektrapport)"}
+  alert.notify_owner:      {level: 2, agents: [charlie], description: "Varsle eieren"}
+  inventory.move:          {level: 2, agents: [charlie], description: "Flytt mellom lagerplasser i SAMME lokasjon (to bevegelser, årsak flytt)"}
+
+  # ---------------- Charlie: level 3 (propose + confirm) ----------------
+  email.send:              {level: 3, agents: [charlie], confirm: passkey, description: "Send e-post"}
+  inventory.order:         {level: 3, agents: [charlie], confirm: passkey, large_confirm: approval_box, description: "Bestilling innenfor tak"}
+  calendar.invite:         {level: 3, agents: [charlie], confirm: passkey, description: "Invitasjon til andre"}
+  house.lights_set:        {level: 3, agents: [charlie], confirm: passkey, description: "Huslys"}
+  house.heating_set:       {level: 3, agents: [charlie], confirm: passkey, description: "Varme (termostat)"}
+  house.door_lock_set:     {level: 3, agents: [charlie], confirm: passkey, description: "Dørlås"}
+
+  # ---------------- Lola (guest area only) ----------------
+  guest.house_rules_read:  {level: 1, agents: [lola], description: "Husregler og åpningstider"}
+  guest.take_message:      {level: 2, agents: [lola], description: "Ta imot beskjed (lagres som data)"}
+  guest.queue_request:     {level: 2, agents: [lola], description: "Legg forespørsel i køen til Charlie (data, aldri ordre)"}
+
+# Level 4: NEVER. Deliberately not implemented. No handler, no tool, no route.
+# The patterns are used by tests/test_level4_absent.py to scan the code base.
+forbidden:
+  backup.delete:      {level: 4, description: "Slette backup", patterns: ["delete_backup", "backup_delete", "remove_backup", "purge_backup"]}
+  keys.change:        {level: 4, description: "Endre nøkler", patterns: ["rotate_key", "change_key", "set_api_key", "update_secret", "write_secret", "put_secret"]}
+  firewall.change:    {level: 4, description: "Endre brannmur", patterns: ["firewall_open", "open_firewall", "firewall_allow", "add_firewall_rule", "allow_egress"]}
+  machine.start:      {level: 4, description: "Starte maskiner", patterns: ["start_machine", "machine_start", "spindle_on", "power_on_machine", "start_cnc", "start_laser"]}
+  money.transfer:     {level: 4, description: "Flytte penger", patterns: ["transfer_money", "money_transfer", "bank_transfer", "send_payment", "make_payment"]}
+  alarm.disable:      {level: 4, description: "Slå av alarm", patterns: ["disable_alarm", "alarm_disable", "alarm_off", "disarm", "alarm_control_panel.alarm_disarm"]}
+
+# Duress (tvangskode) restricts a session to tools flagged duress_safe above.
+duress:
+  allowed_tools_flag: duress_safe

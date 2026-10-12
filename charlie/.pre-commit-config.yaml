@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry: .venv/bin/python -m ruff check
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: .venv/bin/python -m ruff format --check
+        language: system
+        types: [python]
+      - id: mypy
+        name: mypy --strict
+        entry: .venv/bin/python -m mypy --strict src
+        language: system
+        pass_filenames: false
+        types: [python]
+      - id: no-secrets
+        name: no secrets committed
+        entry: .venv/bin/python scripts/check_no_secrets.py
+        language: system
