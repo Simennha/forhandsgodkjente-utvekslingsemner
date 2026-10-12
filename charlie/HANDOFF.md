@@ -11,7 +11,7 @@ Status for en ny instans (eller et menneske) som tar over uten annen kontekst.
 | 2 Lola | Ferdig: eget nummer, gjesteområde (`guest`-skjema), én-veis kø (data, aldri ordre), eget tak og egen nøkkel, egen DB-rolle uten tilgang til Charlie, eget nett uten rute til Charlie-siden, utgangsfilter |
 | 3 Verksted | Ferdig: mikrofon-pipeline (simulert relé, vekkeord, STT), Vanlig/Gjest/Åpent verksted, lager med ni tabeller, seed (45 artikler, R1–R11 + ESD), innkjøpsforslag per lokasjon (SQL), flytt på nivå 2, ingen overføring NO↔CH |
 | 4 Notater og uttrekker | Ferdig: «husk dette», e-post via isolert uttrekker-container, ukentlig prosjektrapport med parallelle underagenter, korpus med 56 norske angrepssetninger, `make eval` (lydig + kompromittert mock): 0 harde brudd |
-| 5 Hus | Ikke startet |
+| 5 Hus | Ferdig: Home Assistant-adapter (REST + mock), lys/varme/dørlås på nivå 3 med passkey, alarm har ingen kodevei (policy, adapter-allowlist, entitets-allowlist), månedlig test (`make monthly-test`) |
 
 ## Kjøre
 
