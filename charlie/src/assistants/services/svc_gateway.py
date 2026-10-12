@@ -33,6 +33,7 @@ from assistants.identity import Credentials, IdentityService
 from assistants.services.common import URLS, ServiceAuth, ServiceClient, lease_view, log, pool
 from assistants.storage.events_pg import PgEventQueue
 from assistants.storage.transcripts import PgTranscripts
+from assistants.workshop.mic import MicPipeline, SimWakeWord
 from assistants.workshop.modes import WorkshopModeController
 
 
@@ -119,6 +120,15 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
         lola_handler,
         ks.charlie_may_act,
     )
+    mic = MicPipeline(
+        workshop,
+        SimWakeWord(tuple(cfg.workshop.wake_words)),
+        SimSTT(),
+        tts,
+        audit,
+        charlie_handler,
+        ks.charlie_may_act,
+    )
     app = base_app("gateway")
 
     # ------------------------------------------------------------ signature checks
@@ -166,6 +176,13 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915
     ) -> dict[str, str]:
         p = await signed(request, x_twilio_signature)
         return {"reply": gw.sms(line, p["from"], p["body"])}
+
+    @app.post("/sim/mic")
+    async def sim_mic(
+        request: Request, x_twilio_signature: str | None = Header(default=None)
+    ) -> dict[str, str | None]:
+        p = await signed(request, x_twilio_signature)
+        return {"say": mic.process(p["audio"].encode())}
 
     @app.post("/sim/door")
     async def sim_door(

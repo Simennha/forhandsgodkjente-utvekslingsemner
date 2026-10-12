@@ -44,7 +44,7 @@ from assistants.executor.handlers import ToolContext, ToolRunner
 from assistants.executor.tokens import ActionTokens
 from assistants.gateway.core import Gateway
 from assistants.identity import Credential, Credentials, IdentityService
-from assistants.inventory.repo import MemoryInventory
+from assistants.inventory.repo import InventoryRepo, MemoryInventory
 from assistants.killswitch.core import KSState
 from assistants.killswitch.driver import (
     DeviceSecrets,
@@ -69,6 +69,7 @@ from assistants.storage.stores import (
     MemoryToolCallLog,
 )
 from assistants.storage.transcripts import MemoryTranscripts
+from assistants.workshop.mic import MicPipeline, SimWakeWord
 from assistants.workshop.modes import WorkshopModeController
 
 DEMO_PIN = "482913"
@@ -204,6 +205,7 @@ class SimSystem:
         llm: LLMClient | None = None,
         compromised: bool = False,
         policy: Policy | None = None,
+        inventory: InventoryRepo | None = None,
     ) -> None:
         self.cfg = cfg or load_config(ROOT / "config.example.yaml")
         self.policy = policy or default_policy()
@@ -232,7 +234,7 @@ class SimSystem:
         self.raw_llm: LLMClient = llm or mock_llm(compromised)
 
         # --- data
-        self.inventory = seed_inventory()
+        self.inventory: InventoryRepo = inventory or seed_inventory()
         self.guest_store = seed_guest()
         self.notes = MemoryNotes()
         self.projects = MemoryProjects()
@@ -393,6 +395,16 @@ class SimSystem:
             self.workshop.mode,
             charlie=lambda text, ctx: self.charlie.handle_text(text, ctx).reply,
             lola=lambda text, ch, num: self.lola.handle(text, ch, num).reply,
+            charlie_available=self.ks_executor_view.charlie_may_act,
+        )
+        self.wake = SimWakeWord(tuple(self.cfg.workshop.wake_words))
+        self.mic = MicPipeline(
+            self.workshop,
+            self.wake,
+            self.stt,
+            self.tts,
+            self.audit,
+            charlie=lambda text, ctx: self.charlie.handle_text(text, ctx).reply,
             charlie_available=self.ks_executor_view.charlie_may_act,
         )
         self.killswitch.publish()

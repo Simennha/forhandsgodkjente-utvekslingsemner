@@ -153,3 +153,23 @@ og oppdateres per fase.
   hennes håndheves uten at hun trenger tilgang til `core`.
 - Lolas svar går gjennom et utgangsfilter som stopper løfter på andres vegne, verktøynavn,
   nøkler og JSON.
+
+## D-024 Verkstedmikrofonen
+- **Valg:** Vekkeord oppdages på enheten (simulert; f.eks. openWakeWord i produksjon). Etter
+  vekkeordet transkriberes bare den ene ytringen, i minnet, og lagres aldri som transkripsjon.
+  Stemmen i verkstedet er ikke autentisert: Vanlig modus gir høyst nivå 1–2 (som kjent nummer),
+  Gjestemodus bare harmløse nivå 1-svar.
+- **Valg:** Modus settes av eieren (PWA eller bryter på veggen), aldri av Charlie. Det finnes
+  ikke noe verktøy for modus, relé eller mikrofon.
+- **Valg:** Reléet er normalt åpent (mikrofonene kuttet når strømmen går).
+
+## D-025 Lager
+- **Valg:** Beholdning vedlikeholdes bare av triggere fra `bevegelse`. En flytt er to rader
+  med samme `flytt_id`; en utsatt constraint-trigger krever nøyaktig to motsatte rader innen
+  samme lokasjon, ellers ruller transaksjonen tilbake. ESD-følsomme artikler kan ikke ligge
+  utenfor ESD-sonen. `bevegelse` kan ikke endres eller slettes.
+- **Valg:** `generer_innkjopsforslag(lokasjon)` erstatter tidligere «ny»-forslag for den
+  lokasjonen og foreslår `maks - beholdning` når beholdning < min. Hver lokasjon bestiller
+  fra sine egne regler; det finnes ingen kodevei for overføring mellom Norge og Sveits.
+- **Valg:** Priser lagres i NOK også for sveitsiske leverandører (forenkling; kurs i konfig
+  kan legges til senere).
