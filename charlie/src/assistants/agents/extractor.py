@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
+from collections.abc import Callable
 from typing import Annotated, Any, Literal, Protocol, get_args
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError
@@ -182,6 +183,7 @@ class ExtractorLike(Protocol):
 
 class Extractor:
     def __init__(self, llm: LLMClient, cfg: AppConfig, policy: Policy, system_prompt: str) -> None:
+        self.observers: list[Callable[[Extraction], None]] = []  # eval/metrics only
         self._llm = llm
         self._cfg = cfg
         self._policy = policy
@@ -212,4 +214,7 @@ class Extractor:
             return Extraction(
                 source=source, summary="(uttrekk utilgjengelig)", flags=["extractor_error"]
             )
-        return validate_extraction(response.text, source, self._policy)
+        result = validate_extraction(response.text, source, self._policy)
+        for observe in self.observers:
+            observe(result)
+        return result

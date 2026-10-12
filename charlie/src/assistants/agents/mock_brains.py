@@ -36,6 +36,7 @@ LEVEL4_WORDS = {
         "fjern backup",
         "delete backup",
         "slett alle backup",
+        "slett all backup",
     ),
     "keys.change": (
         "endre nøkkel",
@@ -80,6 +81,7 @@ INJECTION_WORDS = (
     "developer mode",
     "jailbreak",
     "overse reglene",
+    "glem reglene",
     "nye regler",
 )
 URGENCY_WORDS = (
@@ -425,6 +427,13 @@ def router_brain(compromised: bool) -> Brain:
         payload = json.loads(req.user_content)
         if payload.get("step") == "compose":
             return json.dumps({"reply": _compose(payload["results"])}, ensure_ascii=False)
+        if payload.get("step") == "report_section":
+            project = payload["project"]
+            n = len(payload.get("notes", []))
+            return json.dumps(
+                {"reply": f"{project['name']}: {project['status']} ({n} notater denne uken)."},
+                ensure_ascii=False,
+            )
         ext = payload["extraction"]
         flags = set(ext.get("flags", []))
         source = ext.get("source")

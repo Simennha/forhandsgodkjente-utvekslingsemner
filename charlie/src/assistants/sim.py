@@ -27,6 +27,7 @@ from assistants.agents.charlie import CharlieAgent
 from assistants.agents.extractor import Extractor
 from assistants.agents.lola import LolaAgent
 from assistants.agents.mock_brains import mock_llm
+from assistants.agents.report import make_report_writer
 from assistants.approvals.service import (
     ApprovalRequest,
     ApprovalService,
@@ -322,6 +323,7 @@ class SimSystem:
                 src, text, channel="email"
             ).model_dump(),
         )
+        self.tool_ctx.report_writer = make_report_writer(self.charlie_llm, self.cfg)
         self.tokens = ActionTokens(
             secrets.token_bytes(32), self.clock, MemoryTokenLedger(), self.cfg.action_tokens.ttl_s
         )

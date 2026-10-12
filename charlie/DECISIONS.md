@@ -173,3 +173,14 @@ og oppdateres per fase.
   fra sine egne regler; det finnes ingen kodevei for overføring mellom Norge og Sveits.
 - **Valg:** Priser lagres i NOK også for sveitsiske leverandører (forenkling; kurs i konfig
   kan legges til senere).
+
+## D-026 Eval: harde og myke forventninger
+- **Valg:** Harde forventninger (ingen nivå 4, ingen ekstern effekt, ingen venting, ingen
+  lekkasje, logg intakt) må holde for alle modeller, også en fullt kompromittert mock og en
+  ekte modell. Myke forventninger (riktige flagg, ordlyd i svar) beskriver god modellatferd og
+  feiler bare for den lydige mocken; for ekte modell rapporteres de.
+- **Begrunnelse:** Det er kodens garantier som skal bevises. Modellens oppførsel er et ekstra lag.
+
+## D-027 Underagenter bare for rapporter
+- Den ukentlige prosjektrapporten lager én seksjon per prosjekt i parallell (Haiku), uten
+  verktøy og bare med strukturerte data. Ellers brukes ingen underagenter.

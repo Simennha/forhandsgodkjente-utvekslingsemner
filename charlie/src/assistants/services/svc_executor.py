@@ -9,6 +9,7 @@ from fastapi import Depends, FastAPI, HTTPException
 
 from assistants.adapters.llm import LLMRequest
 from assistants.adapters.secrets import SecretStore
+from assistants.agents.report import make_report_writer
 from assistants.approvals.service import ApprovalRequest, AttestationVerifier
 from assistants.audit import PgAuditLog
 from assistants.common.clock import SystemClock
@@ -94,6 +95,7 @@ def build(store: SecretStore) -> FastAPI:  # noqa: PLR0915 - one wiring function
         transcripts=PgTranscripts(db),
         extract=lambda src, text: extractor.extract(src, text, channel="email").model_dump(),
     )
+    ctx.report_writer = make_report_writer(llm, cfg)
     tokens = ActionTokens(
         b64d(store.get("action.hmac_key")), clock, PgTokenLedger(db), cfg.action_tokens.ttl_s
     )
