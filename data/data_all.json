@@ -5966,6 +5966,48 @@
  },
  {
   "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "01SEWS",
+  "fagnavn_host": "Mathematical and statistical methods for Artificial Intelligence",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4171",
+  "ntnu_emnenavn": "Metoder i KI",
+  "emnetype": "IDI",
+  "godkjent": "JA",
+  "behandlingsdato": "2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Politec de Torino",
+  "country": "Italia",
+  "page_id": "110003070",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003070",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4162"
+  ],
+  "fagkode_host": "01KYOYC",
+  "fagnavn_host": "Innovation management and product development",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4162",
+  "ntnu_emnenavn": "Org.tek.2",
+  "emnetype": "IØT",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Jonas A Ingvaldsen",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Politec de Torino",
+  "country": "Italia",
+  "page_id": "110003070",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003070",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "052909",
@@ -10911,7 +10953,7 @@
   "fagkode_host": "IN0000005",
   "fagnavn_host": "",
   "studiepoeng": "",
-  "ntnu_emnekode": "TIØ4162",
+  "ntnu_emnekode": "TIØ4162 Organisasjon og teknologi 2",
   "ntnu_emnenavn": "",
   "emnetype": "",
   "godkjent": "JA",
@@ -10959,6 +11001,111 @@
   "godkjent": "JA",
   "behandlingsdato": "Okt 2026",
   "behandlet_av": "Sjur Westgaard",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4300"
+  ],
+  "fagkode_host": "SC0000132 Data Mining",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4300 Datavarehus og datagruvedrift",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "INQ1097772 Introduction to Machine Learning",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4172 Intro til maskinlæring",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "SCQ0093639 Artificial Intelligence",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4171 Metoder i Kunstig intelligens",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4162"
+  ],
+  "fagkode_host": "SCQ1095595",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4162 Organisasjon og teknologi 2",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA MEN*",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Jonas Alexander Ingvaldsen",
+  "kommentar": "*IN0000005 treffer bedre innholdet av TIØ4162 slik det er blitt gjennomført med størst vekt på prosjektledelse",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4130"
+  ],
+  "fagkode_host": "SCQ3104300 + SC0000143",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMA4130 Matematikk 4N",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Sverre Olaf Smalø",
   "kommentar": "",
   "rejected": false,
   "university": "Universita Degli Studi de Padova",
@@ -19583,6 +19730,48 @@
   "behandlingsdato": "Aug 2026",
   "behandlet_av": "Carlos Alberto Dorao",
   "kommentar": "",
+  "rejected": false,
+  "university": "Universitat Politècnica de Catalunya - Barcelona",
+  "country": "Spania",
+  "page_id": "119440886",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119440886",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "2400200",
+  "fagnavn_host": "Data Science and Artificial Intelligence for Industry",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4171 Metoder i KI",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA MEN*",
+  "behandlingsdato": "2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "*You cannot take both 2400200 and 240346, the overlap between these two courses is too high",
+  "rejected": false,
+  "university": "Universitat Politècnica de Catalunya - Barcelona",
+  "country": "Spania",
+  "page_id": "119440886",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119440886",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4259"
+  ],
+  "fagkode_host": "240346",
+  "fagnavn_host": "Data Science",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4259 Anvendt Data Science",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA MEN*",
+  "behandlingsdato": "2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "*You cannot take both 2400200 and 240346, the overlap between these two courses is too high",
   "rejected": false,
   "university": "Universitat Politècnica de Catalunya - Barcelona",
   "country": "Spania",
@@ -29766,6 +29955,27 @@
   "continent": "Asia"
  },
  {
+  "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "DSAI4203",
+  "fagnavn_host": "Machine Learning",
+  "studiepoeng": "6",
+  "ntnu_emnekode": "TDT4172",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "The Hong Kong Politechnic University",
+  "country": "Kina",
+  "page_id": "119441809",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=119441809",
+  "continent": "Asia"
+ },
+ {
   "ntnu_codes": [],
   "fagkode_host": "COMP2211",
   "fagnavn_host": "Exploring Artificial Intelligence",
@@ -33259,6 +33469,88 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4162"
+  ],
+  "fagkode_host": "IS4100",
+  "fagnavn_host": "IT Project Management",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4162",
+  "ntnu_emnenavn": "Org.tek. 2",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Jonas Alexander Ingvaldsen",
+  "kommentar": "",
+  "rejected": false,
+  "university": "National University of Singapore",
+  "country": "Singapore",
+  "page_id": "110003085",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003085",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "IE4213",
+  "fagnavn_host": "Learning from Data",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4171",
+  "ntnu_emnenavn": "Metoder i Kunstig intelligens",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "National University of Singapore",
+  "country": "Singapore",
+  "page_id": "110003085",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003085",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "CS3243",
+  "fagnavn_host": "Introduction to Artificial Intelligence",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4171",
+  "ntnu_emnenavn": "Metoder i Kunstig intelligens",
+  "emnetype": "",
+  "godkjent": "NEI",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "National University of Singapore",
+  "country": "Singapore",
+  "page_id": "110003085",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003085",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [],
+  "fagkode_host": "CS4248",
+  "fagnavn_host": "Introduction to Large Languag Models",
+  "studiepoeng": "",
+  "ntnu_emnekode": "",
+  "ntnu_emnenavn": "Technology elective",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "National University of Singapore",
+  "country": "Singapore",
+  "page_id": "110003085",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110003085",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TMA4240"
   ],
   "fagkode_host": "01307",
@@ -35087,7 +35379,7 @@
   "ntnu_codes": [
    "TDT4237"
   ],
-  "fagkode_host": "ESW4020/ ESW3025",
+  "fagkode_host": "ESW4020/ SWE3025",
   "fagnavn_host": "Introduction to Computer Security",
   "studiepoeng": "",
   "ntnu_emnekode": "TDT4237",
@@ -35109,13 +35401,55 @@
    "TDT4265"
   ],
   "fagkode_host": "SWE3052",
-  "fagnavn_host": "Deep Neural Networks",
+  "fagnavn_host": "Introduction to Deep Neural Networks",
   "studiepoeng": "",
   "ntnu_emnekode": "TDT4265",
   "ntnu_emnenavn": "Datasyn og dyp læring",
   "emnetype": "",
   "godkjent": "JA",
   "behandlingsdato": "2026-01-14",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Sungkyunkwan University",
+  "country": "Sør Korea",
+  "page_id": "473137313",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=473137313",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4165"
+  ],
+  "fagkode_host": "SWE3006",
+  "fagnavn_host": "Programming Languages",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4165",
+  "ntnu_emnenavn": "Programmeringsspråk",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Sungkyunkwan University",
+  "country": "Sør Korea",
+  "page_id": "473137313",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=473137313",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4186"
+  ],
+  "fagkode_host": "SWE3004",
+  "fagnavn_host": "Operating Systems",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4186",
+  "ntnu_emnenavn": "Operativsystemer",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026",
   "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
@@ -41837,6 +42171,27 @@
   "behandlingsdato": "2025-03-02",
   "behandlet_av": "Benjamin Lagemann",
   "kommentar": "",
+  "rejected": false,
+  "university": "Brasil - Universidade Federal do Rio de Janeiro",
+  "country": "Sør - Amerika",
+  "page_id": "416122107",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416122107",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TMR4335"
+  ],
+  "fagkode_host": "EEK503 + EEE390",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMR4335 - Marin teknikk 4 - Propulsjonssystemer, sikkerhet og miljø",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA*",
+  "behandlingsdato": "Aug 2025",
+  "behandlet_av": "Eilif Pedersen",
+  "kommentar": "*Begge emner må tas",
   "rejected": false,
   "university": "Brasil - Universidade Federal do Rio de Janeiro",
   "country": "Sør - Amerika",

@@ -6720,6 +6720,27 @@
  },
  {
   "ntnu_codes": [
+   "TMR4335"
+  ],
+  "fagkode_host": "EEK503 + EEE390",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMR4335 - Marin teknikk 4 - Propulsjonssystemer, sikkerhet og miljø",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA*",
+  "behandlingsdato": "Aug 2025",
+  "behandlet_av": "Eilif Pedersen",
+  "kommentar": "*Begge emner må tas",
+  "rejected": false,
+  "university": "Brasil - Universidade Federal do Rio de Janeiro",
+  "country": "Sør - Amerika",
+  "page_id": "416122107",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416122107",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4117"
   ],
   "fagkode_host": "7101",
