@@ -6741,6 +6741,27 @@
  },
  {
   "ntnu_codes": [
+   "TMR4220"
+  ],
+  "fagkode_host": "EEN407",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMR4220 Skipshydrodynamikk",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Benjamin Lagemann",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Brasil - Universidade Federal do Rio de Janeiro",
+  "country": "Sør - Amerika",
+  "page_id": "416122107",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416122107",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4117"
   ],
   "fagkode_host": "7101",

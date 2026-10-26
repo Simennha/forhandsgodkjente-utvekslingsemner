@@ -3612,6 +3612,25 @@
   "continent": "Europa"
  },
  {
+  "ntnu_codes": [],
+  "fagkode_host": "R4.GEMA.AL.32 Intercultural Communication + BMTCC07AC1 Process Management (GEB) + 4EISC03AT1 Introduction to Business Administration",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "",
+  "ntnu_emnenavn": "TIØ4162 Organisasjon og teknologi 2",
+  "emnetype": "",
+  "godkjent": "Okt 2026",
+  "behandlingsdato": "",
+  "behandlet_av": "Jonas A Ingvaldsen",
+  "kommentar": "Alle emner må tas",
+  "rejected": false,
+  "university": "Université de Lille",
+  "country": "Frankrike",
+  "page_id": "423690303",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=423690303",
+  "continent": "Europa"
+ },
+ {
   "ntnu_codes": [
    "TIØ4162"
   ],
@@ -9627,7 +9646,7 @@
   "ntnu_codes": [
    "TDT4102"
   ],
-  "fagkode_host": "INP5070419, A.A. 2019/20, SCIENTIFIC COMPUTING AND OBJECT ORIENTED PROGRAMMING https://en.didattica.unipd.it/off/2019/LM/IN/IN2191/002PD/INP5070419/N0",
+  "fagkode_host": "INP5070419, A.A. 2019/20, SCIENTIFIC COMPUTING AND OBJECT ORIENTED PROGRAMMING https://en.didattica.unipd.it/off/2019/LM/IN/IN2191/002PD/INP5070419/N0 Endret emnekode til IN0000142 - bekreftet av universitetet H26.",
   "fagnavn_host": "",
   "studiepoeng": "6",
   "ntnu_emnekode": "TDT4102 Prosedyre og OO, C++ Programmering",
@@ -11106,6 +11125,27 @@
   "godkjent": "JA",
   "behandlingsdato": "Okt 2026",
   "behandlet_av": "Sverre Olaf Smalø",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4305"
+  ],
+  "fagkode_host": "EPQ3102393 BIG DATA AND MACHINE LEARNING FOR SMART MANUFACTURING ELLER EPQ4107100 BIG DATA AND ARTIFICIAL INTELLIGENCE",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4305 Big Data-arkitektur",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Juli 2024",
+  "behandlet_av": "Zhirong Yang",
   "kommentar": "",
   "rejected": false,
   "university": "Universita Degli Studi de Padova",
@@ -42192,6 +42232,27 @@
   "behandlingsdato": "Aug 2025",
   "behandlet_av": "Eilif Pedersen",
   "kommentar": "*Begge emner må tas",
+  "rejected": false,
+  "university": "Brasil - Universidade Federal do Rio de Janeiro",
+  "country": "Sør - Amerika",
+  "page_id": "416122107",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=416122107",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
+   "TMR4220"
+  ],
+  "fagkode_host": "EEN407",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMR4220 Skipshydrodynamikk",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sep 2026",
+  "behandlet_av": "Benjamin Lagemann",
+  "kommentar": "",
   "rejected": false,
   "university": "Brasil - Universidade Federal do Rio de Janeiro",
   "country": "Sør - Amerika",
