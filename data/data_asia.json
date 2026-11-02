@@ -7325,6 +7325,27 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4180"
+  ],
+  "fagkode_host": "GS33996/IP2002458 + DB3500969",
+  "fagnavn_host": "Technology and Innovation Management / Technology Management & Innovation v/Intellectual Property Convergence Major + International Business Strategy",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4180",
+  "ntnu_emnenavn": "Innovasjonsledelse og strategi",
+  "emnetype": "",
+  "godkjent": "JA*",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Alf Steinar Sætre",
+  "kommentar": "*Kun ett av innovasjonsemnene tas",
+  "rejected": false,
+  "university": "Pusan National University",
+  "country": "Sør Korea",
+  "page_id": "282493983",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=282493983",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4265"
   ],
   "fagkode_host": "251.424",

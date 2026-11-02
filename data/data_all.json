@@ -3383,6 +3383,69 @@
  },
  {
   "ntnu_codes": [
+   "TDT4259"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "Data acquisition, processing and mining for AI",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4259",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Grenoble Institute of Technology (INP)",
+  "country": "Frankrike",
+  "page_id": "216629543",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=216629543",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4172"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "Introduction to Artificial Intelligence",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4172",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Grenoble Institute of Technology (INP)",
+  "country": "Frankrike",
+  "page_id": "216629543",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=216629543",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4126"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "Introduction to Artificial Intelligence Complementary",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4126",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Kjetil Fagerholt",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Grenoble Institute of Technology (INP)",
+  "country": "Frankrike",
+  "page_id": "216629543",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=216629543",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4162"
   ],
   "fagkode_host": "",
@@ -6367,16 +6430,16 @@
   "ntnu_codes": [
    "TEP4130"
   ],
-  "fagkode_host": "083903",
+  "fagkode_host": "083903 eller 052603",
   "fagnavn_host": "HEAT TRANSFER AND THERMAL ANALYSIS",
-  "studiepoeng": "6",
+  "studiepoeng": "6 /5 sp",
   "ntnu_emnekode": "TEP4130 Varme masse",
   "ntnu_emnenavn": "",
   "emnetype": "",
   "godkjent": "JA",
-  "behandlingsdato": "2020-01-21",
-  "behandlet_av": "Erling Næss",
-  "kommentar": "",
+  "behandlingsdato": "2020-01-21 /2026 okt",
+  "behandlet_av": "Erling Næss / Carlos A Doaro",
+  "kommentar": "Begge varianter ok.",
   "rejected": false,
   "university": "Politecnico de Milano",
   "country": "Italia",
@@ -7283,18 +7346,19 @@
  },
  {
   "ntnu_codes": [
-   "TIØ5210"
+   "TIØ5210",
+   "RTIØ4162"
   ],
   "fagkode_host": "059596",
   "fagnavn_host": "Advanced Project Management https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&aa=2023&k_cf=225&k_corso_la=483&k_indir=CC3&codDescr=059596&lang=EN&semestre=2&anno_corso=1&idItemOfferta=167601&idRiga=304684",
   "studiepoeng": "10",
-  "ntnu_emnekode": "TIØ5210 Program- og porteføljeledelse",
+  "ntnu_emnekode": "TIØ5210 Program- og porteføljeledelse ELLER TIØ4162",
   "ntnu_emnenavn": "",
   "emnetype": "",
-  "godkjent": "JA",
-  "behandlingsdato": "2023-11-14",
-  "behandlet_av": "Vedran Zerjav",
-  "kommentar": "",
+  "godkjent": "JA JA",
+  "behandlingsdato": "2023-11-14 2026 - okt",
+  "behandlet_av": "Vedran Zerjav Jonas A Ingvaldsen",
+  "kommentar": "Et av emnene ved NTNU kan erstattes.",
   "rejected": false,
   "university": "Politecnico de Milano",
   "country": "Italia",
@@ -7548,6 +7612,27 @@
   "behandlingsdato": "Aug 2026",
   "behandlet_av": "Alf Steinar Sætre",
   "kommentar": "",
+  "rejected": false,
+  "university": "Politecnico de Milano",
+  "country": "Italia",
+  "page_id": "110825452",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825452",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TPK4160"
+  ],
+  "fagkode_host": "072363",
+  "fagnavn_host": "Gestione dei Sistemi Logistici",
+  "studiepoeng": "10",
+  "ntnu_emnekode": "TPK4160 Verdikjedestyring",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Okt 2026",
+  "behandlet_av": "Fabio Sgarbossa",
+  "kommentar": "Faget undervises på italiensk",
   "rejected": false,
   "university": "Politecnico de Milano",
   "country": "Italia",
@@ -35114,6 +35199,27 @@
   "behandlingsdato": "Juli 2026",
   "behandlet_av": "Jan Christian Meyer",
   "kommentar": "",
+  "rejected": false,
+  "university": "Pusan National University",
+  "country": "Sør Korea",
+  "page_id": "282493983",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=282493983",
+  "continent": "Asia"
+ },
+ {
+  "ntnu_codes": [
+   "TIØ4180"
+  ],
+  "fagkode_host": "GS33996/IP2002458 + DB3500969",
+  "fagnavn_host": "Technology and Innovation Management / Technology Management & Innovation v/Intellectual Property Convergence Major + International Business Strategy",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4180",
+  "ntnu_emnenavn": "Innovasjonsledelse og strategi",
+  "emnetype": "",
+  "godkjent": "JA*",
+  "behandlingsdato": "Aug 2026",
+  "behandlet_av": "Alf Steinar Sætre",
+  "kommentar": "*Kun ett av innovasjonsemnene tas",
   "rejected": false,
   "university": "Pusan National University",
   "country": "Sør Korea",
