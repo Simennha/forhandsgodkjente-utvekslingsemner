@@ -1074,6 +1074,48 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4102"
+  ],
+  "fagkode_host": "MGB130",
+  "fagnavn_host": "Managing Productivity and People",
+  "studiepoeng": "7,5",
+  "ntnu_emnekode": "TIØ4102",
+  "ntnu_emnenavn": "OrgTek 1",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-09-25",
+  "behandlet_av": "Hanne Finnestrand",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Queensland University of Technology",
+  "country": "Australia/NZ",
+  "page_id": "107250732",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250732",
+  "continent": "Australia/NZ"
+ },
+ {
+  "ntnu_codes": [
+   "TDT4140"
+  ],
+  "fagkode_host": "IAB251",
+  "fagnavn_host": "Software Engineering for Enterprise Systems",
+  "studiepoeng": "7,5",
+  "ntnu_emnekode": "TDT4140",
+  "ntnu_emnenavn": "Programvareutvikling",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "2026-10-07",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Queensland University of Technology",
+  "country": "Australia/NZ",
+  "page_id": "107250732",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250732",
+  "continent": "Australia/NZ"
+ },
+ {
+  "ntnu_codes": [
    "TMA4125",
    "TMA4130"
   ],

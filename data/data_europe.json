@@ -11241,6 +11241,27 @@
  },
  {
   "ntnu_codes": [
+   "TDT4171"
+  ],
+  "fagkode_host": "INQ0091562 Artificial Intelligence",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TDT4171",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Nov 2026",
+  "behandlet_av": "Zhirong Yang",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universita Degli Studi de Padova",
+  "country": "Italia",
+  "page_id": "110825090",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=110825090",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
    "TIØ4118"
   ],
   "fagkode_host": "106833 Microeconomics https://corsi.unige.it/en/off.f/2023/ins/68239",
@@ -18437,6 +18458,70 @@
   "godkjent": "JA",
   "behandlingsdato": "Jan 2026",
   "behandlet_av": "Calos A Dorao",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universidad de Sevilla",
+  "country": "Spania",
+  "page_id": "143885483",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143885483",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TMA4125",
+   "TMA4130"
+  ],
+  "fagkode_host": "",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TMA4125/TMA4130",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Sept 2026",
+  "behandlet_av": "Sverre Smalø",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universidad de Sevilla",
+  "country": "Spania",
+  "page_id": "143885483",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143885483",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TEP4135"
+  ],
+  "fagkode_host": "2560016",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TEP4135 Fluidmekanikk 2",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Juni 2026",
+  "behandlet_av": "Eirik Æsøy",
+  "kommentar": "",
+  "rejected": false,
+  "university": "Universidad de Sevilla",
+  "country": "Spania",
+  "page_id": "143885483",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=143885483",
+  "continent": "Europa"
+ },
+ {
+  "ntnu_codes": [
+   "TEP4130"
+  ],
+  "fagkode_host": "2560022",
+  "fagnavn_host": "",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TEP4130 Varme og massetransport",
+  "ntnu_emnenavn": "",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Juni 2026",
+  "behandlet_av": "Carlos A Dorao",
   "kommentar": "",
   "rejected": false,
   "university": "Universidad de Sevilla",

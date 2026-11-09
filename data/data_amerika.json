@@ -3850,6 +3850,27 @@
  },
  {
   "ntnu_codes": [
+   "TIØ4140"
+  ],
+  "fagkode_host": "15.437",
+  "fagnavn_host": "Options and Futures Markets",
+  "studiepoeng": "",
+  "ntnu_emnekode": "TIØ4140",
+  "ntnu_emnenavn": "Finansielle derivater og realopsjoner",
+  "emnetype": "",
+  "godkjent": "JA",
+  "behandlingsdato": "Nov 2026",
+  "behandlet_av": "Rita Pimentel",
+  "kommentar": "Kurset mangler \"stochastic calculus\". Studenter er selv ansvarlig for å tilegne seg denne kunnskapen.",
+  "rejected": false,
+  "university": "MIT Massachusetts Institute of Technology",
+  "country": "USA",
+  "page_id": "107250761",
+  "url": "https://www.ntnu.no/wiki/pages/viewpage.action?pageId=107250761",
+  "continent": "Amerika"
+ },
+ {
+  "ntnu_codes": [
    "TMA4240",
    "TMA4245"
   ],
